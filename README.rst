@@ -26,9 +26,9 @@ MFCC Features
 
 The following parameters are supported for generating MFCCs::
 
-=============	        ===========
+=============	===========
 Parameter 		Description
-=============	        ===========
+=============	===========
 signal                  the audio signal from which to compute features. Should be an N x 1 array
 sampling_frequency      the sampling frequency of the signal we are working with.
 frame_length            the length of each frame in seconds. Default is 0.020s
@@ -39,7 +39,7 @@ low_frequency           lowest band edge of mel filters. In Hz, default is 0.
 high_frequency          highest band edge of mel filters. In Hz, default is samplerate/2
 num_cepstral            number of cepstral coefficients.
 dc_elimination          if the first dc component should be eliminated or not.
-=============	        ===========
+=============	===========
 
 
 Filterbank Features
