@@ -1,193 +1,174 @@
-# calculate filterbank features. Provides e.g. fbank and mfcc features for use in ASR applications
-# Copyright (c) 2013 James Lyons
-# Please refer to the following repository for further description:
-# https://github.com/jameslyons/python_speech_features
 from __future__ import division
-import numpy
+import numpy as np
 import processing
 from scipy.fftpack import dct
-
-def mfcc(frames,samplerate=16000,winstep=0.01,numcep=13,
-         nfilt=41,nfft=512,lowfreq=0,highfreq=None,preemph=0.97,ceplifter=22,appendEnergy=True,
-         winfunc=lambda x:numpy.ones((x,))):
-    """Compute MFCC features from an audio signal.
-
-    :param signal: the audio signal from which to compute features. Should be an N*1 array
-    :param samplerate: the samplerate of the signal we are working with.
-    :param winlen: the length of the analysis window in seconds. Default is 0.025s (25 milliseconds)
-    :param winstep: the step between successive windows in seconds. Default is 0.01s (10 milliseconds)
-    :param numcep: the number of cepstrum to return, default 13
-    :param nfilt: the number of filters in the filterbank, default 26.
-    :param nfft: the FFT size. Default is 512.
-    :param lowfreq: lowest band edge of mel filters. In Hz, default is 0.
-    :param highfreq: highest band edge of mel filters. In Hz, default is samplerate/2
-    :param preemph: apply preemphasis filter with preemph as coefficient. 0 is no filter. Default is 0.97. 
-    :param ceplifter: apply a lifter to final cepstral coefficients. 0 is no lifter. Default is 22. 
-    :param appendEnergy: if this is true, the zeroth cepstral coefficient is replaced with the log of the total frame energy.
-    :param winfunc: the analysis window to apply to each frame. By default no window is applied.
-    :returns: A numpy array of size (NUMFRAMES by numcep) containing features. Each row holds 1 feature vector.
-    """
-
-    feat,energy = fbank(frames,samplerate,winlen,nfilt,nfft,lowfreq,highfreq,preemph,winfunc)
-    feat = numpy.log(feat)
-    feat = dct(feat, type=2, axis=1, norm='ortho')[:,:numcep]
-    feat = lifter(feat,ceplifter)
-    if appendEnergy: feat[:,0] = numpy.log(energy) # replace first cepstral coefficient with log of frame energy
-    return feat
+import math
+from functions import *
 
 
-def fbank(frames, samplerate=16000, winstep=0.01,
-          nfilt=41, nfft=512, lowfreq=0, highfreq=None, preemph=0.97,
-          winfunc=lambda x: numpy.ones((x,))):
-    """Compute Mel-filterbank energy features from an audio signal.
-
-    :param signal: the audio signal from which to compute features. Should be an N*1 array
-    :param samplerate: the samplerate of the signal we are working with.
-    :param winlen: the length of the analysis window in seconds. Default is 0.025s (25 milliseconds)
-    :param winstep: the step between successive windows in seconds. Default is 0.01s (10 milliseconds)
-    :param nfilt: the number of filters in the filterbank, default 26.
-    :param nfft: the FFT size. Default is 512.
-    :param lowfreq: lowest band edge of mel filters. In Hz, default is 0.
-    :param highfreq: highest band edge of mel filters. In Hz, default is samplerate/2
-    :param preemph: apply preemphasis filter with preemph as coefficient. 0 is no filter. Default is 0.97.
-    :param winfunc: the analysis window to apply to each frame. By default no window is applied.
-    :returns: 2 values. The first is a numpy array of size (NUMFRAMES by nfilt) containing features. Each row holds 1 feature vector. The
-        second return value is the energy in each frame (total energy, unwindowed)
-    """
-
-
-    highfreq = highfreq or samplerate / 2
-
-    # # No filtering is doe.
-    # signal = processing.preemphasis(signal, 0)
-
-    # # Stacking frames
-    # frames = processing.Stack_Frames(signal, samplerate, winlen, overlap_factor=0.6, zero_padding=True)
-
-    pspec = processing.power_spectrum(frames, nfft)
-    energy = numpy.sum(pspec, 1)  # this stores the total energy in each frame
-
-    # if energy is zero, we get problems with log
-    # The following command does the following:
-    #    - If the condition "energy == 0" holds it put numpy.finfo(float).eps in those elements
-    #    - Otherwise it put the values of energy vector itself.
-    energy = numpy.where(energy == 0, numpy.finfo(float).eps, energy)
-
-    fb = get_filterbanks(nfilt, nfft, samplerate, lowfreq, highfreq)
-    feat = numpy.dot(pspec, fb.T)  # compute the filterbank energies
-    feat = numpy.where(feat == 0, numpy.finfo(float).eps, feat)  # if feat is zero, we get problems with log
-
-    # We eliminate the DC component.
-    feat = feat[:,1:]
-
-    return feat, energy
-
-def logfbank(frames,samplerate=16000,winstep=0.01,
-          nfilt=41,nfft=512,lowfreq=0,highfreq=None,preemph=0.97):
-    """Compute log Mel-filterbank energy features from an audio signal.
-
-    :param signal: the audio signal from which to compute features. Should be an N*1 array
-    :param samplerate: the samplerate of the signal we are working with.
-    :param winlen: the length of the analysis window in seconds. Default is 0.025s (25 milliseconds)    
-    :param winstep: the step between successive windows in seconds. Default is 0.01s (10 milliseconds)    
-    :param nfilt: the number of filters in the filterbank, default 26.
-    :param nfft: the FFT size. Default is 512.
-    :param lowfreq: lowest band edge of mel filters. In Hz, default is 0.
-    :param highfreq: highest band edge of mel filters. In Hz, default is samplerate/2
-    :param preemph: apply preemphasis filter with preemph as coefficient. 0 is no filter. Default is 0.97. 
-    :returns: A numpy array of size (NUMFRAMES by nfilt) containing features. Each row holds 1 feature vector. 
-    """          
-    feat, energy = fbank(frames,samplerate,winstep,nfilt,nfft,lowfreq,highfreq,preemph)
-    return numpy.log(feat)
-
-def ssc(frames,samplerate=16000,winlen=0.025,winstep=0.01,
-        nfilt=41,nfft=512,lowfreq=0,highfreq=None,preemph=0.97,
-        winfunc=lambda x:numpy.ones((x,))):
-    """Compute Spectral Subband Centroid features from an audio signal.
-
-    :param signal: the audio signal from which to compute features. Should be an N*1 array
-    :param samplerate: the samplerate of the signal we are working with.
-    :param winlen: the length of the analysis window in seconds. Default is 0.025s (25 milliseconds)    
-    :param winstep: the step between successive windows in seconds. Default is 0.01s (10 milliseconds)    
-    :param nfilt: the number of filters in the filterbank, default 26.
-    :param nfft: the FFT size. Default is 512.
-    :param lowfreq: lowest band edge of mel filters. In Hz, default is 0.
-    :param highfreq: highest band edge of mel filters. In Hz, default is samplerate/2
-    :param preemph: apply preemphasis filter with preemph as coefficient. 0 is no filter. Default is 0.97.
-    :param winfunc: the analysis window to apply to each frame. By default no window is applied.
-    :returns: A numpy array of size (NUMFRAMES by nfilt) containing features. Each row holds 1 feature vector. 
-    """          
-    highfreq= highfreq or samplerate/2
-    # signal = processing.preemphasis(signal,preemph)
-    frames = processing.framesig(frames, winlen*samplerate, winstep*samplerate, winfunc)
-    pspec = processing.powspec(frames,nfft)
-    pspec = numpy.where(pspec == 0,numpy.finfo(float).eps,pspec) # if things are all zeros we get problems
-    
-    fb = get_filterbanks(nfilt,nfft,samplerate,lowfreq,highfreq)
-    feat = numpy.dot(pspec,fb.T) # compute the filterbank energies
-    R = numpy.tile(numpy.linspace(1,samplerate/2,numpy.size(pspec,1)),(numpy.size(pspec,0),1))
-    
-    return numpy.dot(pspec*R,fb.T) / feat
-    
-def hz2mel(hz):
-    """Convert a value in Hertz to Mels
-
-    :param hz: a value in Hz. This can also be a numpy array, conversion proceeds element-wise.
-    :returns: a value in Mels. If an array was passed in, an identical sized array is returned.
-    """
-    return 2595 * numpy.log10(1+hz/700.)
-    
-def mel2hz(mel):
-    """Convert a value in Mels to Hertz
-
-    :param mel: a value in Mels. This can also be a numpy array, conversion proceeds element-wise.
-    :returns: a value in Hertz. If an array was passed in, an identical sized array is returned.
-    """
-    return 700*(10**(mel/2595.0)-1)
-
-def get_filterbanks(num_filter=20,nfft=512,samplerate=16000,lowfreq=0,highfreq=None):
-    """Compute a Mel-filterbank. The filters are stored in the rows, the columns correspond
-    to fft bins. The filters are returned as an array of size nfilt * (nfft/2 + 1)
+def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=None):
+    """Compute the Mel-filterbanks. Each filter will be stored in one rows.
+                                    The columns correspond to fft bins.
 
     :param num_filter: the number of filters in the filterbank, default 20.
-    :param nfft: the FFT size. Default is 512.
-    :param samplerate: the samplerate of the signal we are working with. Affects mel spacing.
-    :param lowfreq: lowest band edge of mel filters, default 0 Hz
-    :param highfreq: highest band edge of mel filters, default samplerate/2
-    :returns: A numpy array of size nfilt * (nfft/2 + 1) containing filterbank. Each row holds 1 filter.
+    :param fftpoints: the FFT size. Default is 512.
+    :param sampling_freq: the samplerate of the signal we are working with. Affects mel spacing.
+    :param low_freq: lowest band edge of mel filters, default 0 Hz
+    :param high_freq: highest band edge of mel filters, default samplerate/2
+    :returns: A numpy array of size num_filter x (fftpoints//2 + 1) which are filterbank
     """
-    highfreq= highfreq or samplerate/2
-    assert highfreq <= samplerate/2
-    
-    # compute points evenly spaced in mels
-    lowmel = hz2mel(lowfreq)
-    highmel = hz2mel(highfreq)
-    melpoints = numpy.linspace(lowmel,highmel,num_filter+2)
-    # our points are in Hz, but we use fft bins, so we have to convert
-    #  from Hz to fft bin number
-    bin = numpy.floor((nfft+1)*mel2hz(melpoints)/samplerate)
+    high_freq = high_freq or sampling_freq / 2
+    low_freq = low_freq or 300
+    assert high_freq <= sampling_freq / 2, "High frequency cannot be greater than half of the sampling frequency!"
+    assert low_freq >= 0, "low frequency cannot be less than zero!"
 
-    fbank = numpy.zeros([num_filter,nfft//2+1])
-    for j in range(0,num_filter):
-        for i in range(int(bin[j]), int(bin[j+1])):
-            fbank[j,i] = (i - bin[j]) / (bin[j+1]-bin[j])
-        for i in range(int(bin[j+1]), int(bin[j+2])):
-            fbank[j,i] = (bin[j+2]-i) / (bin[j+2]-bin[j+1])
-    return fbank                 
-    
-def lifter(cepstra, L=22):
-    """Apply a cepstral lifter the the matrix of cepstra. This has the effect of increasing the
-    magnitude of the high frequency DCT coeffs.
-    
-    :param cepstra: the matrix of mel-cepstra, will be numframes * numcep in size.
-    :param L: the liftering coefficient to use. Default is 22. L <= 0 disables lifter.
+    ######################################################
+    ########### Computing the Mel filterbank #############
+    ######################################################
+
+    # converting the upper and lower frequencies to Mels.
+    # num_filter + 2 is because for num_filter filterbanks we need num_filter+2 point.
+    mels = np.linspace(frequency_to_mel(low_freq), frequency_to_mel(high_freq), num_filter + 2)
+
+    # we should convert Mels back to Hertz because the start and end-points should be at the desired frequencies.
+    hertz = mel_to_frequency(mels)
+
+    # The frequency resolution required to put filters at the
+    # exact points calculated above should be extracted.
+    #  So we should round those frequencies to the closest FFT bin.
+    freq_index = (np.floor((fftpoints + 1) * hertz / sampling_freq)).astype(int)
+
+    # Initial definition
+    filterbank = np.zeros([num_filter, fftpoints])
+
+    # The triangular function for each filter
+    for i in range(0, num_filter):
+        left = int(freq_index[i])
+        middle = int(freq_index[i + 1])
+        right = int(freq_index[i + 2])
+        z = np.linspace(left, right, num=right - left + 1)
+        filterbank[i, left:right + 1] = triangle(z, left=left, middle=middle, right=right)
+
+    return filterbank
+
+def mfcc_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,num_cepstral =13,
+             num_filters=40, fft_length=512, low_frequency=0, high_frequency=None, dc_elimination=True):
+    """Compute MFCC features from an audio signal.
+
+    :param signal: the audio signal from which to compute features. Should be an N x 1 array
+    :param sampling_frequency: the sampling frequency of the signal we are working with.
+    :param frame_length: the length of each frame in seconds. Default is 0.020s
+    :param frame_stride: the step between successive frames in seconds. Default is 0.02s (means no overlap)
+    :param num_filters: the number of filters in the filterbank, default 40.
+    :param fft_length: number of FFT points. Default is 512.
+    :param low_frequency: lowest band edge of mel filters. In Hz, default is 0.
+    :param high_frequency: highest band edge of mel filters. In Hz, default is samplerate/2
+    :param num_cepstral: Number of cepstral coefficients.
+    :param dc_elimination: hIf the first dc component should be eliminated or not.
+
+    :returns: A numpy array of size (num_frames x num_cepstral) containing mfcc features.
     """
-    if L > 0:
-        nframes,ncoeff = numpy.shape(cepstra)
-        n = numpy.arange(ncoeff)
-        lift = 1 + (L/2.)*numpy.sin(numpy.pi*n/L)
-        return lift*cepstra
-    else:
-        # values of L <= 0, do nothing
-        return cepstra
-    
+
+    feature, energy = energy_feature(signal, sampling_frequency=sampling_frequency, frame_length=frame_length, frame_stride=frame_stride,
+             num_filters=num_filters, fft_length=fft_length, low_frequency=low_frequency, high_frequency=high_frequency)
+    feature = np.log(feature)
+    feature = dct(feature, type=2, axis=-1, norm='ortho')[:, :num_cepstral]
+
+    # replace first cepstral coefficient with log of frame energy for DC elimination.
+    if dc_elimination:
+        feature[:, 0] = np.log(energy)
+    return feature
+
+
+def energy_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
+          num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
+    """Compute Mel-filterbank energy features from an audio signal.
+
+    :param signal: the audio signal from which to compute features. Should be an N x 1 array
+    :param sampling_frequency: the sampling frequency of the signal we are working with.
+    :param frame_length: the length of each frame in seconds. Default is 0.020s
+    :param frame_stride: the step between successive frames in seconds. Default is 0.02s (means no overlap)
+    :param num_filters: the number of filters in the filterbank, default 40.
+    :param fft_length: number of FFT points. Default is 512.
+    :param low_frequency: lowest band edge of mel filters. In Hz, default is 0.
+    :param high_frequency: highest band edge of mel filters. In Hz, default is samplerate/2
+
+    :returns:
+              features: the energy of fiterbank: num_frames x num_filters
+              frame_energies: the energy of each frame: num_frames x 1
+    """
+
+    # Convert to float
+    signal = signal.astype(float)
+
+    # Stack frames
+    frames = processing.Stack_Frames(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
+                                     frame_stride=frame_stride,
+                                     Filter=lambda x: np.ones((x,)),
+                                     zero_padding=True)
+
+    # getting the high frequency
+    high_frequency = high_frequency or sampling_frequency / 2
+
+    # calculation of the power sprectum
+    power_spectrum = processing.power_spectrum(frames, fft_length)
+    number_fft_coefficients = power_spectrum.shape[1]
+    frame_energies = np.sum(power_spectrum, 1)  # this stores the total energy in each frame
+
+    # Handling zero enegies.
+    frame_energies = zero_handling(frame_energies)
+
+    # Extracting the filterbank
+    filter_banks = filterbanks(num_filters, number_fft_coefficients, sampling_frequency, low_frequency, high_frequency)
+
+    # Filterbank energies
+    features = np.dot(power_spectrum, filter_banks.T)
+    features = zero_handling(features)
+
+    return features, frame_energies
+
+
+def logenergy_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
+             num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
+    """Compute Mel-filterbank energy features from an audio signal.
+
+    :param signal: the audio signal from which to compute features. Should be an N x 1 array
+    :param sampling_frequency: the sampling frequency of the signal we are working with.
+    :param frame_length: the length of each frame in seconds. Default is 0.020s
+    :param frame_stride: the step between successive frames in seconds. Default is 0.02s (means no overlap)
+    :param num_filters: the number of filters in the filterbank, default 40.
+    :param fft_length: number of FFT points. Default is 512.
+    :param low_frequency: lowest band edge of mel filters. In Hz, default is 0.
+    :param high_frequency: highest band edge of mel filters. In Hz, default is samplerate/2
+
+    :returns:
+              features: the energy of fiterbank: num_frames x num_filters
+              frame_log_energies: the log energy of each frame: num_frames x 1
+    """
+
+    feature, frame_energies = energy_feature(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
+                                 frame_stride=frame_stride,
+                                 num_filters=num_filters, fft_length=fft_length, low_frequency=low_frequency,
+                                 high_frequency=high_frequency)
+    feature = np.log(feature)
+
+
+    return feature
+
+def extract_derivative_feature(feature):
+    """
+    This function extracts temporal derivative features which are first and second derivatives.
+    :param feature: The feature vector which its size is: N x M
+
+    :return: The feature cube vector which contains the static, first and second derivative features
+             size: N x M x 3
+    """
+    first_derivative_feature = processing.Derivative_Feature_Fn(feature, DeltaWindows=2)
+    second_derivative_feature = processing.Derivative_Feature_Fn(first_derivative_feature, DeltaWindows=2)
+
+    # Creating the future cube for each file
+    feature_cube = np.concatenate(
+        (feature[:, :, None], first_derivative_feature[:, :, None],
+         second_derivative_feature[:, :, None]),
+        axis=2)
+    return feature_cube

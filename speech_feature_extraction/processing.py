@@ -2,14 +2,12 @@ import decimal
 import numpy
 import math
 
-
-
 # 1.4 becomes 1 and 1.6 becomes 2. special case: 1.5 becomes 2.
 def round_half_up(number):
     return int(decimal.Decimal(number).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_HALF_UP))
 
 
-def Stack_Frames(sig, sampling_frequency, frame_length=0.025, overlap_factor=0.6, Filter=lambda x: numpy.ones((x,)),
+def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: numpy.ones((x,)),
                  zero_padding=True):
     """Frame a signal into overlapping frames.
 
@@ -24,7 +22,7 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.025, overlap_factor=0.6
     # Initial necessary values
     length_signal = len(sig)
     frame_sample_length = int(numpy.round(sampling_frequency * frame_length))  # Defined by the number of samples
-    frame_stride = numpy.round((1 - overlap_factor) * frame_sample_length)
+    frame_stride = int(numpy.round(sampling_frequency * frame_stride))
 
     # Check the feasibility of stacking
     if length_signal <= frame_sample_length:
@@ -37,7 +35,7 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.025, overlap_factor=0.6
 
             # Zero padding
             len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
-            additive_zeros = numpy.zeros((len_sig - length_signal,))
+            additive_zeros = numpy.zeros((length_signal-len_sig,))
             signal = numpy.concatenate((sig, additive_zeros))
 
         else:
@@ -62,53 +60,45 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.025, overlap_factor=0.6
     return Extracted_Frames
 
 
-def fft_spectrum(frames, FFT_LENGTH):
-    """The magnitude spectrum of each frame will be calculated.
+def fft_spectrum(frames, fft_length=512):
+    """This function computes the one-dimensional n-point discrete Fourier Transform (DFT) of a real-valued
+       array by means of an efficient algorithm called the Fast Fourier Transform (FFT).(ref: numpy documentation)
+       please refer to https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html for further details.
 
     :param frames: The frame array in which each row is a frame.
-    :param FFT_LENGTH: The length of FFT. If FFT_LENGTH is greater than frame_len, the frames will be zero-padded.
+    :param fft_length: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+    :param num_keep_coefficients: The number of coefficients that is kept.
     :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
     """
-    SPECTRUM_VECTOR = numpy.fft.rfft(frames, FFT_LENGTH)
+    SPECTRUM_VECTOR = numpy.fft.rfft(frames, n=fft_length, axis=-1, norm=None)
     return numpy.absolute(SPECTRUM_VECTOR)
 
 
-def power_spectrum(frames, FFT_LENGTH):
+def power_spectrum(frames, fft_length=512):
     """Power spectrum of each frame.
 
     :param frames: The frame array in which each row is a frame.
-    :param FFT_LENGTH: The length of FFT. If FFT_LENGTH is greater than frame_len, the frames will be zero-padded.
-    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
+    :param fft_length: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
-    return 1.0 / FFT_LENGTH * numpy.square(fft_spectrum(frames, FFT_LENGTH))
+    return 1.0 / fft_length * numpy.square(fft_spectrum(frames, fft_length))
 
 
-def log_power_spectrum(frames, FFT_LENGTH, normalize=True):
+def log_power_spectrum(frames, fft_length=512, normalize=True):
     """Log power spectrum of each frame in frames.
 
     :param frames: The frame array in which each row is a frame.
-    :param FFT_LENGTH: The length of FFT. If FFT_LENGTH is greater than frame_len, the frames will be zero-padded.
+    :param fft_length: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
     :param norm: If norm=1, the log power spectrum will be normalized.
-    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
+    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
-    power_spec = power_spectrum(frames, FFT_LENGTH);
+    power_spec = power_spectrum(frames, fft_length)
     power_spec[power_spec <= 1e-20] = 1e-20
     log_power_spec = 10 * numpy.log10(power_spec)
     if normalize:
         return log_power_spec - numpy.max(log_power_spec)
     else:
         return log_power_spec
-
-
-def preemphasis(signal, coeff=0.95):
-    """perform preemphasis on the input signal.
-
-    :param signal: The signal to filter.
-    :param coeff: The preemphasis coefficient. 0 is no filter, default is 0.95.
-    :returns: the filtered signal.
-    """
-    return numpy.append(signal[0], signal[1:] - coeff * signal[:-1])
-
 
 def Derivative_Feature_Fn(feat,DeltaWindows):
     """This function the derivative features.

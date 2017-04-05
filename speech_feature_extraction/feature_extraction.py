@@ -5,6 +5,9 @@ import sys
 import numpy as np
 from speech_feature_fn import ExtractFeature
 import processing
+from main import fbank
+from main import logfbank
+from main import mfcc
 
 
 def stack_signal(signal, fs, frame_length, overlap_factor):
