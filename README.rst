@@ -1,42 +1,27 @@
 ======================
-python_speech_features
+speech_feature_extraction 
 ======================
 
-This library provides common speech features for ASR including MFCCs and filterbank energies.
-If you are not sure what MFCCs are, and would like to know more have a look at this 
+This library provides most frquent used speech features including MFCCs and filterbank energies alogside wi logenergy of filterbanks.
+If you are not sure what MFCCs are, and would like to know more have a look at this nice 
 `MFCC tutorial <http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/>`_
-
-`Project Documentation <http://python-speech-features.readthedocs.org/en/latest/>`_
 
 Installation
 ============
 
-This `project is on pypi <https://pypi.python.org/pypi/python_speech_features>`_
+To install From this repository::
 
-To install from pypi:: 
-
-	pip install python_speech_features
-
-	
-From this repository::
-
-	git clone https://github.com/jameslyons/python_speech_features
+	git clone https://github.com/astorfi/speech_feature_extraction.git
 	python setup.py develop
 
 
-Usage
+Supported Features
 =====
-
-Supported features:
-
-- Mel Frequency Cepstral Coefficients
+- Mel Frequency Cepstral Coefficients(MFCCs)
 - Filterbank Energies
-- Log Filterbank Energies
-- Spectral Subband Centroids
+- Log Filterbank Energies(MFECs!)
 
 `Example use <example.py>`_
-
-From here you can write the features to a file etc.
 
 
 MFCC Features
