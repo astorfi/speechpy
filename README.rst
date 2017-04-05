@@ -47,10 +47,9 @@ Filterbank Features
 
 The attributes for ``filterbank energies`` are the same for ``log_filterbank energies`` too.
 
-
-===================	===========
+====================	===========
 Parameter 		Description
-===================	===========
+====================	===========
 signal                  the audio signal from which to compute features. Should be an N x 1 array
 sampling_frequency      the sampling frequency of the signal we are working with.
 frame_length            the length of each frame in seconds. Default is 0.020s
