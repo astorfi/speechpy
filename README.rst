@@ -42,29 +42,10 @@ dc_elimination          if the first dc component should be eliminated or not.
 ====================	===========
 
 
-=============   ===========
-Parameter 		Description
-=============   ===========
-signal                  the audio signal from which to compute features. Should be an N x 1 array
-sampling_frequency      the sampling frequency of the signal we are working with.
-frame_length            the length of each frame in seconds. Default is 0.020s
-frame_stride            the step between successive frames in seconds. Default is 0.02s (means no overlap)
-num_filters             the number of filters in the filterbank, default 40.
-fft_length              number of FFT points. Default is 512.
-low_frequency           lowest band edge of mel filters. In Hz, default is 0.
-high_frequency          highest band edge of mel filters. In Hz, default is samplerate/2
-num_cepstral            number of cepstral coefficients.
-dc_elimination          if the first dc component should be eliminated or not.
-=============   ===========
-
-
 Filterbank Features
 ===================
 
-These filters are raw filterbank energies. 
-For most applications you will want the logarithm of these features.
-The default parameters should work fairly well for most cases. 
-If you want to change the fbank parameters, the following parameters are supported::
+The attributes for `filterbank energies` are the same for `log\_filterbank energies` too.
 
 	python
 	def fbank(signal,samplerate=16000,winlen=0.025,winstep=0.01,
@@ -85,10 +66,3 @@ preemph			apply preemphasis filter with preemph as coefficient. 0 is no filter. 
 returns			A numpy array of size (NUMFRAMES by nfilt) containing features. Each row holds 1 feature vector. The second return value is the energy in each frame (total energy, unwindowed)
 =============	===========
 
-
-Reference
-=========
-sample english.wav obtained from::
-
-	wget http://voyager.jpl.nasa.gov/spacecraft/audio/english.au
-	sox english.au -e signed-integer english.wav
