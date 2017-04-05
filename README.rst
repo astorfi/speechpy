@@ -42,7 +42,7 @@ dc_elimination          if the first dc component should be eliminated or not.
 ====================	===========
 
 
-Filterbank Features
+Filterbank Energy Features
 ===================
 
 The attributes for ``filterbank energies`` are the same for ``log_filterbank energies`` too.
