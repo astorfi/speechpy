@@ -45,7 +45,7 @@ dc_elimination          if the first dc component should be eliminated or not.
 Filterbank Features
 ===================
 
-The attributes for `filterbank energies` are the same for `log\_filterbank energies` too.
+The attributes for ``filterbank energies`` are the same for ``log\_filterbank energies`` too.
 
 	python
 	def fbank(signal,samplerate=16000,winlen=0.025,winstep=0.01,
