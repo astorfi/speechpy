@@ -47,6 +47,7 @@ Filterbank Features
 
 The attributes for ``filterbank energies`` are the same for ``log_filterbank energies`` too.
 
+
 ===================	===========
 Parameter 		Description
 ===================	===========
