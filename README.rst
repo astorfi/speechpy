@@ -26,9 +26,9 @@ MFCC Features
 
 The supported attributes for generating MFCC features:
 
-=============	===========
+====================	===========
 Parameter 		Description
-=============	===========
+====================	===========
 signal			the audio signal from which to compute features. Should be an N*1 array
 sampling_frequency	samplerate of the signal we are working with
 winlen			the length of the analysis window in seconds. Default is 0.025s (25 milliseconds)
@@ -39,7 +39,7 @@ lowfreq			lowest band edge of mel filters. In Hz, default is 0
 highfreq		highest band edge of mel filters. In Hz, default is samplerate/2
 preemph			apply preemphasis filter with preemph as coefficient. 0 is no filter. Default is 0.97
 returns			A numpy array of size (NUMFRAMES by nfilt) containing features. Each row holds 1 feature vector. The second return value is the energy in each frame (total energy, unwindowed)
-=============	===========
+====================	===========
 
 
 =============   ===========
