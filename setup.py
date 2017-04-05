@@ -9,5 +9,6 @@ setup(name='speech_feature_extraction',
       packages=['speech_feature_extraction'],
       install_requires=[
           'scipy',
+          'numpy',
       ],
       zip_safe=False)
