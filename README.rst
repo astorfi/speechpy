@@ -24,7 +24,9 @@ Supported Features
 MFCC Features
 =============
 
-The following parameters are supported for generating MFCCs::
+	python
+	def fbank(signal,samplerate=16000,winlen=0.025,winstep=0.01,
+              nfilt=26,nfft=512,lowfreq=0,highfreq=None,preemph=0.97)
 
 =============	===========
 Parameter 		Description
