@@ -24,6 +24,7 @@ Supported Features
 MFCC Features
 =============
 
+The supported attributes for generating MFCC features:
 
 =============	===========
 Parameter 		Description
