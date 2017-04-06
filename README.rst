@@ -9,9 +9,12 @@ If you are not sure what MFCCs are, and would like to know more have a look at t
 Installation
 ============
 
-To install From this repository::
+To install From this repository at first the repository must be cloned::
 
 	git clone https://github.com/astorfi/speech_feature_extraction.git
+	
+After cloning the reposity, root to the repository directory then execute::	
+	
 	python setup.py develop
 
 
