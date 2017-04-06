@@ -11,7 +11,7 @@ def frequency_to_mel(f):
     :param f: The frequency values(or a single frequency) in Hz.
     :returns: The mel scale values(or a single mel).
     """
-    return 1125 * np.log(1 + f / 700.)
+    return 1127 * np.log(1 + f / 700.)
 
 
 def mel_to_frequency(mel):
@@ -20,7 +20,7 @@ def mel_to_frequency(mel):
     :param mel: The mel scale values(or a single mel).
     :returns: The frequency values(or a single frequency) in Hz.
     """
-    return 700 * (np.exp(mel / 1125.0) - 1)
+    return 700 * (np.exp(mel / 1127.0) - 1)
 
 
 def triangle(x, left, middle, right):
