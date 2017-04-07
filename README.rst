@@ -22,7 +22,7 @@ Supported Features
 =====
 - Mel Frequency Cepstral Coefficients(MFCCs)
 - Filterbank Energies
-- Log Filterbank Energies(MFECs!)
+- Log Filterbank Energies
 
 MFCC Features
 =============
