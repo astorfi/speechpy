@@ -15,6 +15,7 @@ setup(name='speechpy',
       url='https://github.com/astorfi/speech_feature_extraction',
       license=license,
       packages=find_packages(exclude=('tests', 'docs')),
+      include_package_data=True,
       install_requires=[
           'scipy',
           'numpy',
