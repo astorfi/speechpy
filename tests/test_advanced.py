@@ -1,4 +1,4 @@
-from .context import speechpy
+from context import speechpy
 
 import unittest
 

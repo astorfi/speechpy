@@ -51,7 +51,7 @@ def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=N
 
     return filterbank
 
-def mfcc_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,num_cepstral =13,
+def mfcc(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,num_cepstral =13,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None, dc_elimination=True):
     """Compute MFCC features from an audio signal.
 
@@ -69,7 +69,7 @@ def mfcc_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.
     :returns: A numpy array of size (num_frames x num_cepstral) containing mfcc features.
     """
 
-    feature, energy = energy_feature(signal, sampling_frequency=sampling_frequency, frame_length=frame_length, frame_stride=frame_stride,
+    feature, energy = fbankenergy(signal, sampling_frequency=sampling_frequency, frame_length=frame_length, frame_stride=frame_stride,
              num_filters=num_filters, fft_length=fft_length, low_frequency=low_frequency, high_frequency=high_frequency)
     feature = np.log(feature)
     feature = dct(feature, type=2, axis=-1, norm='ortho')[:, :num_cepstral]
@@ -80,7 +80,7 @@ def mfcc_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.
     return feature
 
 
-def energy_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
+def fbankenergy(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
           num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
     """Compute Mel-filterbank energy features from an audio signal.
 
@@ -128,7 +128,7 @@ def energy_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=
     return features, frame_energies
 
 
-def logenergy_feature(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
+def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
     """Compute Mel-filterbank energy features from an audio signal.
 
@@ -146,7 +146,7 @@ def logenergy_feature(signal, sampling_frequency, frame_length=0.020, frame_stri
               frame_log_energies: the log energy of each frame: num_frames x 1
     """
 
-    feature, frame_energies = energy_feature(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
+    feature, frame_energies = fbankenergy(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
                                  frame_stride=frame_stride,
                                  num_filters=num_filters, fft_length=fft_length, low_frequency=low_frequency,
                                  high_frequency=high_frequency)
