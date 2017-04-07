@@ -11,4 +11,3 @@ speechpy.egg-info/dependency_links.txt
 speechpy.egg-info/not-zip-safe
 speechpy.egg-info/requires.txt
 speechpy.egg-info/top_level.txt
-test/test.py
