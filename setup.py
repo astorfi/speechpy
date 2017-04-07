@@ -6,7 +6,7 @@ setup(name='speechpy',
       author='asd',
       author_email='amirsina.torfi@gmail.com',
       license='MIT',
-      packages=['speech_feature_extraction'],
+      packages=['speechpy'],
       install_requires=[
           'scipy',
           'numpy',
