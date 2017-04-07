@@ -13,7 +13,7 @@ mfcc_feature_cube = speechpy.extract_derivative_feature(mfcc)
 print('mfcc feature cube shape=', mfcc_feature_cube.shape)
 
 ############# Extract logenergy features #############
-logenergy = speechpy.mfe(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
+logenergy = speechpy.lmfe(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None)
 logenergy_feature_cube = speechpy.extract_derivative_feature(logenergy)
 print('logenergy features=', logenergy.shape)
