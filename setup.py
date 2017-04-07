@@ -1,12 +1,21 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
+with open('README.rst') as f:
+    readme = f.read()
+
+with open('LICENSE') as f:
+    license = f.read()
 
 setup(name='speechpy',
       version='0.1',
-      description='The funniest joke in the world',
-      author='asd',
+      description='The python package for extracting speech features.',
+      long_description=readme,
+      author='Amirsina Torfi',
       author_email='amirsina.torfi@gmail.com',
       license='MIT',
-      packages=['speechpy'],
+      url='https://github.com/astorfi/speech_feature_extraction',
+      license=license,
+      packages=find_packages(exclude=('tests', 'docs'))
       install_requires=[
           'scipy',
           'numpy',
