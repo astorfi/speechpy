@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='speechpy',
+setup(name='speech_feature_extraction',
       version='0.1',
       description='The funniest joke in the world',
       author='asd',
