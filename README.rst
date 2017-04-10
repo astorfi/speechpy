@@ -2,7 +2,7 @@
 speech_feature_extraction 
 ======================
 
-This library provides most frquent used speech features including MFCCs and filterbank energies alogside wi logenergy of filterbanks.
+This library provides most frquent used speech features including MFCCs and filterbank energies alogside with the logenergy of filterbanks.
 If you are interested to see what are MFCCs and how they are generated please refer to this 
 `wiki <https://github.com/astorfi/speech_feature_extraction/wiki/>`_ page.
 
