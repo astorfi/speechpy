@@ -93,7 +93,28 @@ The attributes for ``log_filterbank energies`` are the same for ``filterbank ene
 		      frame_log_energies: the log energy of each frame: num_frames x 1
 	    """
 	    
-	   
+Stack Frames
+================================
+
+In ``Stack_Frames`` function, the stack of frames will be generated from the signal.
+
+.. code-block:: python
+
+	def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: numpy.ones((x,)),
+                 zero_padding=True):
+	    """Frame a signal into overlapping frames.
+	    :param sig: The audio signal to frame.
+	    :param sampling_frequency: The sampling frequency of the signal.
+	    :param frame_length: The length of the frame in second.
+	    :param frame_stride: The stride between frames.
+	    :param Filter: The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
+	    :param zero_padding: If the samples is not a multiple of frame_length(number of frames sample), zero padding will 
+				 be done for generating last frame.
+	    :returns: Array of frames. size: number_of_frames x frame_len.
+	    """
+
+
+
 Test Example
 ==========================
 
