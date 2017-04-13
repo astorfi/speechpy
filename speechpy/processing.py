@@ -14,8 +14,10 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
     :param sig: The audio signal to frame.
     :param sampling_frequency: The sampling frequency of the signal.
     :param frame_length: The length of the frame in second.
-    :param overlap_factor: The factor of overlapping between frames.
+    :param frame_stride: The stride between frames.
     :param Filter: The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
+    :param zero_padding: If the samples is not a multiple of frame_length(number of frames sample), zero padding will 
+                         be done for generating last frame.
     :returns: Array of frames. size: number_of_frames x frame_len.
     """
 
