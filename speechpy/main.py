@@ -102,7 +102,7 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
     signal = signal.astype(float)
 
     # Stack frames
-    frames = processing.Stack_Frames(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
+    frames = processing.stack_frames(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
                                      frame_stride=frame_stride,
                                      Filter=lambda x: np.ones((x,)),
                                      zero_padding=True)
