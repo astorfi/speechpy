@@ -11,7 +11,7 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
                  zero_padding=True):
     """Frame a signal into overlapping frames.
 
-    :param sig: The audio signal to frame.
+    :param sig: The audio signal to frame of size (N,).
     :param sampling_frequency: The sampling frequency of the signal.
     :param frame_length: The length of the frame in second.
     :param frame_stride: The stride between frames.
@@ -22,7 +22,7 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
     """
 
     # Initial necessary values
-    length_signal = len(sig)
+    length_signal = sig.shape[0]
     frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
     frame_stride = int(np.round(sampling_frequency * frame_stride))
 
