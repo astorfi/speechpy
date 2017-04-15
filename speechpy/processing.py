@@ -21,6 +21,9 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
     :returns: Array of frames. size: number_of_frames x frame_len.
     """
 
+    ## Check dimension
+    assert sig.ndim == 1, "Signal dimention should be of the format of (N,) but it is %s instead" % str(sig.shape)
+
     # Initial necessary values
     length_signal = sig.shape[0]
     frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
