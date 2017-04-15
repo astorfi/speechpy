@@ -8,7 +8,7 @@ def round_half_up(number):
 
 
 def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: numpy.ones((x,)),
-                 zero_padding=True):
+                 zero_padding=False):
     """Frame a signal into overlapping frames.
 
     :param sig: The audio signal to frame of size (N,).
@@ -24,7 +24,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
     # Initial necessary values
     length_signal = sig.shape[0]
     frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
-    frame_stride = int(np.round(sampling_frequency * frame_stride))
+    frame_stride = float(np.round(sampling_frequency * frame_stride))
 
     # Check the feasibility of stacking
     if length_signal <= frame_sample_length:
