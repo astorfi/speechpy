@@ -105,7 +105,7 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
     frames = processing.stack_frames(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
                                      frame_stride=frame_stride,
                                      Filter=lambda x: np.ones((x,)),
-                                     zero_padding=True)
+                                     zero_padding=False)
 
     # getting the high frequency
     high_frequency = high_frequency or sampling_frequency / 2
