@@ -37,7 +37,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
 
             # Zero padding
             len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
-            additive_zeros = np.zeros((length_signal-len_sig,))
+            additive_zeros = np.zeros((len_sig - length_signal,))
             signal = np.concatenate((sig, additive_zeros))
 
         else:
@@ -48,6 +48,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
             # new length
             len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
             signal = sig[0:len_sig]
+
 
     # Getting the indices of all frames.
     indices = np.tile(np.arange(0, frame_sample_length), (numframes, 1)) + np.tile(
