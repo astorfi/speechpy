@@ -1,5 +1,5 @@
 import decimal
-import numpy
+import numpy as np
 import math
 
 # 1.4 becomes 1 and 1.6 becomes 2. special case: 1.5 becomes 2.
@@ -23,8 +23,8 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
 
     # Initial necessary values
     length_signal = len(sig)
-    frame_sample_length = int(numpy.round(sampling_frequency * frame_length))  # Defined by the number of samples
-    frame_stride = int(numpy.round(sampling_frequency * frame_stride))
+    frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
+    frame_stride = int(np.round(sampling_frequency * frame_stride))
 
     # Check the feasibility of stacking
     if length_signal <= frame_sample_length:
@@ -37,8 +37,8 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
 
             # Zero padding
             len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
-            additive_zeros = numpy.zeros((length_signal-len_sig,))
-            signal = numpy.concatenate((sig, additive_zeros))
+            additive_zeros = np.zeros((length_signal-len_sig,))
+            signal = np.concatenate((sig, additive_zeros))
 
         else:
             # No zero padding! The last frame which does not have enough
@@ -50,15 +50,16 @@ def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
             signal = sig[0:len_sig]
 
     # Getting the indices of all frames.
-    indices = numpy.tile(numpy.arange(0, frame_sample_length), (numframes, 1)) + numpy.tile(
-        numpy.arange(0, numframes * frame_stride, frame_stride), (frame_sample_length, 1)).T
-    indices = numpy.array(indices, dtype=numpy.int32)
+    indices = np.tile(np.arange(0, frame_sample_length), (numframes, 1)) + np.tile(
+        np.arange(0, numframes * frame_stride, frame_stride), (frame_sample_length, 1)).T
+    indices = np.array(indices, dtype=np.int32)
 
     # Extracting the frames based on the allocated indices.
     frames = signal[indices]
 
     # Apply the windows function
-    Extracted_Frames = frames * numpy.tile(Filter(frame_sample_length), (numframes, 1))
+    window = np.tile(Filter(frame_sample_length), (numframes, 1))
+    Extracted_Frames = frames * window
     return Extracted_Frames
 
 
@@ -72,8 +73,8 @@ def fft_spectrum(frames, fft_length=512):
     :param num_keep_coefficients: The number of coefficients that is kept.
     :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
     """
-    SPECTRUM_VECTOR = numpy.fft.rfft(frames, n=fft_length, axis=-1, norm=None)
-    return numpy.absolute(SPECTRUM_VECTOR)
+    SPECTRUM_VECTOR = np.fft.rfft(frames, n=fft_length, axis=-1, norm=None)
+    return np.absolute(SPECTRUM_VECTOR)
 
 
 def power_spectrum(frames, fft_length=512):
@@ -83,7 +84,7 @@ def power_spectrum(frames, fft_length=512):
     :param fft_length: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
     :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
-    return 1.0 / fft_length * numpy.square(fft_spectrum(frames, fft_length))
+    return 1.0 / fft_length * np.square(fft_spectrum(frames, fft_length))
 
 
 def log_power_spectrum(frames, fft_length=512, normalize=True):
@@ -96,9 +97,9 @@ def log_power_spectrum(frames, fft_length=512, normalize=True):
     """
     power_spec = power_spectrum(frames, fft_length)
     power_spec[power_spec <= 1e-20] = 1e-20
-    log_power_spec = 10 * numpy.log10(power_spec)
+    log_power_spec = 10 * np.log10(power_spec)
     if normalize:
-        return log_power_spec - numpy.max(log_power_spec)
+        return log_power_spec - np.max(log_power_spec)
     else:
         return log_power_spec
 
@@ -114,11 +115,11 @@ def Derivative_Feature_Fn(feat,DeltaWindows):
     rows, cols = feat.shape
 
     # Difining the vector of differences.
-    DIF = numpy.zeros(feat.shape, dtype=float)
+    DIF = np.zeros(feat.shape, dtype=float)
     Scale = 0
 
     # Pad only along features in the vector.
-    FEAT = numpy.lib.pad(feat, ((0, 0), (DeltaWindows, DeltaWindows)), 'edge')
+    FEAT = np.lib.pad(feat, ((0, 0), (DeltaWindows, DeltaWindows)), 'edge')
     for i in range(DeltaWindows):
 
         # Start index
@@ -128,7 +129,7 @@ def Derivative_Feature_Fn(feat,DeltaWindows):
         Range = i + 1
 
         dif = Range * FEAT[:,offset+Range:offset+Range+cols] - FEAT[:,offset-Range:offset-Range+cols]
-        Scale += 2 * numpy.power(Range,2)
+        Scale += 2 * np.power(Range,2)
         DIF += dif
 
     return DIF/Scale
@@ -149,12 +150,15 @@ def Derivative_Feature_Fn(feat,DeltaWindows):
 #     signal_new = resample(wave, float(f_new) / fs, 'sinc_best')
 #
 #     # Necessary data converting for saving .wav file using scipy.
-#     signal_new = numpy.asarray(signal_new, dtype=numpy.int16)
+#     signal_new = np.asarray(signal_new, dtype=np.int16)
 #
 #     # # Uncomment if you want to save the audio file
 #     # # Save using new format
 #     # wav.write(filename='resample_rainbow_16k.wav',rate=fr,data=signal_new)
 #     return signal_new, f_new
+
+
+
 
 
 
