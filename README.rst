@@ -100,10 +100,10 @@ In ``Stack_Frames`` function, the stack of frames will be generated from the sig
 
 .. code-block:: python
 
-	def Stack_Frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: numpy.ones((x,)),
+	def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: numpy.ones((x,)),
                  zero_padding=True):
 	    """Frame a signal into overlapping frames.
-	    :param sig: The audio signal to frame.
+	    :param sig: The audio signal to frame of size (N,).
 	    :param sampling_frequency: The sampling frequency of the signal.
 	    :param frame_length: The length of the frame in second.
 	    :param frame_stride: The stride between frames.
