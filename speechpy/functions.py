@@ -29,7 +29,7 @@ def triangle(x, left, middle, right):
     out[x >= right] = 0
     first_half = np.logical_and(left < x, x <= middle)
     out[first_half] = (x[first_half] - left) / (middle - left)
-    second_half = np.logical_and(middle < x, x < right)
+    second_half = np.logical_and(middle <= x, x < right)
     out[second_half] = (right - x[second_half]) / (right - middle)
     return out
 
