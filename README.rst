@@ -27,7 +27,7 @@ Pypi
 
 The package is available on PyPi. For direct installation simply execute the follwoing:
 
-.. code-block:: bash
+.. code-block:: shell
      
      pip install speechpy
 
