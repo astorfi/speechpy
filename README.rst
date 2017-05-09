@@ -9,13 +9,21 @@ If you are interested to see what are MFCCs and how they are generated please re
 Installation
 ============
 
-To install From this repository at first the repository must be cloned::
+There are two possible ways for installation of this package: local installation and PyPi.
+
+Local Installation
+~~~~~~~~
+
+For local installation at first the repository must be cloned::
 
 	git clone https://github.com/astorfi/speech_feature_extraction.git
 	
 After cloning the reposity, root to the repository directory then execute::	
 	
 	python setup.py develop
+
+Pypi
+~~~~~~~~
 
 
 Supported Features
