@@ -25,6 +25,12 @@ After cloning the reposity, root to the repository directory then execute::
 Pypi
 ~~~~~~~~
 
+The package is available on PyPi. For direct installation simply execute the follwoing:
+
+.. code-block:: bash
+     
+     pip install speechpy
+
 
 Supported Features
 =====
