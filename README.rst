@@ -25,7 +25,7 @@ After cloning the reposity, root to the repository directory then execute::
 Pypi
 ~~~~~~~~
 
-The package is available on PyPi. For direct installation simply execute the follwoing:
+The package is available on PyPi. For direct installation simply execute the following:
 
 .. code-block:: shell
      
