@@ -6,6 +6,8 @@ This library provides most frquent used speech features including MFCCs and filt
 If you are interested to see what are MFCCs and how they are generated please refer to this 
 `wiki <https://github.com/astorfi/speech_feature_extraction/wiki/>`_ page.
 
+.. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speech.gif 
+
 Installation
 ============
 
