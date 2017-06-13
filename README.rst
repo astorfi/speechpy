@@ -2,7 +2,7 @@
 speech_feature_extraction 
 ======================
 
-.. image:: https://circleci.com/gh/astorfi/speech_feature_extraction/tree/master.svg?style=svg
+.. image:: https://circleci.com/gh/astorfi/speech_feature_extraction/tree/:repo.svg?style=shield&circle-token=:circle-token
     :target: https://circleci.com/gh/astorfi/speech_feature_extraction/tree/master
 
 This library provides most frquent used speech features including MFCCs and filterbank energies alogside with the logenergy of filterbanks.
