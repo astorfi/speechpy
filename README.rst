@@ -48,6 +48,8 @@ Supported Features
 MFCC Features
 =============
 
+.. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/Speech_GIF.gif 
+
 The supported attributes for generating MFCC features can be seen by investigating the related function:
 
 .. code-block:: python
