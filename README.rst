@@ -19,7 +19,7 @@ How to Install?
 There are two possible ways for installation of this package: local installation and PyPi.
 
 Local Installation
-~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 For local installation at first the repository must be cloned::
 
@@ -46,7 +46,7 @@ What Features are supported?
 - Log Filterbank Energies
 
 MFCC Features
---------------
+~~~~~~~~~~~~~~
 
 .. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/Speech_GIF.gif 
 
@@ -72,7 +72,7 @@ The supported attributes for generating MFCC features can be seen by investigati
 
 
 Filterbank Energy Features
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. code-block:: python
@@ -94,7 +94,7 @@ Filterbank Energy Features
 	    """
 	   
 log - Filterbank Energy Features
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The attributes for ``log_filterbank energies`` are the same for ``filterbank energies`` too.
 
@@ -117,7 +117,7 @@ The attributes for ``log_filterbank energies`` are the same for ``filterbank ene
 	    """
 	    
 Stack Frames
--------------
+~~~~~~~~~~~~
 
 In ``Stack_Frames`` function, the stack of frames will be generated from the signal.
 
@@ -139,7 +139,7 @@ In ``Stack_Frames`` function, the stack of frames will be generated from the sig
 
 
 Test Example
-==========================
+~~~~~~~~~~~~
 
 The test example can be seen in ``test/test.py`` as below:
 
@@ -172,6 +172,6 @@ The test example can be seen in ``test/test.py`` as below:
 For ectracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
 
 Dependencies
-==========================
+=============
 
 Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will be installed automatically by running the ``setup.py`` file.
