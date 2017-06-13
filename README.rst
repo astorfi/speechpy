@@ -13,8 +13,8 @@ If you are interested to see what are MFCCs and how they are generated please re
 
 .. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speech.gif 
 
-Installation
-============
+How to Install?
+===============
 
 There are two possible ways for installation of this package: local installation and PyPi.
 
@@ -39,14 +39,14 @@ The package is available on PyPi. For direct installation simply execute the fol
      pip install speechpy
 
 
-Supported Features
-=====
+What Features are supported?
+=============================
 - Mel Frequency Cepstral Coefficients(MFCCs)
 - Filterbank Energies
 - Log Filterbank Energies
 
 MFCC Features
-=============
+--------------
 
 .. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/Speech_GIF.gif 
 
@@ -72,7 +72,7 @@ The supported attributes for generating MFCC features can be seen by investigati
 
 
 Filterbank Energy Features
-==========================
+---------------------------
 
 
 .. code-block:: python
@@ -94,7 +94,7 @@ Filterbank Energy Features
 	    """
 	   
 log - Filterbank Energy Features
-================================
+---------------------------------
 
 The attributes for ``log_filterbank energies`` are the same for ``filterbank energies`` too.
 
@@ -117,7 +117,7 @@ The attributes for ``log_filterbank energies`` are the same for ``filterbank ene
 	    """
 	    
 Stack Frames
-================================
+-------------
 
 In ``Stack_Frames`` function, the stack of frames will be generated from the signal.
 
