@@ -6,6 +6,9 @@ speech_feature_extraction
     :target: https://circleci.com/gh/astorfi/speech_feature_extraction
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
     :target: https://github.com/astorfi/speech_feature_extraction/issues
+.. image:: https://coveralls.io/repos/github/astorfi/speech_feature_extraction/badge.svg?branch=master
+    :target: https://coveralls.io/github/astorfi/speech_feature_extraction?branch=master
+
 
 This library provides most frquent used speech features including MFCCs and filterbank energies alogside with the logenergy of filterbanks.
 If you are interested to see what are MFCCs and how they are generated please refer to this 
