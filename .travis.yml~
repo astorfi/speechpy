@@ -7,8 +7,14 @@ python:
   - "3.5-dev" # 3.5 development branch
 
 # command to install dependencies
-install: pip install -r requirements.txt
+install:
+  - pip install -r requirements.txt
+
 script:
-  coverage run --omit=*.virtualenvs*,*virtualenv* setup.py test
+  coverage run python setup.py test
+
 after_success:
   coveralls
+
+sudo: enabled
+dist: trusty
