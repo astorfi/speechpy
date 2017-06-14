@@ -11,6 +11,6 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 script:
-  coverage run --source=speechpy setup.py test
+  coverage run setup.py test
 after_success:
   coveralls
