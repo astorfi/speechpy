@@ -12,7 +12,8 @@ install:
   - pip install coveralls
 
 # command to run tests
-script: python setup.py develop
+script:
+    coverage run --source=speech_feature_extraction setup.py test
 
-sudo: enabled
-dist: trusty
+after_success:
+  coveralls

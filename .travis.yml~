@@ -7,10 +7,13 @@ python:
   - "3.5-dev" # 3.5 development branch
 
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
 
 # command to run tests
-script: python setup.py develop
+script:
+    coverage run --source=speech_feature_extraction setup.py test
 
 sudo: enabled
 dist: trusty
