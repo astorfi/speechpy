@@ -9,8 +9,8 @@ install:
   - pip install coveralls
 
 script:
-  - coverage run tests/test.py test
-  - coverage run setup.py test
+  - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test.py test
+  - coverage run --omit=*.virtualenvs*,*virtualenv* setup.py test
 
 after_success:
   coveralls
