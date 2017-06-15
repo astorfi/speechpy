@@ -10,6 +10,7 @@ install:
 
 script:
   - coverage run tests/test.py test
+  - coverage run setup.py test
 
 after_success:
   coveralls
