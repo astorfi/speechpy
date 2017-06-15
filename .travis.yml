@@ -11,7 +11,6 @@ install:
   - pip install coveralls
 
 script:
-  - coverage run setup.py test
   - coverage run --source=speechpy tests/test.py test
 
 after_success:
