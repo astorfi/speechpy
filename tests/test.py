@@ -1,10 +1,11 @@
 import scipy.io.wavfile as wav
 import numpy as np
 import speechpy
+import os
 
-file_name = 'Alesis-Sanctuary-QCard-AcoustcBas-C2.wav'
+file_name = os.path.join(os.path.dirname(os.path.abspath(__file__)),'Alesis-Sanctuary-QCard-AcoustcBas-C2.wav')
 fs, signal = wav.read(file_name)
-signal = signal[:,:]
+signal = signal[:,0]
 
 ############# Extract MFCC features #############
 mfcc = speechpy.mfcc(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.02,
