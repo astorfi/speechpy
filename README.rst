@@ -12,6 +12,8 @@ speech_feature_extraction
     :target: https://coveralls.io/github/astorfi/speech_feature_extraction?branch=master
 .. image:: https://badge.fury.io/py/speechpy.svg
     :target: https://badge.fury.io/py/speechpy
+.. image:: https://zenodo.org/badge/87262342.svg
+   :target: https://zenodo.org/badge/latestdoi/87262342
 
 
 
