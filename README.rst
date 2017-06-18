@@ -1,3 +1,6 @@
+.. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif 
+    :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif 
+
 ==========================
 speech_feature_extraction 
 ==========================
