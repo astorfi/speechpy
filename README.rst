@@ -191,9 +191,9 @@ Dependencies
 
 Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will be installed automatically by running the ``setup.py`` file.
 
-~~~~~~~~
+~~~~~~~~~
 Citation
-~~~~~~~~
+~~~~~~~~~
 
 If you used this package, please cite it as follows:
 
