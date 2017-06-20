@@ -28,11 +28,13 @@ If you are interested to see what are MFCCs and how they are generated please re
 
 .. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speech.gif 
 
+===============
 How to Install?
 ===============
 
 There are two possible ways for installation of this package: local installation and PyPi.
 
+~~~~~~~~~~~~~~~~~~~
 Local Installation
 ~~~~~~~~~~~~~~~~~~~
 
@@ -44,8 +46,9 @@ After cloning the reposity, root to the repository directory then execute::
 	
 	python setup.py develop
 
+~~~~~
 Pypi
-~~~~~~~~
+~~~~~
 
 The package is available on PyPi. For direct installation simply execute the following:
 
@@ -53,13 +56,14 @@ The package is available on PyPi. For direct installation simply execute the fol
      
      pip install speechpy
 
-
+=============================
 What Features are supported?
 =============================
 - Mel Frequency Cepstral Coefficients(MFCCs)
 - Filterbank Energies
 - Log Filterbank Energies
 
+~~~~~~~~~~~~~~
 MFCC Features
 ~~~~~~~~~~~~~~
 
@@ -85,7 +89,7 @@ The supported attributes for generating MFCC features can be seen by investigati
 	    :returns: A numpy array of size (num_frames x num_cepstral) containing mfcc features.
 	    """
 
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Filterbank Energy Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -107,7 +111,8 @@ Filterbank Energy Features
 		      features: the energy of fiterbank: num_frames x num_filters
 		      frame_energies: the energy of each frame: num_frames x 1
 	    """
-	   
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 log - Filterbank Energy Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -130,7 +135,8 @@ The attributes for ``log_filterbank energies`` are the same for ``filterbank ene
 		      features: the energy of fiterbank: num_frames x num_filters
 		      frame_log_energies: the log energy of each frame: num_frames x 1
 	    """
-	    
+
+~~~~~~~~~~~~
 Stack Frames
 ~~~~~~~~~~~~
 
@@ -152,7 +158,7 @@ In ``Stack_Frames`` function, the stack of frames will be generated from the sig
 	    """
 
 
-
+~~~~~~~~~~~~
 Test Example
 ~~~~~~~~~~~~
 
@@ -186,6 +192,7 @@ The test example can be seen in ``test/test.py`` as below:
 	
 For ectracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
 
+=============
 Dependencies
 =============
 
@@ -197,12 +204,12 @@ Citation
 
 If you used this package, please cite it as follows:
 
-.. code:: shell
+.. code:: bash
     
-    @misc{amirsina_torfi_2017_810392,
-  	author       = {Amirsina Torfi},
-  	title        = {astorfi/speech_feature_extraction: SpeechPy},
-  	month        = jun,
-  	year         = 2017,
-  	doi          = {10.5281/zenodo.810392},
-  	url          = {https://doi.org/10.5281/zenodo.810392}}
+	    @misc{amirsina_torfi_2017_810392,
+		author       = {Amirsina Torfi},
+		title        = {astorfi/speech_feature_extraction: SpeechPy},
+		month        = jun,
+		year         = 2017,
+		doi          = {10.5281/zenodo.810392},
+		url          = {https://doi.org/10.5281/zenodo.810392}}
