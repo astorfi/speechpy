@@ -190,3 +190,19 @@ Dependencies
 =============
 
 Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will be installed automatically by running the ``setup.py`` file.
+
+~~~~~~~~
+Citation
+~~~~~~~~
+
+If you used this package, please cite it as follows:
+
+.. code:: shell
+    
+    @misc{amirsina_torfi_2017_810392,
+  	author       = {Amirsina Torfi},
+  	title        = {astorfi/speech_feature_extraction: SpeechPy},
+  	month        = jun,
+  	year         = 2017,
+  	doi          = {10.5281/zenodo.810392},
+  	url          = {https://doi.org/10.5281/zenodo.810392}}
