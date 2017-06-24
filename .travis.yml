@@ -14,7 +14,7 @@ script:
   - coverage run --omit=*.virtualenvs*,*virtualenv* setup.py test
 
 after_success:
-  coveralls
+  - coveralls
 
 sudo: enabled
 dist: trusty
