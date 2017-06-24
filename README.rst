@@ -13,6 +13,8 @@ speech_feature_extraction
     :target: https://github.com/astorfi/speech_feature_extraction/issues
 .. image:: https://coveralls.io/repos/github/astorfi/speech_feature_extraction/badge.svg?branch=master
     :target: https://coveralls.io/github/astorfi/speech_feature_extraction?branch=master
+.. image:: https://codecov.io/gh/astorfi/speech_feature_extraction/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/astorfi/speech_feature_extraction
 .. image:: https://badge.fury.io/py/speechpy.svg
     :target: https://badge.fury.io/py/speechpy
 .. image:: https://zenodo.org/badge/87262342.svg
