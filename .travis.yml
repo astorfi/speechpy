@@ -9,14 +9,12 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install coveralls
-  - pip install codecov
 
 script:
   - coverage run --omit=*.virtualenvs*,*virtualenv* setup.py test
 
 after_success:
   - coveralls
-  - codecov
 
 sudo: enabled
 dist: trusty
