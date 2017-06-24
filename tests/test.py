@@ -25,5 +25,3 @@ signal = speechpy.stack_frames(signal, sampling_frequency=fs, frame_length=0.020
 
 
 
-
-
