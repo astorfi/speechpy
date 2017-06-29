@@ -1,4 +1,4 @@
-.. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif 
+.. image:: _images/speechpy_logo.gif 
     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif 
 
 ==========================
@@ -28,7 +28,7 @@ This library provides most frquent used speech features including MFCCs and filt
 If you are interested to see what are MFCCs and how they are generated please refer to this 
 `wiki <https://github.com/astorfi/speech_feature_extraction/wiki/>`_ page.
 
-.. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speech.gif 
+.. image:: _images/speech.gif 
 
 ===============
 How to Install?
@@ -69,7 +69,7 @@ What Features are supported?
 MFCC Features
 ~~~~~~~~~~~~~~
 
-.. image:: https://github.com/astorfi/speech_feature_extraction/blob/master/images/Speech_GIF.gif 
+.. image:: _images/Speech_GIF.gif 
 
 The supported attributes for generating MFCC features can be seen by investigating the related function:
 
