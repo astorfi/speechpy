@@ -89,7 +89,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'show_powered_by': False,
     'github_user': 'astorfi',
-    'github_repo': 'speech-feature-extraction',
+    'github_repo': 'TensorFlow-World',
     'github_banner': True,
     'show_related': False
 }
