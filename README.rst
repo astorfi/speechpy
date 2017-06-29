@@ -20,7 +20,7 @@
 .. image:: https://zenodo.org/badge/87262342.svg
    :target: https://zenodo.org/badge/latestdoi/87262342
 
-.. Speech Feature Extraction: http://speech-feature-extraction.readthedocs.io/en/latest/
+.. _Speech Feature Extraction: http://speech-feature-extraction.readthedocs.io/en/latest/
 
 
 
