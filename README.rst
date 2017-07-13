@@ -30,6 +30,14 @@ If you are interested to see what are MFCCs and how they are generated please re
 
 .. image:: _images/speech.gif 
 
+
+
+====================================
+Which Python versions are supported
+====================================
+
+Currently, the package has been tested and verified using Python ``2.7`` and ``3.4``.
+
 ===============
 How to Install?
 ===============
@@ -58,12 +66,6 @@ The package is available on PyPi. For direct installation simply execute the fol
      
      pip install speechpy
      
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Which Python versions are supported
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Currently, the package has been tested and verified using Python ``2.7`` and ``3.4``.
 
 =============================
 What Features are supported?
