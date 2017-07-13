@@ -57,6 +57,13 @@ The package is available on PyPi. For direct installation simply execute the fol
 .. code-block:: shell
      
      pip install speechpy
+     
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Which Python versions are supported
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Currently, the package has been tested and verified using Python ``2.7`` and ``3.4``.
 
 =============================
 What Features are supported?
