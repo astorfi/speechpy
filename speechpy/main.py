@@ -1,6 +1,6 @@
 from __future__ import division
 import numpy as np
-import processing
+from . import processing
 from scipy.fftpack import dct
 import math
 from functions import *
