@@ -3,7 +3,7 @@ import numpy as np
 from . import processing
 from scipy.fftpack import dct
 import math
-from functions import *
+from . import functions
 
 
 def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=None):
@@ -28,10 +28,10 @@ def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=N
 
     # converting the upper and lower frequencies to Mels.
     # num_filter + 2 is because for num_filter filterbanks we need num_filter+2 point.
-    mels = np.linspace(frequency_to_mel(low_freq), frequency_to_mel(high_freq), num_filter + 2)
+    mels = np.linspace(functions.frequency_to_mel(low_freq), functions.frequency_to_mel(high_freq), num_filter + 2)
 
     # we should convert Mels back to Hertz because the start and end-points should be at the desired frequencies.
-    hertz = mel_to_frequency(mels)
+    hertz = functions.mel_to_frequency(mels)
 
     # The frequency resolution required to put filters at the
     # exact points calculated above should be extracted.
@@ -47,7 +47,7 @@ def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=N
         middle = int(freq_index[i + 1])
         right = int(freq_index[i + 2])
         z = np.linspace(left, right, num=right - left + 1)
-        filterbank[i, left:right + 1] = triangle(z, left=left, middle=middle, right=right)
+        filterbank[i, left:right + 1] = functions.triangle(z, left=left, middle=middle, right=right)
 
     return filterbank
 
@@ -116,14 +116,14 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
     frame_energies = np.sum(power_spectrum, 1)  # this stores the total energy in each frame
 
     # Handling zero enegies.
-    frame_energies = zero_handling(frame_energies)
+    frame_energies = functions.zero_handling(frame_energies)
 
     # Extracting the filterbank
     filter_banks = filterbanks(num_filters, number_fft_coefficients, sampling_frequency, low_frequency, high_frequency)
 
     # Filterbank energies
     features = np.dot(power_spectrum, filter_banks.T)
-    features = zero_handling(features)
+    features = functions.zero_handling(features)
 
     return features, frame_energies
 
