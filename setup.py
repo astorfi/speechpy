@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='speechpy',
-      version='1.0',
+      version='1.1',
       description='The python package for extracting speech features.',
       author='Amirsina Torfi',
       author_email='amirsina.torfi@gmail.com',
