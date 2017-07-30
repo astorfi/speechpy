@@ -36,7 +36,7 @@ If you are interested to see what are MFCCs and how they are generated please re
 Which Python versions are supported
 ====================================
 
-Currently, the package has been tested and verified using Python ``2.7`` and ``3.4``.
+Currently, the package has been tested and verified using Python ``2.7``, ``3.4`` and ``3.5``.
 
 ===============
 How to Install?
