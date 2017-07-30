@@ -1,2 +1,2 @@
 from .main import *
-from .processing import *
+from . import processing
