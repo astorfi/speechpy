@@ -1,9 +1,9 @@
 .. image:: _images/speechpy_logo.gif 
     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif 
 
-============================
-`Speech Feature Extraction`_ 
-============================
+=====================================
+`Speech Feature Extraction Package`_ 
+=====================================
 
 .. image:: https://circleci.com/gh/astorfi/speech_feature_extraction.svg?style=svg
     :target: https://circleci.com/gh/astorfi/speech_feature_extraction
@@ -20,7 +20,7 @@
 .. image:: https://zenodo.org/badge/87262342.svg
    :target: https://zenodo.org/badge/latestdoi/87262342
 
-.. _Speech Feature Extraction: http://speech-feature-extraction.readthedocs.io/en/latest/
+.. _Speech Feature Extraction Package: http://speech-feature-extraction.readthedocs.io/en/latest/
 
 
 
