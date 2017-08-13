@@ -10,11 +10,11 @@
 .. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
     :target: https://travis-ci.org/astorfi/speechpy
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
-    :target: https://github.com/astorfi/speech_feature_extraction/issues
-.. image:: https://coveralls.io/repos/github/astorfi/speech_feature_extraction/badge.svg?branch=master
-    :target: https://coveralls.io/github/astorfi/speech_feature_extraction?branch=master
+    :target: https://github.com/astorfi/speechpy/pulls
+.. image:: https://coveralls.io/repos/github/astorfi/speechpy/badge.svg?branch=master
+    :target: https://coveralls.io/github/astorfi/speechpy?branch=master
 .. image:: https://codecov.io/gh/astorfi/speechpy/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/astorfi/speechpy
+    :target: https://codecov.io/gh/astorfi/speechpy
 .. image:: https://badge.fury.io/py/speechpy.svg
     :target: https://badge.fury.io/py/speechpy
 .. image:: https://zenodo.org/badge/87262342.svg
