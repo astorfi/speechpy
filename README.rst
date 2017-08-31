@@ -4,9 +4,6 @@
 =====================================
 `Speech Feature Extraction Package`_ 
 =====================================
-
-.. image:: https://circleci.com/gh/astorfi/speech_feature_extraction.svg?style=svg
-    :target: https://circleci.com/gh/astorfi/speech_feature_extraction
 .. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
     :target: https://travis-ci.org/astorfi/speechpy
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
