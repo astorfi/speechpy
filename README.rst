@@ -214,10 +214,11 @@ If you used this package, please cite it as follows:
 
 .. code:: bash
     
-	    @misc{amirsina_torfi_2017_810392,
-		author       = {Amirsina Torfi},
-		title        = {astorfi/speech_feature_extraction: SpeechPy},
-		month        = jun,
-		year         = 2017,
-		doi          = {10.5281/zenodo.810392},
-		url          = {https://doi.org/10.5281/zenodo.810392}}
+	    @misc{amirsina_torfi_2017_840395,
+  		author       = {Amirsina Torfi},
+ 		title        = {{SpeechPy: Speech recognition and feature extraction}},
+  		month        = aug,
+  		year         = 2017,
+ 		doi          = {10.5281/zenodo.840395},
+ 	        url          = {https://doi.org/10.5281/zenodo.840395}
+		}
