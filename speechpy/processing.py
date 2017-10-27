@@ -8,7 +8,7 @@ def round_half_up(number):
 
 
 def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: np.ones((x,)),
-                 zero_padding=False):
+                 zero_padding=True):
     """Frame a signal into overlapping frames.
 
     :param sig: The audio signal to frame of size (N,).
