@@ -206,6 +206,23 @@ Dependencies
 
 Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will be installed automatically by running the ``setup.py`` file.
 
+===========
+Disclaimer
+===========
+
+Although by dramatic chages, some portion of this library is inspired by the `python_speech_features`_ library. 
+.. _python_speech_features: https://github.com/jameslyons/python_speech_features
+
+We clain the following advantages for our library:
+
+1. More accurate operations have been performed for the mel-frequency calculations.  
+2. The package supports different ``Python`` versions.
+3. The feature are generated in a more organized way as cubic features.
+4. The package is well-tested and integrated.
+5. The package is up-to-date and actively developing.
+6. The package has been used for research purposes.
+7. Exceptions and extreme cases are handled in this library.
+
 ~~~~~~~~~
 Citation
 ~~~~~~~~~
