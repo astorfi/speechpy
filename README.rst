@@ -211,7 +211,7 @@ Disclaimer
 ===========
 
 Although by dramatic chages, some portion of this library is inspired by the `python_speech_features`_ library. 
-.. _python_speech_features: https://github.com/jameslyons/python_speech_features
+.. _`python_speech_features`: https://github.com/jameslyons/python_speech_features
 
 We clain the following advantages for our library:
 
