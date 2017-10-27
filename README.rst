@@ -210,8 +210,8 @@ Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will
 Disclaimer
 ===========
 
-Although by dramatic chages, some portion of this library is inspired by the `python_speech_features`_ library. 
-.. _`python_speech_features`: https://github.com/jameslyons/python_speech_features
+Although by dramatic chages, some portion of this library is inspired by the `python speech features`_ library. 
+.. _python speech features: https://github.com/jameslyons/python_speech_features
 
 We clain the following advantages for our library:
 
