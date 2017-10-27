@@ -29,29 +29,24 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
     frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
     frame_stride = float(np.round(sampling_frequency * frame_stride))
 
-    # Check the feasibility of stacking
-    if length_signal <= frame_sample_length:
-        numframes = 1
+    # Zero padding is done for allocating space for the last frame.
+    if zero_padding:
+        # Calculation of number of frames
+        numframes = 1 + int(math.ceil((length_signal - frame_sample_length) / frame_stride))
+
+        # Zero padding
+        len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
+        additive_zeros = np.zeros((len_sig - length_signal,))
+        signal = np.concatenate((sig, additive_zeros))
+
     else:
-        # Zero padding is done for allocating space for the last frame.
-        if zero_padding:
-            # Calculation of number of frames
-            numframes = 1 + int(math.ceil((length_signal - frame_sample_length) / frame_stride))
+        # No zero padding! The last frame which does not have enough
+        # samples(remaining samples <= frame_sample_length), will be dropped!
+        numframes = 1 + int(math.floor((length_signal - frame_sample_length) / frame_stride))
 
-            # Zero padding
-            len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
-            additive_zeros = np.zeros((len_sig - length_signal,))
-            signal = np.concatenate((sig, additive_zeros))
-
-        else:
-            # No zero padding! The last frame which does not have enough
-            # samples(remaining samples <= frame_sample_length), will be dropped!
-            numframes = 1 + int(math.floor((length_signal - frame_sample_length) / frame_stride))
-
-            # new length
-            len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
-            signal = sig[0:len_sig]
-
+        # new length
+        len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
+        signal = sig[0:len_sig]
 
     # Getting the indices of all frames.
     indices = np.tile(np.arange(0, frame_sample_length), (numframes, 1)) + np.tile(

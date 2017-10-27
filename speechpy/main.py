@@ -71,6 +71,8 @@ def mfcc(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,num_c
 
     feature, energy = mfe(signal, sampling_frequency=sampling_frequency, frame_length=frame_length, frame_stride=frame_stride,
              num_filters=num_filters, fft_length=fft_length, low_frequency=low_frequency, high_frequency=high_frequency)
+    if len(feature) == 0:
+        return np.empty((0, num_cepstral))
     feature = np.log(feature)
     feature = dct(feature, type=2, axis=-1, norm='ortho')[:, :num_cepstral]
 
