@@ -1,8 +1,8 @@
-.. image:: _images/speechpy_logo.gif 
-    :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif 
+.. image:: _images/speechpy_logo.gif
+    :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
 
 =====================================
-`Speech Feature Extraction Package`_ 
+`Speech Feature Extraction Package`_
 =====================================
 .. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
     :target: https://travis-ci.org/astorfi/speechpy
@@ -22,10 +22,10 @@
 
 
 This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
-If you are interested to see what are MFCCs and how they are generated please refer to this 
+If you are interested to see what are MFCCs and how they are generated please refer to this
 `wiki <https://github.com/astorfi/speech_feature_extraction/wiki/>`_ page.
 
-.. image:: _images/speech.gif 
+.. image:: _images/speech.gif
 
 
 
@@ -42,7 +42,7 @@ Citation
 If you used this package, please cite it as follows:
 
 .. code:: bash
-    
+
 	    @misc{amirsina_torfi_2017_840395,
   		author       = {Amirsina Torfi},
  		title        = {{SpeechPy: Speech recognition and feature extraction}},
@@ -65,9 +65,9 @@ Local Installation
 For local installation at first the repository must be cloned::
 
 	git clone https://github.com/astorfi/speech_feature_extraction.git
-	
-After cloning the reposity, root to the repository directory then execute::	
-	
+
+After cloning the reposity, root to the repository directory then execute::
+
 	python setup.py develop
 
 ~~~~~
@@ -77,9 +77,9 @@ Pypi
 The package is available on PyPi. For direct installation simply execute the following:
 
 .. code-block:: shell
-     
+
      pip install speechpy
-     
+
 
 =============================
 What Features are supported?
@@ -92,12 +92,12 @@ What Features are supported?
 MFCC Features
 ~~~~~~~~~~~~~~
 
-.. image:: _images/Speech_GIF.gif 
+.. image:: _images/Speech_GIF.gif
 
 The supported attributes for generating MFCC features can be seen by investigating the related function:
 
 .. code-block:: python
-      
+
       def mfcc(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,num_cepstral =13,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None, dc_elimination=True):
 	    """Compute MFCC features from an audio signal.
@@ -177,11 +177,28 @@ In ``Stack_Frames`` function, the stack of frames will be generated from the sig
 	    :param frame_length: The length of the frame in second.
 	    :param frame_stride: The stride between frames.
 	    :param Filter: The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
-	    :param zero_padding: If the samples is not a multiple of frame_length(number of frames sample), zero padding will 
+	    :param zero_padding: If the samples is not a multiple of frame_length(number of frames sample), zero padding will
 				 be done for generating last frame.
 	    :returns: Array of frames. size: number_of_frames x frame_len.
 	    """
 
+=============================
+Post Processing
+=============================
+
+.. code-block:: python
+
+  def cmvn(vec, variance_normalization=False):
+    """
+    This function is aimed to perform global ``cepstral mean and variance normalization``
+    (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+
+    :param:
+          vec: input feature matrix (size:(num_observation,num_features))
+          variance_normalization: If the variance normilization should be performed or not.
+    :return:
+          The mean(or mean+variance) normalized feature vector.
+    """
 
 ~~~~~~~~~~~~
 Test Example
@@ -214,7 +231,7 @@ The test example can be seen in ``test/test.py`` as below:
 
 
 
-	
+
 For ectracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
 
 =============
@@ -227,18 +244,16 @@ Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will
 Disclaimer
 ===========
 
-Although by dramatic chages, some portion of this library is inspired by the `python speech features`_ library. 
+Although by dramatic chages, some portion of this library is inspired by the `python speech features`_ library.
 
 .. _python speech features: https://github.com/jameslyons/python_speech_features
 
 We clain the following advantages for our library:
 
-1. More accurate operations have been performed for the mel-frequency calculations.  
+1. More accurate operations have been performed for the mel-frequency calculations.
 2. The package supports different ``Python`` versions.
 3. The feature are generated in a more organized way as cubic features.
 4. The package is well-tested and integrated.
 5. The package is up-to-date and actively developing.
 6. The package has been used for research purposes.
 7. Exceptions and extreme cases are handled in this library.
-
-

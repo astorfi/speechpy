@@ -138,18 +138,28 @@ def cmvn(vec, variance_normalization=False):
     """
     This function is aimed to perform global cepstral mean and variance normalization
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
-    :param vec: input feature matrix
+    :param vec: input feature matrix (size:(num_observation,num_features))
     :param variance_normalization: If the variance normilization should be performed or not.
     :return: The mean(or mean+variance) normalized feature vector.
     """
     rows,cols = vec.shape
+
+    # Mean calculation
     norm = np.mean(vec, axis=0)
     norm_vec = np.tile(norm,(rows,1))
+
+    # Mean subtraction
     mean_subtracted =  vec - norm_vec
+
+    # Variance normalization
     if variance_normalization:
-        print 1
+        stdev = np.std(mean_subtracted, axis=0)
+        stdev_vec = np.tile(stdev, (rows, 1))
+        output = mean_subtracted / stdev_vec
     else:
-        return mean_subtracted
+        output = mean_subtracted
+
+    return output
 
 
 

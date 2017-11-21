@@ -15,7 +15,8 @@ signal = signal[:,0]
 ############# Extract MFCC features #############
 mfcc = speechpy.mfcc(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.02,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None)
-print('mfcc(mean normalized) feature shape=', speechpy.cmvn(mfcc).shape)
+mfcc_cmvn = speechpy.cmvn(mfcc,variance_normalization=True)
+print('mfcc(mean + variance normalized) feature shape=', mfcc_cmvn.shape)
 
 mfcc_feature_cube = speechpy.extract_derivative_feature(mfcc)
 print('mfcc feature cube shape=', mfcc_feature_cube.shape)
