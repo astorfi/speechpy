@@ -134,6 +134,25 @@ def Derivative_Feature_Fn(feat,DeltaWindows):
     return DIF/Scale
 
 
+def cmvn(vec, variance_normalization=False):
+    """
+    This function is aimed to perform global cepstral mean and variance normalization
+    (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+    :param vec: input feature matrix
+    :param variance_normalization: If the variance normilization should be performed or not.
+    :return: The mean(or mean+variance) normalized feature vector.
+    """
+    rows,cols = vec.shape
+    norm = np.mean(vec, axis=0)
+    norm_vec = np.tile(norm,(rows,1))
+    mean_subtracted =  vec - norm_vec
+    if variance_normalization:
+        print 1
+    else:
+        return mean_subtracted
+
+
+
 # def resample_Fn(wave, fs, f_new=16000):
 #     """This function resample the data to arbitrary frequency
 #     :param fs: Frequency of the sound file.
