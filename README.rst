@@ -194,21 +194,46 @@ Global cepstral mean and variance normalization (CMVN)
 
 This function performs global cepstral mean and variance normalization
 (CMVN) to remove the channel effects. The code assumes that there is one
-observation per row. 
+observation per row.
 
 .. code-block:: python
 
   def cmvn(vec, variance_normalization=False):
-    """
-    This function is aimed to perform global ``cepstral mean and variance normalization``
-    (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+      """
+      This function is aimed to perform global ``cepstral mean and variance normalization``
+      (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
 
-    :param:
-          vec: input feature matrix (size:(num_observation,num_features))
-          variance_normalization: If the variance normilization should be performed or not.
-    :return:
-          The mean(or mean+variance) normalized feature vector.
-    """
+      :param:
+            vec: input feature matrix (size:(num_observation,num_features))
+            variance_normalization: If the variance normilization should be performed or not.
+      :return:
+            The mean(or mean+variance) normalized feature vector.
+      """
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Local cepstral mean and variance normalization (CMVN) over a sliding window
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This function performs local cepstral mean and variance normalization
+(CMVN) over sliding windows. The code assumes that there is one
+observation per row.
+
+.. code-block:: python
+
+    def cmvnw(vec, win_size=301, variance_normalization=False):
+        """
+        This function is aimed to perform local cepstral mean and variance normalization on a sliding window.
+        (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+        :param
+              vec: input feature matrix (size:(num_observation,num_features))
+              win_size: The size of sliding window for local normalization and should be odd.
+                        default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
+              variance_normalization: If the variance normilization should be performed or not.
+
+        :return: The mean(or mean+variance) normalized feature vector.
+        """
+
 
 ~~~~~~~~~~~~
 Test Example

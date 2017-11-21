@@ -162,6 +162,48 @@ def cmvn(vec, variance_normalization=False):
     return output
 
 
+def cmvnw(vec, win_size=301, variance_normalization=False):
+    """
+    This function is aimed to perform local cepstral mean and variance normalization on a sliding window.
+    (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+    :param vec: input feature matrix (size:(num_observation,num_features))
+    :param win_size: The size of sliding window for local normalization.
+                    default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
+    :param variance_normalization: If the variance normilization should be performed or not.
+    :return: The mean(or mean+variance) normalized feature vector.
+    """
+
+    # Get the shapes
+    rows,cols = vec.shape
+
+    # Padding and initial definitions
+    pad_size = int((win_size - 1) / 2)
+    vec_pad = np.lib.pad(vec, ((pad_size, pad_size), (0, 0)), 'symmetric')
+    mean_subtracted = np.zeros(np.shape(vec),dtype=np.float32)
+
+    for i in range(rows):
+        window = vec_pad[i:i+win_size,:]
+        window_mean = np.mean(window,axis=0)
+        mean_subtracted[i,:] = vec[i,:] - window_mean
+
+    # Variance normalization
+    if variance_normalization:
+
+        # Initial definitions.
+        variance_normalized = np.zeros(np.shape(vec), dtype=np.float32)
+        vec_pad_variance = np.lib.pad(mean_subtracted, ((pad_size, pad_size), (0, 0)), 'symmetric')
+
+        # Looping over all observations.
+        for i in range(rows):
+            window = vec_pad_variance[i:i + win_size, :]
+            window_variance = np.std(window, axis=0)
+            variance_normalized[i, :] = mean_subtracted[i, :] / window_variance
+        output = variance_normalized
+    else:
+        output = mean_subtracted
+
+    return output
+
 
 # def resample_Fn(wave, fs, f_new=16000):
 #     """This function resample the data to arbitrary frequency
