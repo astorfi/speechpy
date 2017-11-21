@@ -182,9 +182,19 @@ In ``Stack_Frames`` function, the stack of frames will be generated from the sig
 	    :returns: Array of frames. size: number_of_frames x frame_len.
 	    """
 
-=============================
+=================
 Post Processing
-=============================
+=================
+
+There are some post-processing operation that are supported in ``speechpy``.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Global cepstral mean and variance normalization (CMVN)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This function performs global cepstral mean and variance normalization
+(CMVN) to remove the channel effects. The code assumes that there is one
+observation per row. 
 
 .. code-block:: python
 
