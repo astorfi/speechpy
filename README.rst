@@ -14,8 +14,8 @@
     :target: https://codecov.io/gh/astorfi/speechpy
 .. image:: https://badge.fury.io/py/speechpy.svg
     :target: https://badge.fury.io/py/speechpy
-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1038181.svg
-   :target: https://doi.org/10.5281/zenodo.1038181
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1064260.svg
+   :target: https://doi.org/10.5281/zenodo.1064260
 
 .. _Speech Feature Extraction Package: http://speech-feature-extraction.readthedocs.io/en/latest/
 
