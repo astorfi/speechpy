@@ -6,8 +6,8 @@ feature extraction. This library provides most frequent used speech features inc
 
 
 .. image:: ../_static/img/speech.gif
-   :height: 100px
-   :width: 200 px
+   :height: 200px
+   :width: 400 px
    :scale: 100 %
    :alt: alternate text
    :align: center
@@ -48,13 +48,13 @@ For local installation at first the repository must be cloned::
 
 .. code-block:: shell
 
-	       git clone https://github.com/astorfi/speech_feature_extraction.git
+	   git clone https://github.com/astorfi/speech_feature_extraction.git
 
 After cloning the reposity, root to the repository directory then execute::
 
 .. code-block:: shell
 
-	       python setup.py develop
+	   python setup.py develop
 
 ~~~~~
 Pypi
