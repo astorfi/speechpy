@@ -39,11 +39,11 @@ How to Install?
 ----------------------
 
 .. image:: ../_static/img/installation_logo.gif
-   :height: 100px
+   :height: 100 px
    :width: 200 px
-   :scale: 50 %
+   :scale: 80 %
    :alt: alternate text
-   :align: center
+   :align: left
 
 There are two possible ways for installation of this package: local installation and PyPi.
 
