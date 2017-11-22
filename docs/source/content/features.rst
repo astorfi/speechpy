@@ -1,3 +1,6 @@
+.. role:: hidden
+    :class: hidden-section
+
 Features
 =========
 
@@ -14,13 +17,13 @@ Features
 :hidden:`Mel Frequency Energy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: peechpy.main.mfe
+.. autoclass:: speechpy.main.mfe
 
 
 :hidden:`Log Mel Frequency Energy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: peechpy.main.lmfe
+.. autoclass:: speechpy.main.lmfe
 
 
 :hidden:`Extract Derivative Features`
