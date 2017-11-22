@@ -27,6 +27,6 @@ Features
 
 
 :hidden:`Extract Derivative Features`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: speechpy.main.extract_derivative_feature

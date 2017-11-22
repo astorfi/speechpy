@@ -11,22 +11,22 @@ Features
 :hidden:`MFCC`
 ~~~~~~~~~~~~~~
 
-.. autoclass:: speechpy.main.mfcc
+.. autofunction:: speechpy.main.mfcc
 
 
 :hidden:`Mel Frequency Energy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: speechpy.main.mfe
+.. autofunction:: speechpy.main.mfe
 
 
 :hidden:`Log Mel Frequency Energy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: speechpy.main.lmfe
+.. autofunction:: speechpy.main.lmfe
 
 
 :hidden:`Extract Derivative Features`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: speechpy.main.extract_derivative_feature
+.. autofunction:: speechpy.main.extract_derivative_feature

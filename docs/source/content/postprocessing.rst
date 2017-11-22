@@ -12,10 +12,10 @@ postprocessing
 :hidden:`Global Cepstral Mean and Variance Normalization`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: speechpy.processing.cmvn
+.. autofunction:: speechpy.processing.cmvn
 
 
 :hidden:`Local Cepstral Mean and Variance Normalization over Sliding Window`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: speechpy.processing.cmvnw
+.. autofunction:: speechpy.processing.cmvnw

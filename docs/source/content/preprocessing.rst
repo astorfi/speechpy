@@ -11,4 +11,4 @@ Preprocessing
 :hidden:`Stacking`
 ~~~~~~~~~~~~~~~~~~
 
-speechpy.processing.stack_frames
+.. autofunction:: speechpy.processing.stack_frames

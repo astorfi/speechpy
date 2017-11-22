@@ -2,6 +2,7 @@ import decimal
 import numpy as np
 import math
 
+
 # 1.4 becomes 1 and 1.6 becomes 2. special case: 1.5 becomes 2.
 def round_half_up(number):
     return int(decimal.Decimal(number).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_HALF_UP))
@@ -102,7 +103,8 @@ def log_power_spectrum(frames, fft_length=512, normalize=True):
     else:
         return log_power_spec
 
-def Derivative_Feature_Fn(feat,DeltaWindows):
+
+def Derivative_Feature_Fn(feat, DeltaWindows):
     """This function the derivative features.
     :param feat: The main feature vector(For returning the second order derivative it can be first-order derivative).
     :param DeltaWindows: The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
@@ -120,18 +122,17 @@ def Derivative_Feature_Fn(feat,DeltaWindows):
     # Pad only along features in the vector.
     FEAT = np.lib.pad(feat, ((0, 0), (DeltaWindows, DeltaWindows)), 'edge')
     for i in range(DeltaWindows):
-
         # Start index
         offset = DeltaWindows
 
         # The dynamic range
         Range = i + 1
 
-        dif = Range * FEAT[:,offset+Range:offset+Range+cols] - FEAT[:,offset-Range:offset-Range+cols]
-        Scale += 2 * np.power(Range,2)
+        dif = Range * FEAT[:, offset + Range:offset + Range + cols] - FEAT[:, offset - Range:offset - Range + cols]
+        Scale += 2 * np.power(Range, 2)
         DIF += dif
 
-    return DIF/Scale
+    return DIF / Scale
 
 
 def cmvn(vec, variance_normalization=False):
@@ -142,14 +143,14 @@ def cmvn(vec, variance_normalization=False):
     :param variance_normalization: If the variance normilization should be performed or not.
     :return: The mean(or mean+variance) normalized feature vector.
     """
-    rows,cols = vec.shape
+    rows, cols = vec.shape
 
     # Mean calculation
     norm = np.mean(vec, axis=0)
-    norm_vec = np.tile(norm,(rows,1))
+    norm_vec = np.tile(norm, (rows, 1))
 
     # Mean subtraction
-    mean_subtracted =  vec - norm_vec
+    mean_subtracted = vec - norm_vec
 
     # Variance normalization
     if variance_normalization:
@@ -167,24 +168,22 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
     This function is aimed to perform local cepstral mean and variance normalization on a sliding window.
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
     :param vec: input feature matrix (size:(num_observation,num_features))
-    :param win_size: The size of sliding window for local normalization.
-                    default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
+    :param win_size: The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
     :param variance_normalization: If the variance normilization should be performed or not.
     :return: The mean(or mean+variance) normalized feature vector.
     """
-
     # Get the shapes
-    rows,cols = vec.shape
+    rows, cols = vec.shape
 
     # Padding and initial definitions
     pad_size = int((win_size - 1) / 2)
     vec_pad = np.lib.pad(vec, ((pad_size, pad_size), (0, 0)), 'symmetric')
-    mean_subtracted = np.zeros(np.shape(vec),dtype=np.float32)
+    mean_subtracted = np.zeros(np.shape(vec), dtype=np.float32)
 
     for i in range(rows):
-        window = vec_pad[i:i+win_size,:]
-        window_mean = np.mean(window,axis=0)
-        mean_subtracted[i,:] = vec[i,:] - window_mean
+        window = vec_pad[i:i + win_size, :]
+        window_mean = np.mean(window, axis=0)
+        mean_subtracted[i, :] = vec[i, :] - window_mean
 
     # Variance normalization
     if variance_normalization:
@@ -203,7 +202,6 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         output = mean_subtracted
 
     return output
-
 
 # def resample_Fn(wave, fs, f_new=16000):
 #     """This function resample the data to arbitrary frequency
@@ -226,10 +224,3 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 #     # # Save using new format
 #     # wav.write(filename='resample_rainbow_16k.wav',rate=fr,data=signal_new)
 #     return signal_new, f_new
-
-
-
-
-
-
-
