@@ -54,7 +54,7 @@ After cloning the reposity, root to the repository directory then execute::
 
 .. code-block:: shell
 
-	   python setup.py develop
+      python setup.py develop
 
 ~~~~~
 Pypi
