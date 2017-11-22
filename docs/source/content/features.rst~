@@ -22,6 +22,7 @@ Features
 
 .. autoclass:: peechpy.main.lmfe
 
+
 :hidden:`Extract Derivative Features`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -5,10 +5,8 @@
 postprocessing
 =============
 
-.. automodule:: speechpy.main
-.. currentmodule:: speechpy.main
-
-
+.. automodule:: speechpy.processing
+.. currentmodule:: speechpy.processing
 
 
 :hidden:`Global Cepstral Mean and Variance Normalization`

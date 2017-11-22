@@ -9,10 +9,8 @@ postprocessing
 .. currentmodule:: speechpy.processing
 
 
-
-
 :hidden:`Global Cepstral Mean and Variance Normalization`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: speechpy.processing.cmvn
 

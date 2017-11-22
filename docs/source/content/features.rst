@@ -6,19 +6,19 @@ Features
 
 
 :hidden:`MFCC`
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 .. autoclass:: speechpy.main.mfcc
 
 
 :hidden:`Mel Frequency Energy`
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: peechpy.main.mfe
 
 
 :hidden:`Log Mel Frequency Energy`
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: peechpy.main.lmfe
 
