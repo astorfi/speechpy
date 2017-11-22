@@ -4,12 +4,13 @@ Introduction
 The purpose of this project is to provide a package for speech processing and
 feature extraction. This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
 
+
 .. image:: ../_static/img/speech.gif
    :height: 100px
    :width: 200 px
-   :scale: 50 %
+   :scale: 100 %
    :alt: alternate text
-   :align: right
+   :align: center
 
 -----------
 Motivation
@@ -47,13 +48,13 @@ For local installation at first the repository must be cloned::
 
 .. code-block:: shell
 
-	git clone https://github.com/astorfi/speech_feature_extraction.git
+	       git clone https://github.com/astorfi/speech_feature_extraction.git
 
 After cloning the reposity, root to the repository directory then execute::
 
 .. code-block:: shell
 
-	 python setup.py develop
+	       python setup.py develop
 
 ~~~~~
 Pypi
@@ -81,4 +82,3 @@ If you used this package, please cite it as follows:
 		doi          = {10.5281/zenodo.840395},
 	        url          = {https://doi.org/10.5281/zenodo.840395}
 		}
-
