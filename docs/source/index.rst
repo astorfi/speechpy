@@ -19,6 +19,8 @@ Welcome to SpeechPy's documentation!
    :caption: Content
    
    content/preprocessing
+   content/features
+   content/postprocessing
 
 
 

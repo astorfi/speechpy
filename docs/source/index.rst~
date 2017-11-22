@@ -12,7 +12,7 @@ Welcome to SpeechPy's documentation!
    :maxdepth: 2
    :caption: Foreword
    
-   intro/intro
+   intro/introductions
 
 .. toctree::
    :maxdepth: 2
