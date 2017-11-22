@@ -10,17 +10,17 @@ Welcome to SpeechPy's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Foreword
+   :caption: Introduction
    
    intro/introductions
 
 .. toctree::
    :maxdepth: 2
-   :caption: Content
+   :caption: Package Reference
    
    content/preprocessing
-..   content/features
-..   content/postprocessing
+   content/features
+   content/postprocessing
 
 
 
