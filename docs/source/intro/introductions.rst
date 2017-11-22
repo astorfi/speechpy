@@ -38,6 +38,13 @@ is becoming ubiquotous!
 How to Install?
 ----------------------
 
+.. image:: ../_static/img/installation_logo.gif
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :alt: alternate text
+   :align: center
+
 There are two possible ways for installation of this package: local installation and PyPi.
 
 ~~~~~~~~~~~~~~~~~~~
