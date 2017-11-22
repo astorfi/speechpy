@@ -46,11 +46,14 @@ Local Installation
 
 For local installation at first the repository must be cloned::
 
+
 .. code-block:: shell
 
 	   git clone https://github.com/astorfi/speech_feature_extraction.git
 
+
 After cloning the reposity, root to the repository directory then execute::
+
 
 .. code-block:: shell
 
@@ -61,6 +64,7 @@ Pypi
 ~~~~~
 
 The package is available on PyPi. For direct installation simply execute the following:
+
 
 .. code-block:: shell
 
@@ -80,4 +84,4 @@ If you used this package, please cite it as follows:
          		month        = aug,
          		year         = 2017,
         		doi          = {10.5281/zenodo.840395},
-                url          = {https://doi.org/10.5281/zenodo.840395}}
+            url          = {https://doi.org/10.5281/zenodo.840395}}
