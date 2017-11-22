@@ -45,6 +45,7 @@ How to Install?
    :alt: alternate text
    :align: left
 
+
 There are two possible ways for installation of this package: local installation and PyPi.
 
 ~~~~~~~~~~~~~~~~~~~
