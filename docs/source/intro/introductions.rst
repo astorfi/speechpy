@@ -5,7 +5,7 @@ The purpose of this project is to provide a package for speech processing and
 feature extraction. This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
 
 
-.. image:: ../_static/img/speech.gif
+.. image:: ../_static/img/speech.jpg
    :height: 200px
    :width: 400 px
    :scale: 100 %
@@ -38,7 +38,7 @@ is becoming ubiquotous!
 How to Install?
 ----------------------
 
-.. image:: ../_static/img/installation_logo.gif
+.. image:: ../_static/img/installation_logo.jpg
    :height: 100 px
    :width: 200 px
    :scale: 80 %
