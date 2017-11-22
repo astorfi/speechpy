@@ -43,7 +43,7 @@ How to Install?
    :width: 200 px
    :scale: 80 %
    :alt: alternate text
-   :align: left
+   :align: center
 
 
 There are two possible ways for installation of this package: local installation and PyPi.
