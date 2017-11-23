@@ -189,6 +189,10 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
     # Get the shapes
     rows, cols = vec.shape
 
+    # Windows size must be odd.
+    assert type(win_size) == int, "Size must be of type 'int'!"
+    assert win_size % 2 == 1, "Windows size must be odd!"
+
     # Padding and initial definitions
     pad_size = int((win_size - 1) / 2)
     vec_pad = np.lib.pad(vec, ((pad_size, pad_size), (0, 0)), 'symmetric')
