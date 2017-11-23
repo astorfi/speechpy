@@ -166,7 +166,7 @@ def cmvn(vec, variance_normalization=False):
 def cmvnw(vec, win_size=301, variance_normalization=False):
     """ This function is aimed to perform local cepstral mean and variance normalization on a sliding window.
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
-    
+
     :param vec: input feature matrix (size:(num_observation,num_features))
     :param win_size: The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
     :param variance_normalization: If the variance normilization should be performed or not.
