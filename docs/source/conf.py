@@ -233,44 +233,44 @@ latex_elements = {
     ''',
 
 
-    # 'maketitle': r'''
-    #     \pagenumbering{Roman} %%% to avoid page 1 conflict with actual page 1
-    #
-    #     \begin{titlepage}
-    #         \centering
-    #
-    #         \vspace*{40mm} %%% * is used to give space from top
-    #         \textbf{\Huge {Sphinx format for Latex and HTML}}
-    #
-    #         \vspace{0mm}
-    #         %\begin{figure}[!h]
-    #         %    \centering
-    #         %    \includegraphics[scale=0.3]{source/_static/img/speech.jpg}
-    #         %\end{figure}
-    #
-    #         \vspace{0mm}
-    #         \Large \textbf{{Meher Krishna Patel}}
-    #
-    #         \small Created on : Octorber, 2017
-    #
-    #         \vspace*{0mm}
-    #         \small  Last updated : \MonthYearFormat\today
-    #
-    #
-    #         %% \vfill adds at the bottom
-    #         \vfill
-    #         \small \textit{More documents are freely available at }{\href{http://pythondsp.readthedocs.io/en/latest/pythondsp/toc.html}{PythonDSP}}
-    #     \end{titlepage}
-    #
-    #     \clearpage
-    #     \pagenumbering{roman}
-    #     \tableofcontents
-    #     % \listoffigures
-    #     % \listoftables
-    #     \clearpage
-    #     \pagenumbering{arabic}
-    #
-    #     ''',
+    'maketitle': r'''
+        \pagenumbering{Roman} %%% to avoid page 1 conflict with actual page 1
+
+        \begin{titlepage}
+            \centering
+
+            \vspace*{40mm} %%% * is used to give space from top
+            \textbf{\Huge {Sphinx format for Latex and HTML}}
+
+            \vspace{0mm}
+            %\begin{figure}[!h]
+            %    \centering
+            %    \includegraphics[scale=0.3]{_static/img/speechpy_logo.jpg}
+            %\end{figure}
+
+            \vspace{0mm}
+            \Large \textbf{{Meher Krishna Patel}}
+
+            \small Created on : Octorber, 2017
+
+            \vspace*{0mm}
+            \small  Last updated : \MonthYearFormat\today
+
+
+            %% \vfill adds at the bottom
+            \vfill
+            \small \textit{More documents are freely available at }{\href{http://pythondsp.readthedocs.io/en/latest/pythondsp/toc.html}{PythonDSP}}
+        \end{titlepage}
+
+        \clearpage
+        \pagenumbering{roman}
+        \tableofcontents
+        % \listoffigures
+        % \listoftables
+        \clearpage
+        \pagenumbering{arabic}
+
+        ''',
     # # Latex figure (float) alignment
     # #
     # 'figure_align': 'htbp',
@@ -285,7 +285,7 @@ latex_elements = {
 
 }
 
-latex_logo = '_static/img/speech.jpg'
+latex_logo = '_static/img/speechpy_logo.jpg'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,

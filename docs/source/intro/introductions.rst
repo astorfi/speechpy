@@ -1,4 +1,7 @@
 
+============
+Foreword
+============
 
 The purpose of this project is to provide a package for speech processing and
 feature extraction. This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
