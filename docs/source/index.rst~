@@ -16,7 +16,7 @@ Welcome to SpeechPy's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Package Reference
+   :caption: Package Modules
    
    content/preprocessing
    content/features

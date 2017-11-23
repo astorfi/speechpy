@@ -10,7 +10,7 @@ Welcome to SpeechPy's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction
+   :caption: Preface
    
    intro/introductions
 
