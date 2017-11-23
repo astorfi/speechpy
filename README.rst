@@ -2,7 +2,7 @@
     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
 
 =====================================
-`Speech Feature Extraction Package`_
+`SpeechPy Project Page`_
 =====================================
 .. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
     :target: https://travis-ci.org/astorfi/speechpy
@@ -17,7 +17,7 @@
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1064260.svg
    :target: https://doi.org/10.5281/zenodo.1064260
 
-.. _Speech Feature Extraction Package: http://speech-feature-extraction.readthedocs.io/en/latest/
+.. _SpeechPy Project Page: http://speechpy.readthedocs.io
 
 
 
