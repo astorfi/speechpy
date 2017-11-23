@@ -11,17 +11,23 @@ Welcome to SpeechPy's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Preface
-   
+
    intro/introductions
 
 .. toctree::
    :maxdepth: 2
-   :caption: Package Modules
-   
+   :caption: Package Reference
+
    content/preprocessing
    content/features
    content/postprocessing
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Epilogue
+
+   epilogue/test
+   epilogue/contribution
 
 
 Indices and tables
