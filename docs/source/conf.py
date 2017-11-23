@@ -112,6 +112,7 @@ html_theme_options = {
     'collapse_navigation': False,
     'display_version': True,
     'logo_only': True,
+    'sticky_navigation': False
 }
 
 html_logo = '_static/img/speechpy_logo.gif'
