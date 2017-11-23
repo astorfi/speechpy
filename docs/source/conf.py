@@ -131,7 +131,7 @@ htmlhelp_basename = 'SpeechPydoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_engine = 'pdflatex'
+# latex_engine = 'pdflatex'
 
 latex_engine = 'xelatex'
 latex_elements = {
@@ -139,11 +139,11 @@ latex_elements = {
 'papersize': 'a4paper',
     'releasename':" ",
     'figure_align':'htbp',
-    'pointsize': '14pt',
+    'pointsize': '12pt',
     'fontpkg': r'''
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-\setmonofont{DejaVu Sans Mono}
+\setmainfont{Times New Roman}
+\setsansfont{Times New Roman}
+\setmonofont{Times New Roman}
 ''',
     'preamble': r'''
 \usepackage[titles]{tocloft}
