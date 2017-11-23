@@ -22,12 +22,12 @@ Welcome to SpeechPy's documentation!
    content/features
    content/postprocessing
 
- .. toctree::
-    :maxdepth: 2
-    :caption: Epilogue
+.. toctree::
+   :maxdepth: 2
+   :caption: Epilogue
 
-    epilogue/test
-    epilogue/contribution
+   epilogue/test
+   epilogue/contribution
 
 
 Indices and tables
