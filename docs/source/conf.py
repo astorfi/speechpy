@@ -115,12 +115,6 @@ html_theme_options = {
     'sticky_navigation': False
 }
 
-html_context = {
-"display_github": False, # Add 'Edit on Github' link instead of 'View page source'
-"last_updated": True,
-"commit": False,
-}
-
 html_logo = '_static/img/speechpy_logo.gif'
 
 # Add any paths that contain custom static files (such as style sheets) here,
