@@ -7,15 +7,17 @@ from . import functions
 
 
 def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=None):
-    """Compute the Mel-filterbanks. Each filter will be stored in one rows.
-                                    The columns correspond to fft bins.
+    """Compute the Mel-filterbanks. Each filter will be stored in one rows. The columns correspond to fft bins.
 
-    :param num_filter: the number of filters in the filterbank, default 20.
-    :param fftpoints: the FFT size. Default is 512.
-    :param sampling_freq: the samplerate of the signal we are working with. Affects mel spacing.
-    :param low_freq: lowest band edge of mel filters, default 0 Hz
-    :param high_freq: highest band edge of mel filters, default samplerate/2
-    :returns: A numpy array of size num_filter x (fftpoints//2 + 1) which are filterbank
+    Args:
+        num_filter (int): the number of filters in the filterbank, default 20.
+        fftpoints (int): the FFT size. Default is 512.
+        sampling_freq (float): the samplerate of the signal we are working with. Affects mel spacing.
+        low_freq (float): lowest band edge of mel filters, default 0 Hz
+        high_freq (float): highest band edge of mel filters, default samplerate/2
+
+    Returns:
+           array: A numpy array of size num_filter x (fftpoints//2 + 1) which are filterbank
     """
     high_freq = high_freq or sampling_freq / 2
     low_freq = low_freq or 300
@@ -55,18 +57,21 @@ def mfcc(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,num_c
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None, dc_elimination=True):
     """Compute MFCC features from an audio signal.
 
-    :param signal: the audio signal from which to compute features. Should be an N x 1 array
-    :param sampling_frequency: the sampling frequency of the signal we are working with.
-    :param frame_length: the length of each frame in seconds. Default is 0.020s
-    :param frame_stride: the step between successive frames in seconds. Default is 0.02s (means no overlap)
-    :param num_filters: the number of filters in the filterbank, default 40.
-    :param fft_length: number of FFT points. Default is 512.
-    :param low_frequency: lowest band edge of mel filters. In Hz, default is 0.
-    :param high_frequency: highest band edge of mel filters. In Hz, default is samplerate/2
-    :param num_cepstral: Number of cepstral coefficients.
-    :param dc_elimination: hIf the first dc component should be eliminated or not.
+    Args:
 
-    :returns: A numpy array of size (num_frames x num_cepstral) containing mfcc features.
+         signal (array): the audio signal from which to compute features. Should be an N x 1 array
+         sampling_frequency (int): the sampling frequency of the signal we are working with.
+         frame_length (float): the length of each frame in seconds. Default is 0.020s
+         frame_stride (float): the step between successive frames in seconds. Default is 0.02s (means no overlap)
+         num_filters (int): the number of filters in the filterbank, default 40.
+         fft_length (int): number of FFT points. Default is 512.
+         low_frequency (float): lowest band edge of mel filters. In Hz, default is 0.
+         high_frequency (float): highest band edge of mel filters. In Hz, default is samplerate/2
+         num_cepstral (int): Number of cepstral coefficients.
+         dc_elimination (bool): hIf the first dc component should be eliminated or not.
+
+    Returns:
+        array: A numpy array of size (num_frames x num_cepstral) containing mfcc features.
     """
 
     feature, energy = mfe(signal, sampling_frequency=sampling_frequency, frame_length=frame_length, frame_stride=frame_stride,
@@ -86,18 +91,18 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
           num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
     """Compute Mel-filterbank energy features from an audio signal.
 
-    :param signal: the audio signal from which to compute features. Should be an N x 1 array
-    :param sampling_frequency: the sampling frequency of the signal we are working with.
-    :param frame_length: the length of each frame in seconds. Default is 0.020s
-    :param frame_stride: the step between successive frames in seconds. Default is 0.02s (means no overlap)
-    :param num_filters: the number of filters in the filterbank, default 40.
-    :param fft_length: number of FFT points. Default is 512.
-    :param low_frequency: lowest band edge of mel filters. In Hz, default is 0.
-    :param high_frequency: highest band edge of mel filters. In Hz, default is samplerate/2
+         signal (array): the audio signal from which to compute features. Should be an N x 1 array
+         sampling_frequency (int): the sampling frequency of the signal we are working with.
+         frame_length (float): the length of each frame in seconds. Default is 0.020s
+         frame_stride (float): the step between successive frames in seconds. Default is 0.02s (means no overlap)
+         num_filters (int): the number of filters in the filterbank, default 40.
+         fft_length (int): number of FFT points. Default is 512.
+         low_frequency (float): lowest band edge of mel filters. In Hz, default is 0.
+         high_frequency (float): highest band edge of mel filters. In Hz, default is samplerate/2
 
-    :returns:
-              features: the energy of fiterbank: num_frames x num_filters
-              frame_energies: the energy of each frame: num_frames x 1
+    Returns:
+              array: features - the energy of fiterbank: num_frames x num_filters frame_energies.
+              The energy of each frame: num_frames x 1
     """
 
     # Convert to float
@@ -134,18 +139,20 @@ def lmfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
     """Compute log Mel-filterbank energy features from an audio signal.
 
-    :param signal: the audio signal from which to compute features. Should be an N x 1 array
-    :param sampling_frequency: the sampling frequency of the signal we are working with.
-    :param frame_length: the length of each frame in seconds. Default is 0.020s
-    :param frame_stride: the step between successive frames in seconds. Default is 0.02s (means no overlap)
-    :param num_filters: the number of filters in the filterbank, default 40.
-    :param fft_length: number of FFT points. Default is 512.
-    :param low_frequency: lowest band edge of mel filters. In Hz, default is 0.
-    :param high_frequency: highest band edge of mel filters. In Hz, default is samplerate/2
 
-    :returns:
-              features: the energy of fiterbank: num_frames x num_filters
-              frame_log_energies: the log energy of each frame: num_frames x 1
+    Args:
+         signal (array): the audio signal from which to compute features. Should be an N x 1 array
+         sampling_frequency (int): the sampling frequency of the signal we are working with.
+         frame_length (float): the length of each frame in seconds. Default is 0.020s
+         frame_stride (float): the step between successive frames in seconds. Default is 0.02s (means no overlap)
+         num_filters (int): the number of filters in the filterbank, default 40.
+         fft_length (int): number of FFT points. Default is 512.
+         low_frequency (float): lowest band edge of mel filters. In Hz, default is 0.
+         high_frequency (float): highest band edge of mel filters. In Hz, default is samplerate/2
+
+    Returns:
+              array: Features - The energy of fiterbank: num_frames x num_filters
+               frame_log_energies. The log energy of each frame: num_frames x 1
     """
 
     feature, frame_energies = mfe(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
