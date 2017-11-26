@@ -29,7 +29,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
         frame_length (float): The length of the frame in second.
         frame_stride (float): The stride between frames.
         Filter (array): The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
-        zero_padding (boolean): If the samples is not a multiple of frame_length(number of frames sample), zero padding will
+        zero_padding (bool): If the samples is not a multiple of frame_length(number of frames sample), zero padding will
                          be done for generating last frame.
 
     Returns:
@@ -37,15 +37,6 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
         array: Array of frames of size (number_of_frames x frame_len).
 
     """
-
-    # :param sig: The audio signal to frame of size (N,).
-    # :param sampling_frequency: The sampling frequency of the signal.
-    # :param frame_length: The length of the frame in second.
-    # :param frame_stride: The stride between frames.
-    # :param Filter: The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
-    # :param zero_padding: If the samples is not a multiple of frame_length(number of frames sample), zero padding will
-    #                      be done for generating last frame.
-    # :returns: Extracted_Frames: Array of frames. size: (number_of_frames x frame_len).
 
     ## Check dimension
     assert sig.ndim == 1, "Signal dimention should be of the format of (N,) but it is %s instead" % str(sig.shape)
