@@ -106,7 +106,7 @@ def power_spectrum(frames, fft_points=512):
         fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
 
     Returns:
-            array: The power spectrum-If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
+            array: The power spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
     return 1.0 / fft_points * np.square(fft_spectrum(frames, fft_points))
 
@@ -120,7 +120,7 @@ def log_power_spectrum(frames, fft_points=512, normalize=True):
         norm: If norm=1, the log power spectrum will be normalized.
 
     Returns:
-           If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
+           array: The power spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
     power_spec = power_spectrum(frames, fft_points)
     power_spec[power_spec <= 1e-20] = 1e-20
@@ -204,7 +204,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         vec: input feature matrix (size:(num_observation,num_features))
         win_size: The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
         variance_normalization: If the variance normilization should be performed or not.
-        
+
     Return:
           The mean(or mean+variance) normalized feature vector.
     """
