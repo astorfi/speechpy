@@ -135,8 +135,8 @@ def Derivative_Feature_Fn(feat, DeltaWindows):
     """This function the derivative features.
 
     Args:
-        feat: The main feature vector(For returning the second order derivative it can be first-order derivative).
-        DeltaWindows: The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
+        feat (array): The main feature vector(For returning the second order derivative it can be first-order derivative).
+        DeltaWindows (int): The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
 
     Returns:
            array: Derivative feature vector - A NUMFRAMESxNUMFEATURES numpy array which is the derivative features along the features.
@@ -170,8 +170,8 @@ def cmvn(vec, variance_normalization=False):
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
 
     Args:
-        vec: input feature matrix (size:(num_observation,num_features))
-        variance_normalization: If the variance normilization should be performed or not.
+        vec (array): input feature matrix (size:(num_observation,num_features))
+        variance_normalization (bool): If the variance normilization should be performed or not.
 
     Return:
           array: The mean(or mean+variance) normalized feature vector.
@@ -201,9 +201,9 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
 
     Args:
-        vec: input feature matrix (size:(num_observation,num_features))
-        win_size: The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
-        variance_normalization: If the variance normilization should be performed or not.
+        vec (array): input feature matrix (size:(num_observation,num_features))
+        win_size (int): The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
+        variance_normalization (bool): If the variance normilization should be performed or not.
 
     Return:
           array: The mean(or mean+variance) normalized feature vector.
