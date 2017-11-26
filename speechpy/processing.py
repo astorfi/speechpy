@@ -37,7 +37,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
                          be done for generating last frame.
 
     Returns:
-           stacked_frames (array): Array of frames of size (number_of_frames x frame_len).
+            array: stacked_frames-Array of frames of size (number_of_frames x frame_len).
 
     """
 
@@ -92,7 +92,7 @@ def fft_spectrum(frames, fft_points=512):
         fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
 
     Returns:
-           The power spectrum (array): If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
+            array: The fft spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
     """
     SPECTRUM_VECTOR = np.fft.rfft(frames, n=fft_points, axis=-1, norm=None)
     return np.absolute(SPECTRUM_VECTOR)
@@ -101,9 +101,12 @@ def fft_spectrum(frames, fft_points=512):
 def power_spectrum(frames, fft_points=512):
     """Power spectrum of each frame.
 
-    :param frames: The frame array in which each row is a frame.
-    :param fft_points: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
-    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
+    Arge:
+        frames (array): The frame array in which each row is a frame.
+        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+
+    Returns:
+            array: The power spectrum-If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
     return 1.0 / fft_points * np.square(fft_spectrum(frames, fft_points))
 
