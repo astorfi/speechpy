@@ -27,3 +27,8 @@ Preprocessing
 :hidden:`Power Spectrum Log`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. autofunction:: speechpy.processing.log_power_spectrum
+
+:hidden:`Derivative Extraction`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: speechpy.processing.derivative_extraction

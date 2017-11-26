@@ -11,7 +11,7 @@ signal = signal[:,0]
 signal_preemphasized = speechpy.processing.preemphasis(signal, cof=0.98)
 
 # Example of staching frames
-frames = speechpy.processing.stack_frames(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01, Filter=lambda x: np.ones((x,)),
+frames = speechpy.processing.stack_frames(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01, filter=lambda x: np.ones((x,)),
          zero_padding=True)
 
 # Example of extracting power spectrum

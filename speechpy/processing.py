@@ -131,7 +131,7 @@ def log_power_spectrum(frames, fft_points=512, normalize=True):
         return log_power_spec
 
 
-def Derivative_Feature_Fn(feat, DeltaWindows):
+def derivative_extraction(feat, DeltaWindows):
     """This function the derivative features.
 
     Args:

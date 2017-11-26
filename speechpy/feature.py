@@ -106,7 +106,7 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
     # Stack frames
     frames = processing.stack_frames(signal, sampling_frequency=sampling_frequency, frame_length=frame_length,
                                      frame_stride=frame_stride,
-                                     Filter=lambda x: np.ones((x,)),
+                                     filter=lambda x: np.ones((x,)),
                                      zero_padding=False)
 
     # getting the high frequency
@@ -160,13 +160,16 @@ def lmfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
 def extract_derivative_feature(feature):
     """
     This function extracts temporal derivative features which are first and second derivatives.
-    :param feature: The feature vector which its size is: N x M
 
-    :return: The feature cube vector which contains the static, first and second derivative features
+    Args:
+        feature (array): The feature vector which its size is: N x M
+
+    Return:
+          array: The feature cube vector which contains the static, first and second derivative features
              size: N x M x 3
     """
-    first_derivative_feature = processing.Derivative_Feature_Fn(feature, DeltaWindows=2)
-    second_derivative_feature = processing.Derivative_Feature_Fn(first_derivative_feature, DeltaWindows=2)
+    first_derivative_feature = processing.derivative_extraction(feature, DeltaWindows=2)
+    second_derivative_feature = processing.derivative_extraction(first_derivative_feature, DeltaWindows=2)
 
     # Creating the future cube for each file
     feature_cube = np.concatenate(
