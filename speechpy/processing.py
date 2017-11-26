@@ -10,7 +10,7 @@ def round_half_up(number):
 
 def preemphasize(signal, cof=0.98):
     """preemphasising on the signal.
-    
+
     :param signal: The input signal.
     :param coeff: The preemphasising coefficient. 0 equals to no filtering.
     :returns: the pre-emphasized signal.
