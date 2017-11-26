@@ -174,7 +174,7 @@ def cmvn(vec, variance_normalization=False):
         variance_normalization: If the variance normilization should be performed or not.
 
     Return:
-          The mean(or mean+variance) normalized feature vector.
+          array: The mean(or mean+variance) normalized feature vector.
     """
     rows, cols = vec.shape
 
@@ -206,7 +206,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         variance_normalization: If the variance normilization should be performed or not.
 
     Return:
-          The mean(or mean+variance) normalized feature vector.
+          array: The mean(or mean+variance) normalized feature vector.
     """
     # Get the shapes
     rows, cols = vec.shape
