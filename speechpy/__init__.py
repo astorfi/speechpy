@@ -1,2 +1,2 @@
-from feature import *
-from processing import *
+from . import feature
+from . import processing
