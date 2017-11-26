@@ -8,9 +8,9 @@ Preprocessing
 .. automodule:: speechpy.processing
 .. currentmodule:: speechpy.processing
 
-:hidden:`Pre-emphasis`
+:hidden:`Pre-emphasizing`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-.. autofunction:: speechpy.processing.preemphasis
+.. autofunction:: speechpy.processing.preemphasize
 
 :hidden:`Stacking`
 ~~~~~~~~~~~~~~~~~~
