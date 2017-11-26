@@ -139,7 +139,7 @@ def Derivative_Feature_Fn(feat, DeltaWindows):
         DeltaWindows: The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
 
     Returns:
-           A NUMFRAMESxNUMFEATURES numpy array which is the derivative features along the features.
+           array: Derivative feature vector - A NUMFRAMESxNUMFEATURES numpy array which is the derivative features along the features.
     """
 
     # Getting the shape of the vector.
