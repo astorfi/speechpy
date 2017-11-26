@@ -8,18 +8,19 @@ def round_half_up(number):
     return int(decimal.Decimal(number).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_HALF_UP))
 
 
-def preemphasis(signal, cof=0.98):
+def preemphasis(signal, shift=1, cof=0.98):
     """preemphasising on the signal.
 
     Args:
         signal (array): The input signal.
-        coeff (float): The preemphasising coefficient. 0 equals to no filtering.
+        shift (int): The shift step.
+        cof (float): The preemphasising coefficient. 0 equals to no filtering.
 
     Returns:
            the pre-emphasized signal.
     """
 
-    rolled_signal = np.roll(signal, shift=1)
+    rolled_signal = np.roll(signal, shift)
     return signal - cof * rolled_signal
 
 def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, filter=lambda x: np.ones((x,)),
@@ -36,7 +37,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
                          be done for generating last frame.
 
     Returns:
-        array: Array of frames of size (number_of_frames x frame_len).
+           stacked_frames (array): Array of frames of size (number_of_frames x frame_len).
 
     """
 
@@ -86,10 +87,12 @@ def fft_spectrum(frames, fft_points=512):
     array by means of an efficient algorithm called the Fast Fourier Transform (FFT). Please refer to
     https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html for further details.
 
-    :param frames: The frame array in which each row is a frame.
-    :param fft_points: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
-    :param num_keep_coefficients: The number of coefficients that is kept.
-    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
+    Agrs:
+        frames (array): The frame array in which each row is a frame.
+        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+
+    Returns:
+           The power spectrum (array): If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
     """
     SPECTRUM_VECTOR = np.fft.rfft(frames, n=fft_points, axis=-1, norm=None)
     return np.absolute(SPECTRUM_VECTOR)
