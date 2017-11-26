@@ -12,24 +12,29 @@ file_name = os.path.join(os.path.dirname(os.path.abspath(__file__)),'Alesis-Sanc
 fs, signal = wav.read(file_name)
 signal = signal[:,0]
 
+# Example of staching frames
+frames = speechpy.processing.stack_frames(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01, Filter=lambda x: np.ones((x,)),
+         zero_padding=True)
+
+# Example of extracting power spectrum
+frames = speechpy.processing.power_spectrum(frames, fft_length=512)
+
 ############# Extract MFCC features #############
-mfcc = speechpy.mfcc(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
+mfcc = speechpy.feature.mfcc(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None)
-mfcc_cmvn = speechpy.cmvnw(mfcc,win_size=301,variance_normalization=True)
+mfcc_cmvn = speechpy.processing.cmvnw(mfcc,win_size=301,variance_normalization=True)
 print('mfcc(mean + variance normalized) feature shape=', mfcc_cmvn.shape)
 
-mfcc_feature_cube = speechpy.extract_derivative_feature(mfcc)
+mfcc_feature_cube = speechpy.feature.extract_derivative_feature(mfcc)
 print('mfcc feature cube shape=', mfcc_feature_cube.shape)
 
 ############# Extract logenergy features #############
-logenergy = speechpy.lmfe(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
+logenergy = speechpy.feature.lmfe(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None)
-logenergy_feature_cube = speechpy.extract_derivative_feature(logenergy)
+logenergy_feature_cube = speechpy.feature.extract_derivative_feature(logenergy)
 print('logenergy features=', logenergy.shape)
 
-# Example of staching frames
-signal = speechpy.stack_frames(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01, Filter=lambda x: np.ones((x,)),
-         zero_padding=True)
+
 
 
 

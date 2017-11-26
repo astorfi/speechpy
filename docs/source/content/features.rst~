@@ -4,29 +4,29 @@
 Features
 =========
 
-.. automodule:: speechpy.feature
-.. currentmodule:: speechpy.feature
+.. automodule:: speechpy.main
+.. currentmodule:: speechpy.main
 
 
 :hidden:`MFCC`
 ~~~~~~~~~~~~~~
 
-.. autofunction:: speechpy.feature.mfcc
+.. autofunction:: speechpy.main.mfcc
 
 
 :hidden:`Mel Frequency Energy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: speechpy.feature.mfe
+.. autofunction:: speechpy.main.mfe
 
 
 :hidden:`Log Mel Frequency Energy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: speechpy.feature.lmfe
+.. autofunction:: speechpy.main.lmfe
 
 
 :hidden:`Extract Derivative Features`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: speechpy.feature.extract_derivative_feature
+.. autofunction:: speechpy.main.extract_derivative_feature
