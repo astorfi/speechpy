@@ -87,7 +87,7 @@ def fft_spectrum(frames, fft_points=512):
     array by means of an efficient algorithm called the Fast Fourier Transform (FFT). Please refer to
     https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html for further details.
 
-    Agrs:
+    Args:
         frames (array): The frame array in which each row is a frame.
         fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
 
@@ -101,7 +101,7 @@ def fft_spectrum(frames, fft_points=512):
 def power_spectrum(frames, fft_points=512):
     """Power spectrum of each frame.
 
-    Arge:
+    Args:
         frames (array): The frame array in which each row is a frame.
         fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
 
@@ -114,10 +114,13 @@ def power_spectrum(frames, fft_points=512):
 def log_power_spectrum(frames, fft_points=512, normalize=True):
     """Log power spectrum of each frame in frames.
 
-    :param frames: The frame array in which each row is a frame.
-    :param fft_points: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
-    :param norm: If norm=1, the log power spectrum will be normalized.
-    :returns: If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
+    Args:
+        frames: The frame array in which each row is a frame.
+        fft_points: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+        norm: If norm=1, the log power spectrum will be normalized.
+
+    Returns:
+           If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
     """
     power_spec = power_spectrum(frames, fft_points)
     power_spec[power_spec <= 1e-20] = 1e-20
@@ -130,9 +133,12 @@ def log_power_spectrum(frames, fft_points=512, normalize=True):
 
 def Derivative_Feature_Fn(feat, DeltaWindows):
     """This function the derivative features.
-    :param feat: The main feature vector(For returning the second order derivative it can be first-order derivative).
-    :param DeltaWindows: The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
-    :returns:
+
+    Args:
+        feat: The main feature vector(For returning the second order derivative it can be first-order derivative).
+        DeltaWindows: The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
+
+    Returns:
            A NUMFRAMESxNUMFEATURES numpy array which is the derivative features along the features.
     """
 
@@ -163,9 +169,12 @@ def cmvn(vec, variance_normalization=False):
     """ This function is aimed to perform global cepstral mean and variance normalization
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
 
-    :param vec: input feature matrix (size:(num_observation,num_features))
-    :param variance_normalization: If the variance normilization should be performed or not.
-    :return: The mean(or mean+variance) normalized feature vector.
+    Args:
+        vec: input feature matrix (size:(num_observation,num_features))
+        variance_normalization: If the variance normilization should be performed or not.
+
+    Return:
+          The mean(or mean+variance) normalized feature vector.
     """
     rows, cols = vec.shape
 
@@ -191,10 +200,13 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
     """ This function is aimed to perform local cepstral mean and variance normalization on a sliding window.
     (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
 
-    :param vec: input feature matrix (size:(num_observation,num_features))
-    :param win_size: The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
-    :param variance_normalization: If the variance normilization should be performed or not.
-    :return: The mean(or mean+variance) normalized feature vector.
+    Args:
+        vec: input feature matrix (size:(num_observation,num_features))
+        win_size: The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
+        variance_normalization: If the variance normilization should be performed or not.
+        
+    Return:
+          The mean(or mean+variance) normalized feature vector.
     """
     # Get the shapes
     rows, cols = vec.shape
