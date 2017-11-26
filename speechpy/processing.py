@@ -8,6 +8,16 @@ def round_half_up(number):
     return int(decimal.Decimal(number).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_HALF_UP))
 
 
+def preemphase(signal, cof=0.98):
+    """preemphasising on the signal.
+    :param signal: The input signal.
+    :param coeff: The preemphasising coefficient. 0 equals to no filtering.
+    :returns: the pre-emphasized signal.
+    """
+
+    rolled_signal = np.roll(signal, shift=1)
+    return signal - cof * rolled_signal
+
 def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: np.ones((x,)),
                  zero_padding=True):
     """Frame a signal into overlapping frames.
@@ -221,6 +231,8 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 
     return output
 
+
+
 # def resample_Fn(wave, fs, f_new=16000):
 #     """This function resample the data to arbitrary frequency
 #     :param fs: Frequency of the sound file.
@@ -228,7 +240,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 #     :returns:
 #            f_new: The new frequency.
 #            signal_new: The new signal samples at new frequency.
-
+#
 #     dependency: from scikits.samplerate import resample
 #     """
 #

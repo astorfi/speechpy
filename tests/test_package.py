@@ -7,6 +7,9 @@ file_name = os.path.join(os.path.dirname(os.path.abspath(__file__)),'Alesis-Sanc
 fs, signal = wav.read(file_name)
 signal = signal[:,0]
 
+# Example of pre-emphasizing.
+signal_preemphasized = speechpy.processing.preemphase(signal, cof=0.98)
+
 # Example of staching frames
 frames = speechpy.processing.stack_frames(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01, Filter=lambda x: np.ones((x,)),
          zero_padding=True)
@@ -29,6 +32,7 @@ logenergy = speechpy.feature.lmfe(signal, sampling_frequency=fs, frame_length=0.
              num_filters=40, fft_length=512, low_frequency=0, high_frequency=None)
 logenergy_feature_cube = speechpy.feature.extract_derivative_feature(logenergy)
 print('logenergy features=', logenergy.shape)
+
 
 
 
