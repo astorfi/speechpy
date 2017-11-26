@@ -115,9 +115,9 @@ def log_power_spectrum(frames, fft_points=512, normalize=True):
     """Log power spectrum of each frame in frames.
 
     Args:
-        frames: The frame array in which each row is a frame.
-        fft_points: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
-        norm: If norm=1, the log power spectrum will be normalized.
+        frames (array): The frame array in which each row is a frame.
+        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+        normalize (bool): If normalize=True, the log power spectrum will be normalized.
 
     Returns:
            array: The power spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
