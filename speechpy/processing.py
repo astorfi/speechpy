@@ -79,8 +79,8 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
 
 def fft_spectrum(frames, fft_length=512):
     """This function computes the one-dimensional n-point discrete Fourier Transform (DFT) of a real-valued
-       array by means of an efficient algorithm called the Fast Fourier Transform (FFT).(ref: numpy documentation)
-       please refer to https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html for further details.
+    array by means of an efficient algorithm called the Fast Fourier Transform (FFT).(ref: numpy documentation)
+    please refer to https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html for further details.
 
     :param frames: The frame array in which each row is a frame.
     :param fft_length: The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
