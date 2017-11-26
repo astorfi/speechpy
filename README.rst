@@ -1,9 +1,9 @@
 .. image:: _images/speechpy_logo.gif
     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
 
-=====================================
-`SpeechPy Project Page`_
-=====================================
+============================================
+`SpeechPy Official Project Documentation`_
+============================================
 .. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
     :target: https://travis-ci.org/astorfi/speechpy
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
