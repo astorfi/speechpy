@@ -17,7 +17,7 @@
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1065527.svg
    :target: https://doi.org/10.5281/zenodo.1065527
 
-.. _SpeechPy Project Page: http://speechpy.readthedocs.io
+.. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
 
 
@@ -87,6 +87,8 @@ What Features are supported?
 - Mel Frequency Cepstral Coefficients(MFCCs)
 - Filterbank Energies
 - Log Filterbank Energies
+
+Please refer to `SpeechPy Official Project Documentation`_ for details about the supported features.
 
 ~~~~~~~~~~~~~~
 MFCC Features
