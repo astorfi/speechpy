@@ -165,8 +165,7 @@ def extract_derivative_feature(feature):
         feature (array): The feature vector which its size is: N x M
 
     Return:
-          array: The feature cube vector which contains the static, first and second derivative features
-             size: N x M x 3
+          array: The feature cube vector which contains the static, first and second derivative features of size: N x M x 3
     """
     first_derivative_feature = processing.derivative_extraction(feature, DeltaWindows=2)
     second_derivative_feature = processing.derivative_extraction(first_derivative_feature, DeltaWindows=2)
