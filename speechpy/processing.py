@@ -8,7 +8,7 @@ def round_half_up(number):
     return int(decimal.Decimal(number).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_HALF_UP))
 
 
-def preemphase(signal, cof=0.98):
+def preemphasize(signal, cof=0.98):
     """preemphasising on the signal.
     :param signal: The input signal.
     :param coeff: The preemphasising coefficient. 0 equals to no filtering.

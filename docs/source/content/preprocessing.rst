@@ -10,7 +10,7 @@ Preprocessing
 
 :hidden:`Pre-emphasizing`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-.. autofunction:: speechpy.processing.preemphase
+.. autofunction:: speechpy.processing.preemphasize
 
 :hidden:`Stacking`
 ~~~~~~~~~~~~~~~~~~
