@@ -11,15 +11,18 @@ def round_half_up(number):
 def preemphasis(signal, cof=0.98):
     """preemphasising on the signal.
 
-    :param signal: The input signal.
-    :param coeff: The preemphasising coefficient. 0 equals to no filtering.
-    :returns: the pre-emphasized signal.
+    Args:
+        signal (array): The input signal.
+        coeff (float): The preemphasising coefficient. 0 equals to no filtering.
+
+    Returns:
+           the pre-emphasized signal.
     """
 
     rolled_signal = np.roll(signal, shift=1)
     return signal - cof * rolled_signal
 
-def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, Filter=lambda x: np.ones((x,)),
+def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, filter=lambda x: np.ones((x,)),
                  zero_padding=True):
     """Frame a signal into overlapping frames.
 
@@ -28,12 +31,11 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
         sampling_frequency (int): The sampling frequency of the signal.
         frame_length (float): The length of the frame in second.
         frame_stride (float): The stride between frames.
-        Filter (array): The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
+        filter (array): The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
         zero_padding (bool): If the samples is not a multiple of frame_length(number of frames sample), zero padding will
                          be done for generating last frame.
 
     Returns:
-
         array: Array of frames of size (number_of_frames x frame_len).
 
     """
@@ -74,7 +76,7 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
     frames = signal[indices]
 
     # Apply the windows function
-    window = np.tile(Filter(frame_sample_length), (numframes, 1))
+    window = np.tile(filter(frame_sample_length), (numframes, 1))
     Extracted_Frames = frames * window
     return Extracted_Frames
 
