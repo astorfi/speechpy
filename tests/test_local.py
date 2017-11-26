@@ -17,7 +17,8 @@ frames = speechpy.processing.stack_frames(signal, sampling_frequency=fs, frame_l
          zero_padding=True)
 
 # Example of extracting power spectrum
-frames = speechpy.processing.power_spectrum(frames, fft_length=512)
+power_spectrum = speechpy.processing.power_spectrum(frames, fft_points=512)
+print('power spectrum shape=', power_spectrum.shape)
 
 ############# Extract MFCC features #############
 mfcc = speechpy.feature.mfcc(signal, sampling_frequency=fs, frame_length=0.020, frame_stride=0.01,
