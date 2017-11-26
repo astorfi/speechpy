@@ -10,11 +10,16 @@ Preprocessing
 
 :hidden:`Stacking`
 ~~~~~~~~~~~~~~~~~~
-
 .. autofunction:: speechpy.processing.stack_frames
 
+:hidden:`FFT Spectrum`
+~~~~~~~~~~~~~~~~~~~~~~
 .. autofunction:: speechpy.processing.fft_spectrum
 
+:hidden:`Power Spectrum`
+~~~~~~~~~~~~~~~~~~~~~~~~
 .. autofunction:: speechpy.processing.power_spectrum
 
+:hidden:`Power Spectrum Log`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. autofunction:: speechpy.processing.log_power_spectrum

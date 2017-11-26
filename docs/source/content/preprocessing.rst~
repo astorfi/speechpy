@@ -17,4 +17,4 @@ Preprocessing
 
 .. autofunction:: speechpy.processing.power_spectrum
 
-.. autofunction:: speechpy.processing.power_spectrum
+.. autofunction:: speechpy.processing.log_power_spectrum
