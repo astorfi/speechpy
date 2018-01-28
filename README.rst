@@ -94,7 +94,7 @@ Please refer to `SpeechPy Official Project Documentation`_ for details about the
 MFCC Features
 ~~~~~~~~~~~~~~
 
-|pic1| any text |pic2|
+|pic1| |pic2|
 
 .. |pic1| image:: _images/Speech_GIF.gif
    :width: 45%
