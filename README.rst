@@ -94,7 +94,13 @@ Please refer to `SpeechPy Official Project Documentation`_ for details about the
 MFCC Features
 ~~~~~~~~~~~~~~
 
-.. image:: _images/Speech_GIF.gif
+|pic1| any text |pic2|
+
+.. |pic1| image:: _images/Speech_GIF.gif
+   :width: 45%
+
+.. |pic2| image:: _images/pipeline.jpg
+   :width: 45%
 
 The supported attributes for generating MFCC features can be seen by investigating the related function:
 
