@@ -3,8 +3,12 @@ from __future__ import division
 import numpy as np
 from . import processing
 from scipy.fftpack import dct
-from functools import lru_cache
 from . import functions
+
+try:
+    from functools import lru_cache
+except ImportError:
+    from backports.functools_lru_cache import lru_cache
 
 
 @lru_cache()
