@@ -43,13 +43,14 @@ If you used this package, please cite it as follows:
 
 .. code:: bash
 
-	    @misc{torfispeechpy,
+	    @misc{amirsina_torfi_2017_840395,
   		author       = {Amirsina Torfi},
-  		title        = {{SpeechPy: Speech recognition and feature extraction}},
+ 		title        = {{SpeechPy: Speech recognition and feature extraction}},
   		month        = aug,
   		year         = 2017,
-  		doi          = {10.5281/zenodo.810391},
-  		url          = {https://doi.org/10.5281/zenodo.810391}}
+ 		doi          = {10.5281/zenodo.840395},
+ 	        url          = {https://doi.org/10.5281/zenodo.840395}
+		}
 
 ===============
 How to Install?
