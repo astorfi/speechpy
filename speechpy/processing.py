@@ -1,12 +1,8 @@
 import decimal
+from functools import lru_cache
 
 import numpy as np
 import math
-
-try:
-    from functools import lru_cache
-except ImportError:
-    from backports.functools_lru_cache import lru_cache
 
 
 # 1.4 becomes 1 and 1.6 becomes 2. special case: 1.5 becomes 2.

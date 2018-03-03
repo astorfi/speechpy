@@ -11,6 +11,5 @@ setup(name='speechpy',
       install_requires=[
           'scipy',
           'numpy',
-          'backports.functools_lru_cache;python_version<"3.2"'
       ],
       zip_safe=False)
