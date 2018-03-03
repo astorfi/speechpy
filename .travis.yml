@@ -13,6 +13,7 @@ install:
 
 script:
   - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test_package.py test
+  - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test_local.py test
 
 after_success:
   - coveralls
