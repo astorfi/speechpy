@@ -176,6 +176,7 @@ def cmvn(vec, variance_normalization=False):
     Return:
           array: The mean(or mean+variance) normalized feature vector.
     """
+    eps = 2**-30
     rows, cols = vec.shape
 
     # Mean calculation
@@ -189,7 +190,7 @@ def cmvn(vec, variance_normalization=False):
     if variance_normalization:
         stdev = np.std(mean_subtracted, axis=0)
         stdev_vec = np.tile(stdev, (rows, 1))
-        output = mean_subtracted / stdev_vec
+        output = mean_subtracted / (stdev_vec + eps)
     else:
         output = mean_subtracted
 
@@ -209,6 +210,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
           array: The mean(or mean+variance) normalized feature vector.
     """
     # Get the shapes
+    eps = 2**-30
     rows, cols = vec.shape
 
     # Windows size must be odd.
@@ -236,7 +238,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         for i in range(rows):
             window = vec_pad_variance[i:i + win_size, :]
             window_variance = np.std(window, axis=0)
-            variance_normalized[i, :] = mean_subtracted[i, :] / window_variance
+            variance_normalized[i, :] = mean_subtracted[i, :] / (window_variance + eps)
         output = variance_normalized
     else:
         output = mean_subtracted
