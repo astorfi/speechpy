@@ -1,6 +1,4 @@
 import decimal
-from functools import lru_cache
-
 import numpy as np
 import math
 
@@ -25,14 +23,6 @@ def preemphasis(signal, shift=1, cof=0.98):
     rolled_signal = np.roll(signal, shift)
     return signal - cof * rolled_signal
 
-
-@lru_cache()
-def _create_frame_indices(numframes, frame_stride, frame_sample_length):
-    indices = np.tile(np.arange(0, frame_sample_length), (numframes, 1)) + np.tile(
-        np.arange(0, numframes * frame_stride, frame_stride), (frame_sample_length, 1)).T
-    return np.array(indices, dtype=np.int32)
-
-
 def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, filter=lambda x: np.ones((x,)),
                  zero_padding=True):
     """Frame a signal into overlapping frames.
@@ -50,13 +40,14 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
             array: stacked_frames-Array of frames of size (number_of_frames x frame_len).
 
     """
+
     ## Check dimension
     assert sig.ndim == 1, "Signal dimention should be of the format of (N,) but it is %s instead" % str(sig.shape)
 
     # Initial necessary values
     length_signal = sig.shape[0]
-    frame_sample_length = int(sampling_frequency * frame_length + 0.5)  # Defined by the number of samples
-    frame_stride = float(int(sampling_frequency * frame_stride + 0.5))
+    frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
+    frame_stride = float(np.round(sampling_frequency * frame_stride))
 
     # Zero padding is done for allocating space for the last frame.
     if zero_padding:
@@ -78,7 +69,9 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
         signal = sig[0:len_sig]
 
     # Getting the indices of all frames.
-    indices = _create_frame_indices(numframes, frame_stride, frame_sample_length)
+    indices = np.tile(np.arange(0, frame_sample_length), (numframes, 1)) + np.tile(
+        np.arange(0, numframes * frame_stride, frame_stride), (frame_sample_length, 1)).T
+    indices = np.array(indices, dtype=np.int32)
 
     # Extracting the frames based on the allocated indices.
     frames = signal[indices]

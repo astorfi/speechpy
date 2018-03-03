@@ -1,13 +1,11 @@
 from __future__ import division
-
 import numpy as np
 from . import processing
 from scipy.fftpack import dct
-from functools import lru_cache
+import math
 from . import functions
 
 
-@lru_cache()
 def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=None):
     """Compute the Mel-filterbanks. Each filter will be stored in one rows. The columns correspond to fft bins.
 
