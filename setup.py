@@ -6,6 +6,7 @@ setup(name='speechpy',
       author='Amirsina Torfi',
       author_email='amirsina.torfi@gmail.com',
       url='https://github.com/astorfi/speechpyn',
+      download_url = 'https://github.com/astorfi/speechpy/archive/2.2.zip',
       packages=find_packages(exclude=('tests', 'docs')),
       include_package_data=True,
       install_requires=[
