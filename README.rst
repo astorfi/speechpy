@@ -43,14 +43,12 @@ If you used this package, please cite it as follows:
 
 .. code:: bash
 
-	    @misc{amirsina_torfi_2017_840395,
-  		author       = {Amirsina Torfi},
- 		title        = {{SpeechPy: Speech recognition and feature extraction}},
-  		month        = aug,
-  		year         = 2017,
- 		doi          = {10.5281/zenodo.840395},
- 	        url          = {https://doi.org/10.5281/zenodo.840395}
-		}
+	    @article{torfi2018speechpy,
+		  title={SpeechPy-A Library for Speech Processing and Recognition},
+		  author={Torfi, Amirsina},
+		  journal={arXiv preprint arXiv:1803.01094},
+		  year={2018}
+		     }
 
 ===============
 How to Install?
