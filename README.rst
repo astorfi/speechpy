@@ -39,16 +39,16 @@ Currently, the package has been tested and verified using Python ``2.7``, ``3.4`
 Citation
 ========
 
-If you used this package, please cite it as follows:
+If you used this package, please kindly cite it as follows:
 
 .. code:: bash
 
 	    @article{torfi2018speechpy,
-		  title={SpeechPy-A Library for Speech Processing and Recognition},
-		  author={Torfi, Amirsina},
-		  journal={arXiv preprint arXiv:1803.01094},
-		  year={2018}
-		     }
+	      title={SpeechPy-A Library for Speech Processing and Recognition},
+	      author={Torfi, Amirsina},
+	      journal={arXiv preprint arXiv:1803.01094},
+	      year={2018}
+             }
 
 ===============
 How to Install?
