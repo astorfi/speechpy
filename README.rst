@@ -27,7 +27,17 @@ If you are interested to see what are MFCCs and how they are generated please re
 
 .. image:: _images/speech.gif
 
+====================================
+Documentation
+====================================
 
+Please refer to the following links for further informations:
+
+`SpeechPy Official Project Documentation`_
+`Technical Report`_
+
+.. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
+.. _Technical Report: https://arxiv.org/abs/1803.01094
 
 ====================================
 Which Python versions are supported
