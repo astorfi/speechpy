@@ -34,6 +34,7 @@ Documentation
 Please refer to the following links for further informations:
 
 `SpeechPy Official Project Documentation`_
+
 `Technical Report`_
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
