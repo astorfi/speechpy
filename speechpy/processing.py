@@ -1,8 +1,13 @@
 import decimal
-from functools import lru_cache
 
 import numpy as np
 import math
+
+try:
+    from functools import lru_cache
+except ImportError:
+    def lru_cache(*args, **kwargs):
+        return lambda x: x
 
 
 # 1.4 becomes 1 and 1.6 becomes 2. special case: 1.5 becomes 2.
