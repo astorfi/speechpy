@@ -5,7 +5,7 @@ tags:
 authors:
   - name: Amirsina Torfi
     orcid: 0000-0003-2282-4361
-    affiliation: "Virginia Tech" # (Multiple affiliations must be quoted)
+    affiliation: "Virginia Tech"
 
 ---
 
