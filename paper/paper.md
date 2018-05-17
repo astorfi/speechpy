@@ -5,9 +5,16 @@ tags:
 authors:
   - name: Amirsina Torfi
     orcid: 0000-0003-2282-4361
-    affiliation: "Virginia Tech"
-
+    affiliation: "1,2"
+affiliations:
+ - name: Virginia Tech
+   index: 1
+ - name: Center for Identification Technology Research, West Virginia University
+   index: 2
+date: 15 May 2018
+bibliography: paper.bib
 ---
+
 
 # Summary
 
