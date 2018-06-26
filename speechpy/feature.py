@@ -6,12 +6,12 @@ import math
 from . import functions
 
 
-def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=None):
+def filterbanks(num_filter, coefficients, sampling_freq, low_freq=None, high_freq=None):
     """Compute the Mel-filterbanks. Each filter will be stored in one rows. The columns correspond to fft bins.
 
     Args:
         num_filter (int): the number of filters in the filterbank, default 20.
-        fftpoints (int): the FFT size. Default is 512.
+        coefficients (int): (fftpoints//2 + 1). Default is 257.
         sampling_freq (float): the samplerate of the signal we are working with. Affects mel spacing.
         low_freq (float): lowest band edge of mel filters, default 0 Hz
         high_freq (float): highest band edge of mel filters, default samplerate/2
@@ -38,10 +38,10 @@ def filterbanks(num_filter, fftpoints, sampling_freq, low_freq=None, high_freq=N
     # The frequency resolution required to put filters at the
     # exact points calculated above should be extracted.
     #  So we should round those frequencies to the closest FFT bin.
-    freq_index = (np.floor((fftpoints + 1) * hertz / sampling_freq)).astype(int)
+    freq_index = (np.floor((coefficients + 1) * hertz / sampling_freq)).astype(int)
 
     # Initial definition
-    filterbank = np.zeros([num_filter, fftpoints])
+    filterbank = np.zeros([num_filter, coefficients])
 
     # The triangular function for each filter
     for i in range(0, num_filter):
@@ -119,14 +119,14 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
 
     # calculation of the power sprectum
     power_spectrum = processing.power_spectrum(frames, fft_length)
-    number_fft_coefficients = power_spectrum.shape[1]
+    coefficients = power_spectrum.shape[1]
     frame_energies = np.sum(power_spectrum, 1)  # this stores the total energy in each frame
 
     # Handling zero enegies.
     frame_energies = functions.zero_handling(frame_energies)
 
     # Extracting the filterbank
-    filter_banks = filterbanks(num_filters, number_fft_coefficients, sampling_frequency, low_frequency, high_frequency)
+    filter_banks = filterbanks(num_filters, coefficients, sampling_frequency, low_frequency, high_frequency)
 
     # Filterbank energies
     features = np.dot(power_spectrum, filter_banks.T)
