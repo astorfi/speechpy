@@ -27,7 +27,7 @@ Welcome to SpeechPy's documentation!
    :caption: Epilogue
 
    epilogue/test
-   epilogue/finalnote
+   epilogue/CONTRIBUTING
 
 
 Indices and tables
