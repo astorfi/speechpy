@@ -19,6 +19,13 @@
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
+#################
+Table of Contents
+#################
+.. contents::
+  :local:
+  :depth: 3
+
 
 
 This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
