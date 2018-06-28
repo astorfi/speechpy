@@ -358,9 +358,9 @@ your kind feedback and elaborate code inspections.
 
 
 
-===========
+---------------------
 Disclaimer
-===========
+---------------------
 
 Although by dramatic chages, some portion of this library is inspired by the `python speech features`_ library.
 
