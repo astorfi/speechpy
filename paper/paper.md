@@ -21,10 +21,13 @@ bibliography: paper.bib
 ``SpeechPy`` is an open source Python package that contains speech preprocessing techniques, speech features, and important post-processing operations. It provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filter-banks. The aim of the package is to provide researchers with a simple tool for speech feature extraction and processing purposes in applications such as Automatic Speech Recognition and Speaker Verification.
 
 Considering the recent advent of deep learning in ASR and SR and the importance of the accurate speech feature extraction, here are the motivations behind ``SpeechPy`` package:
-  +  Developing a free open source package which covers important preprocessing techniques,
+
+  *  Developing a free open source package which covers important preprocessing techniques,
 speech features, and post-processing operations required for ASR and SR applications.
-  + A simple package with a minimum degree of complexity should be available for beginners.
-  + A well-tested and continuously integrated package for future developments should be developed.
+
+  * A simple package with a minimum degree of complexity should be available for beginners.
+
+  * A well-tested and continuously integrated package for future developments should be developed.
 
 ``SpeechPy`` has been developed to satisfy the aforementioned needs. It contains the most important
 preprocessing and post-processing operations and a selection of frequently used speech features. The
