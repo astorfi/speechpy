@@ -19,9 +19,9 @@
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
-#################
+============================================
 Table of Contents
-#################
+============================================
 .. contents::
   :local:
   :depth: 3
