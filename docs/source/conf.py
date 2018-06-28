@@ -71,7 +71,7 @@ author = u'Amirsina Torfi'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-version = 'master (' + '1.3.1' + ' )'
+version = 'master (' + '2.3.0' + ' )'
 # The full version, including alpha/beta/rc tags.
 # TODO: verify this works as expected
 release = 'master'
