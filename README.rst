@@ -336,21 +336,6 @@ Please consider the following criterions in order to help us in a better way:
 
 
 
-----------------------
-Declaring issues
-----------------------
-
-For declaring issues, you can directly email the repository owner. However, preferably please create an issue as it might be
-the issue that other repository followers may encounter. That way, the question to other developers will be answered as well.
-
-----------------------
-Final Note
-----------------------
-
-We are looking forward to your kind feedback. Please help us to improve this open source project and make our work better.
-For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
-your kind feedback and elaborate code inspections.
-
 ===========
 Disclaimer
 ===========
