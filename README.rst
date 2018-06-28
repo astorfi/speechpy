@@ -1,23 +1,23 @@
-.. image:: _images/speechpy_logo.gif
-    :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
-
-===============================================
-`SpeechPy Official Project Documentation`_
-===============================================
-.. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
-    :target: https://travis-ci.org/astorfi/speechpy
-.. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
-    :target: https://github.com/astorfi/speechpy/pulls
-.. image:: https://coveralls.io/repos/github/astorfi/speechpy/badge.svg?branch=master
-    :target: https://coveralls.io/github/astorfi/speechpy?branch=master
-.. image:: https://codecov.io/gh/astorfi/speechpy/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/astorfi/speechpy
-.. image:: https://badge.fury.io/py/speechpy.svg
-    :target: https://badge.fury.io/py/speechpy
-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1066373.svg
-   :target: https://doi.org/10.5281/zenodo.1066373
-
-.. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
+.. .. image:: _images/speechpy_logo.gif
+..     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
+..
+.. ===============================================
+.. `SpeechPy Official Project Documentation`_
+.. ===============================================
+.. .. image:: https://travis-ci.org/astorfi/speechpy.svg?branch=master
+..     :target: https://travis-ci.org/astorfi/speechpy
+.. .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
+..     :target: https://github.com/astorfi/speechpy/pulls
+.. .. image:: https://coveralls.io/repos/github/astorfi/speechpy/badge.svg?branch=master
+..     :target: https://coveralls.io/github/astorfi/speechpy?branch=master
+.. .. image:: https://codecov.io/gh/astorfi/speechpy/branch/master/graph/badge.svg
+..     :target: https://codecov.io/gh/astorfi/speechpy
+.. .. image:: https://badge.fury.io/py/speechpy.svg
+..     :target: https://badge.fury.io/py/speechpy
+.. .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1066373.svg
+..    :target: https://doi.org/10.5281/zenodo.1066373
+..
+.. .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
 
 ==========================
