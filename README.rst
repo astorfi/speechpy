@@ -27,6 +27,9 @@ Table of Contents
 :local:
 :depth: 3
 
+====================================
+Documentation
+====================================
 
 This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
 If you are interested to see what are MFCCs and how they are generated please refer to this
@@ -34,9 +37,6 @@ If you are interested to see what are MFCCs and how they are generated please re
 
 .. image:: _images/speech.gif
 
-====================================
-Documentation
-====================================
 
 Please refer to the following links for further informations:
 
