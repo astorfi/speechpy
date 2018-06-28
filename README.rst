@@ -27,9 +27,12 @@ Table of Contents
 :local:
 :depth: 2
 
-====================================
+
+
+
+---------------------
 Documentation
-====================================
+---------------------
 
 This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
 If you are interested to see what are MFCCs and how they are generated please refer to this
@@ -47,15 +50,15 @@ Please refer to the following links for further informations:
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 .. _Technical Report: https://arxiv.org/abs/1803.01094
 
-====================================
+------------------------------------------
 Which Python versions are supported
-====================================
+------------------------------------------
 
 Currently, the package has been tested and verified using Python ``2.7``, ``3.4`` and ``3.5``.
 
-========
+---------------------
 Citation
-========
+---------------------
 
 If you used this package, please kindly cite it as follows:
 
@@ -68,9 +71,9 @@ If you used this package, please kindly cite it as follows:
 	      year={2018}
              }
 
-===============
+---------------------
 How to Install?
-===============
+---------------------
 
 There are two possible ways for installation of this package: local installation and PyPi.
 
@@ -97,9 +100,9 @@ The package is available on PyPi. For direct installation simply execute the fol
      pip install speechpy
 
 
-=============================
+------------------------------------------
 What Features are supported?
-=============================
+------------------------------------------
 - Mel Frequency Cepstral Coefficients(MFCCs)
 - Filterbank Energies
 - Log Filterbank Energies
@@ -206,9 +209,9 @@ In ``Stack_Frames`` function, the stack of frames will be generated from the sig
 	    :returns: Array of frames. size: number_of_frames x frame_len.
 	    """
 
-=================
+---------------------
 Post Processing
-=================
+---------------------
 
 There are some post-processing operation that are supported in ``speechpy``.
 
@@ -304,54 +307,54 @@ The test example can be seen in ``test/test.py`` as below:
 
 For ectracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
 
-=============
+---------------------
 Dependencies
-=============
+---------------------
 
 Two packages of ``Scipy`` and ``NumPy`` are the required dependencies which will be installed automatically by running the ``setup.py`` file.
 
-================
+---------------------
 Acknowledgements
-================
+---------------------
 
 This work is based upon a work supported by the Center for Identification Technology Research and the National Science Foundation under Grant #1650474.
 
 
-========================
+---------------------
 Contributing
-========================
+---------------------
 
 When contributing to this repository, you are more than welcome to discuss your feedback with any of the owners of this repository. *For typos, please do not create a pull request. Instead, declare them in issues or email the repository owner*. For technical and conceptual questions please feel free to **directly contact the repository owner**. Before asking general questions related to the concepts and techniques provided in this project, **please make sure to read and understand its associated paper**.
 
-.. ----------------------
-.. Pull Request Process
-.. ----------------------
-..
-.. Please consider the following criterions in order to help us in a better way:
-..
-.. 1. The pull request is mainly expected to be a code script suggestion or improvement.
-.. 2. A pull request related to non-code-script sections is expected to make a significant difference in the documentation. Otherwise, it is expected to be announced in the issues section.
-.. 3. Ensure any install or build dependencies are removed before the end of the layer when doing a
-..    build and creating a pull request.
-.. 4. Add comments with details of changes to the interface, this includes new environment
-..    variables, exposed ports, useful file locations and container parameters.
-.. 5. You may merge the Pull Request in once you have the sign-off of at least one other developer, or if you
-..    do not have permission to do that, you may request the owner to merge it for you if you believe all checks are passed.
-..
-.. ----------------------
-.. Declaring issues
-.. ----------------------
-..
-.. For declaring issues, you can directly email the repository owner. However, preferably please create an issue as it might be
-.. the issue that other repository followers may encounter. That way, the question to other developers will be answered as well.
-..
-.. ----------------------
-.. Final Note
-.. ----------------------
-..
-.. We are looking forward to your kind feedback. Please help us to improve this open source project and make our work better.
-.. For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
-.. your kind feedback and elaborate code inspections.
+~~~~~~~~~~~~~~~~~~~~~~~~
+Pull Request Process
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please consider the following criterions in order to help us in a better way:
+
+1. The pull request is mainly expected to be a code script suggestion or improvement.
+2. A pull request related to non-code-script sections is expected to make a significant difference in the documentation. Otherwise, it is expected to be announced in the issues section.
+3. Ensure any install or build dependencies are removed before the end of the layer when doing a
+   build and creating a pull request.
+4. Add comments with details of changes to the interface, this includes new environment
+   variables, exposed ports, useful file locations and container parameters.
+5. You may merge the Pull Request in once you have the sign-off of at least one other developer, or if you
+   do not have permission to do that, you may request the owner to merge it for you if you believe all checks are passed.
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+Declaring issues
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For declaring issues, you can directly email the repository owner. However, preferably please create an issue as it might be
+the issue that other repository followers may encounter. That way, the question to other developers will be answered as well.
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+Final Note
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+We are looking forward to your kind feedback. Please help us to improve this open source project and make our work better.
+For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
+your kind feedback and elaborate code inspections.
 
 
 
