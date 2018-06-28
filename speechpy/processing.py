@@ -1,3 +1,34 @@
+# -*- coding: utf-8 -*-
+"""Processing module for signal processing operations.
+
+This module demonstrates documentation for the signal processing function which are 
+required as internal computations in the package.
+
+
+Attributes:
+
+    preemphasis: Preemphasising on the signal. This is a preprocessing step.
+    
+    stack_frames: Create stacking frames from the raw signal.
+
+    fft_spectrum: Calculation of the Fast Fourier Transform.
+
+    power_spectrum: Power Spectrum calculation.
+
+    log_power_spectrum: Log Power Spectrum calculation.
+
+    derivative_extraction: Calculation of the derivative of the extracted featurs.
+
+    cmvn: Cepstral mean variance normalization. This is a post processing operation.
+
+    cmvnw: Cepstral mean variance normalization over the sliding window. This is a post processing operation.
+
+"""
+
+__license__ = "MIT"
+__author__ = " $Amirsina Torfi"
+__docformat__ = 'reStructuredText'
+
 import decimal
 import numpy as np
 import math

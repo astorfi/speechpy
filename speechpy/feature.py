@@ -1,3 +1,24 @@
+"""feature module.
+
+This module demonstrates documentation for the main speech features that the package is aimed to extract as well as the required elements.
+
+
+Attributes:
+
+    filterbanks: Compute the Mel-filterbanks
+                 The filterbanks must be created for extracting speech features such as MFCC.
+    
+    mfcc: Extracting Mel Frequncy Cepstral Coefficient feature.
+
+    mfe: Extracting Mel Energy feature.
+
+    lmfe: Extracting Log Mel Energy feature.
+
+    extract_derivative_feature: Extract the first and second derivative features. This finction, 
+                                directly use the ``derivative_extraction`` function in the ``processing`` module.
+
+"""
+
 from __future__ import division
 import numpy as np
 from . import processing
