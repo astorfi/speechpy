@@ -19,14 +19,6 @@
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
-============================================
-Table of Contents
-============================================
-.. contents::
-  :local:
-  :depth: 3
-
-
 
 This library provides most frequent used speech features including MFCCs and filterbank energies alongside with the log-energy of filterbanks.
 If you are interested to see what are MFCCs and how they are generated please refer to this
@@ -302,11 +294,6 @@ The test example can be seen in ``test/test.py`` as below:
     logenergy_feature_cube = speechpy.feature.extract_derivative_feature(logenergy)
     print('logenergy features=', logenergy.shape)
 
-
-
-
-
-
 For ectracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
 
 =============
@@ -345,6 +332,9 @@ Please consider the following criterions in order to help us in a better way:
    variables, exposed ports, useful file locations and container parameters.
 5. You may merge the Pull Request in once you have the sign-off of at least one other developer, or if you
    do not have permission to do that, you may request the owner to merge it for you if you believe all checks are passed.
+
+
+
 
 ----------------------
 Declaring issues
