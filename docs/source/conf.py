@@ -117,9 +117,10 @@ html_theme_options = {
 }
 
 html_context = {
-"display_github": True, # Add 'Edit on Github' link instead of 'View page source'
-"last_updated": True,
-"commit": False,
+    # Add 'Edit on Github' link instead of 'View page source'
+    "display_github": True,
+    "last_updated": True,
+    "commit": False,
 }
 
 html_logo = '_static/img/speechpy_logo.gif'
@@ -163,8 +164,6 @@ htmlhelp_basename = 'SpeechPydoc'
 #     'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
 #     'printindex': r'\footnotesize\raggedright\printindex',
 # }
-
-
 
 
 latex_elements = {
@@ -214,22 +213,7 @@ latex_documents = [
 #
 # latex_domain_indices = True
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 latex_logo = '_static/img/speechpy_logo.jpg'
-
 
 # latex_elements = {
 #     # The paper size ('letterpaper' or 'a4paper').
@@ -384,7 +368,6 @@ latex_logo = '_static/img/speechpy_logo.jpg'
 # }
 
 
-
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
@@ -421,5 +404,3 @@ intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
 }
-
-

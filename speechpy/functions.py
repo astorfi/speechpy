@@ -7,7 +7,7 @@ Attributes:
 
     frequency_to_mel: Converting the frequency to Mel scale.
                       This is necessary for filterback energy calculation.
-    
+
     mel_to_frequency: Converting the Mel to frequency scale.
                       This is necessary for filterback energy calculation.
 
