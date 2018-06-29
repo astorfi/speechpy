@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Processing module for signal processing operations.
 
-This module demonstrates documentation for the signal processing function which are 
-required as internal computations in the package.
+This module demonstrates documentation for the signal processing function which
+are required as internal computations in the package.
 
 
 Attributes:
 
     preemphasis: Preemphasising on the signal. This is a preprocessing step.
-    
+
     stack_frames: Create stacking frames from the raw signal.
 
     fft_spectrum: Calculation of the Fast Fourier Transform.
@@ -53,6 +53,7 @@ def preemphasis(signal, shift=1, cof=0.98):
 
     rolled_signal = np.roll(signal, shift)
     return signal - cof * rolled_signal
+
 
 def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, filter=lambda x: np.ones((x,)),
                  zero_padding=True):
@@ -275,7 +276,6 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         output = mean_subtracted
 
     return output
-
 
 
 # def resample_Fn(wave, fs, f_new=16000):
