@@ -13,7 +13,7 @@ install:
   - pip install flake8
 
 script:
-  - flake8 . --count --show-source --statistics
+  - flake8 . --count --max-line-length=127 --show-source --statistics
   - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test_package.py test
   - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test_local.py test
 
