@@ -1,6 +1,7 @@
 """feature module.
 
-This module demonstrates documentation for the main speech features that the package is aimed to extract as well as the required elements.
+This module demonstrates documentation for the main speech features that the 
+package is aimed to extract as well as the required elements.
 
 
 Attributes:
@@ -23,7 +24,6 @@ from __future__ import division
 import numpy as np
 from . import processing
 from scipy.fftpack import dct
-import math
 from . import functions
 
 
