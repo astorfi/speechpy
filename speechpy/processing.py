@@ -90,8 +90,8 @@ def stack_frames(
     """
 
     # Check dimension
-    assert sig.ndim == 1, "Signal dimention should be of the format of (N,) but it is %s instead" % str(
-        sig.shape)
+    s = "Signal dimention should be of the format of (N,) but it is %s instead"
+    assert sig.ndim == 1, s % str(sig.shape)
 
     # Initial necessary values
     length_signal = sig.shape[0]
@@ -346,7 +346,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 #     """
 #
 #     # Resampling using interpolation(There are other
-      #  methods than 'sinc_best')
+#     methods than 'sinc_best')
 #     signal_new = resample(wave, float(f_new) / fs, 'sinc_best')
 #
 #     # Necessary data converting for saving .wav file using scipy.
