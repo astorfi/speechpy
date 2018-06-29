@@ -10,8 +10,10 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
   - pip install codecov
+  - pip install flake8
 
 script:
+  - flake8 . --count --show-source --statistics
   - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test_package.py test
   - coverage run --omit=*.virtualenvs*,*virtualenv* tests/test_local.py test
 
@@ -20,4 +22,3 @@ after_success:
   - codecov
 
 sudo: enabled
-dist: trusty
