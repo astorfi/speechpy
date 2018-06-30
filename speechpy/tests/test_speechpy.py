@@ -2,12 +2,19 @@ import scipy.io.wavfile as wav
 import numpy as np
 import os
 import sys
+lib_path = os.path.abspath(os.path.join('../..'))
+print(lib_path)
+sys.path.append(lib_path)
 from speechpy import processing
 from speechpy import feature
+from speechpy import functions
 
-# content of test_class.py
-# content of test_class.py
-class TestAttributes(object):
+# Ramdom signal generation for testing
+mu, sigma = 0, 0.1 # mean and standard deviation
+signal = np.random.normal(mu, sigma, 1000000)
+fs = 16000
+
+class Test_Methods_Exists(object):
     def test_processing(self):
         
         # Cheching the availibility of functions in the chosen attribute
@@ -28,3 +35,45 @@ class TestAttributes(object):
         assert hasattr(feature, 'mfe')
         assert hasattr(feature, 'lmfe')
         assert hasattr(feature, 'extract_derivative_feature')
+        
+    def test_functions(self):
+    
+        # Cheching the availibility of functions in the chosen attribute
+        assert hasattr(functions, 'frequency_to_mel')
+        assert hasattr(functions, 'mel_to_frequency')
+        assert hasattr(functions, 'triangle')
+        assert hasattr(functions, 'zero_handling')
+        
+
+class Test_Processing(object):
+
+    def test_preemphasis(self):
+       
+       # Performing the operation on the generated signal.
+       signal_preemphasized = processing.preemphasis(signal, cof=0.98)
+       
+       # Shape matcher
+       assert signal_preemphasized.ndim == 1
+       assert signal_preemphasized.shape == signal.shape
+       
+    def test_stack_frames(self):
+        
+        # Generating stached frames with SpeechPy
+        frame_length = 0.02
+        frame_stride = 0.02
+        frames = processing.stack_frames(signal, sampling_frequency=fs,
+                                          frame_length=frame_length,
+                                          frame_stride=frame_stride,
+                                          filter=lambda x: np.ones((x,)),
+                                          zero_padding=True)
+        
+        window = int(np.round(frame_length * fs))
+        step = int(np.round(frame_stride * fs))
+        all_frames = (int(np.ceil((signal.shape[0]
+                                      - window) / step)))
+        
+        assert all_frames == frames.shape[0]
+        
+        
+        
+        

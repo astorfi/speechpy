@@ -104,20 +104,19 @@ def stack_frames(
     # Zero padding is done for allocating space for the last frame.
     if zero_padding:
         # Calculation of number of frames
-        numframes = (1
-                     + int(math.ceil((length_signal
+        numframes = (int(math.ceil((length_signal
                                       - frame_sample_length) / frame_stride)))
+        print(numframes,length_signal,frame_sample_length,frame_stride)
 
         # Zero padding
-        len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
+        len_sig = int(numframes * frame_stride + frame_sample_length)
         additive_zeros = np.zeros((len_sig - length_signal,))
         signal = np.concatenate((sig, additive_zeros))
 
     else:
         # No zero padding! The last frame which does not have enough
         # samples(remaining samples <= frame_sample_length), will be dropped!
-        numframes = 1
-        + int(math.floor((length_signal
+        numframes = int(math.floor((length_signal
                           - frame_sample_length) / frame_stride))
 
         # new length
