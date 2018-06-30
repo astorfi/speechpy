@@ -17,10 +17,8 @@ Attributes:
 """
 
 from __future__ import division
+
 import numpy as np
-from . import processing
-from scipy.fftpack import dct
-import math
 
 
 def frequency_to_mel(f):

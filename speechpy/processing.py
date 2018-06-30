@@ -30,7 +30,7 @@ Attributes:
 
 __license__ = "MIT"
 __author__ = " $Amirsina Torfi"
-__docformat__ = 'reStructuredText'
+__docformat__ = "reStructuredText"
 
 import decimal
 import numpy as np
@@ -41,8 +41,9 @@ import math
 def round_half_up(number):
     return int(
         decimal.Decimal(number).quantize(
-            decimal.Decimal('1'),
-            rounding=decimal.ROUND_HALF_UP))
+            decimal.Decimal("1"), rounding=decimal.ROUND_HALF_UP
+        )
+    )
 
 
 def preemphasis(signal, shift=1, cof=0.98):
@@ -62,14 +63,13 @@ def preemphasis(signal, shift=1, cof=0.98):
 
 
 def stack_frames(
-        sig,
-        sampling_frequency,
-        frame_length=0.020,
-        frame_stride=0.020,
-        filter=lambda x: np.ones(
-            (x,
-             )),
-        zero_padding=True):
+    sig,
+    sampling_frequency,
+    frame_length=0.020,
+    frame_stride=0.020,
+    filter=lambda x: np.ones((x,)),
+    zero_padding=True,
+):
     """Frame a signal into overlapping frames.
 
     Args:
@@ -96,17 +96,15 @@ def stack_frames(
     # Initial necessary values
     length_signal = sig.shape[0]
     frame_sample_length = int(
-        np.round(
-            sampling_frequency *
-            frame_length))  # Defined by the number of samples
+        np.round(sampling_frequency * frame_length)
+    )  # Defined by the number of samples
     frame_stride = float(np.round(sampling_frequency * frame_stride))
 
     # Zero padding is done for allocating space for the last frame.
     if zero_padding:
         # Calculation of number of frames
-        numframes = (int(math.ceil((length_signal
-                                      - frame_sample_length) / frame_stride)))
-        print(numframes,length_signal,frame_sample_length,frame_stride)
+        numframes = int(math.ceil((length_signal - frame_sample_length) / frame_stride))
+        print(numframes, length_signal, frame_sample_length, frame_stride)
 
         # Zero padding
         len_sig = int(numframes * frame_stride + frame_sample_length)
@@ -116,22 +114,22 @@ def stack_frames(
     else:
         # No zero padding! The last frame which does not have enough
         # samples(remaining samples <= frame_sample_length), will be dropped!
-        numframes = int(math.floor((length_signal
-                          - frame_sample_length) / frame_stride))
+        numframes = int(
+            math.floor((length_signal - frame_sample_length) / frame_stride)
+        )
 
         # new length
         len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
         signal = sig[0:len_sig]
 
     # Getting the indices of all frames.
-    indices = np.tile(np.arange(0,
-                                frame_sample_length),
-                      (numframes,
-                       1)) + np.tile(np.arange(0,
-                                               numframes * frame_stride,
-                                               frame_stride),
-                                     (frame_sample_length,
-                                      1)).T
+    indices = (
+        np.tile(np.arange(0, frame_sample_length), (numframes, 1))
+        + np.tile(
+            np.arange(0, numframes * frame_stride, frame_stride),
+            (frame_sample_length, 1),
+        ).T
+    )
     indices = np.array(indices, dtype=np.int32)
 
     # Extracting the frames based on the allocated indices.
@@ -226,7 +224,7 @@ def derivative_extraction(feat, DeltaWindows):
     Scale = 0
 
     # Pad only along features in the vector.
-    FEAT = np.lib.pad(feat, ((0, 0), (DeltaWindows, DeltaWindows)), 'edge')
+    FEAT = np.lib.pad(feat, ((0, 0), (DeltaWindows, DeltaWindows)), "edge")
     for i in range(DeltaWindows):
         # Start index
         offset = DeltaWindows
@@ -234,8 +232,8 @@ def derivative_extraction(feat, DeltaWindows):
         # The dynamic range
         Range = i + 1
 
-        dif = Range * FEAT[:, offset + Range:offset + Range + cols]
-        - FEAT[:, offset - Range:offset - Range + cols]
+        dif = Range * FEAT[:, offset + Range: offset + Range + cols]
+        -FEAT[:, offset - Range: offset - Range + cols]
         Scale += 2 * np.power(Range, 2)
         DIF += dif
 
@@ -256,7 +254,7 @@ def cmvn(vec, variance_normalization=False):
     Return:
           array: The mean(or mean+variance) normalized feature vector.
     """
-    eps = 2**-30
+    eps = 2 ** -30
     rows, cols = vec.shape
 
     # Mean calculation
@@ -295,7 +293,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
           array: The mean(or mean+variance) normalized feature vector.
     """
     # Get the shapes
-    eps = 2**-30
+    eps = 2 ** -30
     rows, cols = vec.shape
 
     # Windows size must be odd.
@@ -304,11 +302,11 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 
     # Padding and initial definitions
     pad_size = int((win_size - 1) / 2)
-    vec_pad = np.lib.pad(vec, ((pad_size, pad_size), (0, 0)), 'symmetric')
+    vec_pad = np.lib.pad(vec, ((pad_size, pad_size), (0, 0)), "symmetric")
     mean_subtracted = np.zeros(np.shape(vec), dtype=np.float32)
 
     for i in range(rows):
-        window = vec_pad[i:i + win_size, :]
+        window = vec_pad[i: i + win_size, :]
         window_mean = np.mean(window, axis=0)
         mean_subtracted[i, :] = vec[i, :] - window_mean
 
@@ -318,14 +316,14 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         # Initial definitions.
         variance_normalized = np.zeros(np.shape(vec), dtype=np.float32)
         vec_pad_variance = np.lib.pad(
-            mean_subtracted, ((pad_size, pad_size), (0, 0)), 'symmetric')
+            mean_subtracted, ((pad_size, pad_size), (0, 0)), "symmetric"
+        )
 
         # Looping over all observations.
         for i in range(rows):
-            window = vec_pad_variance[i:i + win_size, :]
+            window = vec_pad_variance[i: i + win_size, :]
             window_variance = np.std(window, axis=0)
-            variance_normalized[i, :] \
-            = mean_subtracted[i, :] / (window_variance + eps)
+            variance_normalized[i, :] = mean_subtracted[i, :] / (window_variance + eps)
         output = variance_normalized
     else:
         output = mean_subtracted
