@@ -38,8 +38,9 @@ mfcc = feature.mfcc(signal, sampling_frequency=fs,
                              frame_length=0.020, frame_stride=0.01,
                              num_filters=40, fft_length=512, low_frequency=0,
                              high_frequency=None)
-mfcc_cmvn = processing.cmvnw(mfcc,win_size=301,
-                                      variance_normalization=True)
+
+# Cepstral mean variance normalization.
+mfcc_cmvn = processing.cmvn(mfcc,variance_normalization=True)
 print('mfcc(mean + variance normalized) feature shape=', mfcc_cmvn.shape)
 
 # Extracting derivative features
