@@ -2,7 +2,7 @@ import scipy.io.wavfile as wav
 import numpy as np
 import os
 import sys
-lib_path = os.path.abspath(os.path.join('../..'))
+lib_path = os.path.abspath(os.path.join('..'))
 print(lib_path)
 sys.path.append(lib_path)
 from speechpy import processing
@@ -17,11 +17,8 @@ fs = 16000
  # Generating stached frames with SpeechPy
 frame_length = 0.02
 frame_stride = 0.02
-frames = processing.stack_frames(signal, sampling_frequency=fs,
-                                  frame_length=frame_length,
-                                  frame_stride=frame_stride,
-                                  filter=lambda x: np.ones((x,)),
-                                  zero_padding=True)
+num_filters=40
+
 
 class Test_Methods_Exists(object):
     def test_processing(self):
@@ -66,6 +63,12 @@ class Test_Processing(object):
        assert signal_preemphasized.shape == signal.shape
        
     def test_stack_frames(self):
+        
+        frames = processing.stack_frames(signal, sampling_frequency=fs,
+                                  frame_length=frame_length,
+                                  frame_stride=frame_stride,
+                                  filter=lambda x: np.ones((x,)),
+                                  zero_padding=True)
                 
         # Direct calculation using numpy
         window = int(np.round(frame_length * fs))
@@ -78,17 +81,30 @@ class Test_Processing(object):
     
     def test_cmvn(self):
         
-        normalized_feature = processing.cmvn(frames, variance_normalization=True)
+        feature_vector = np.random.rand(50,100)
+        normalized_feature = processing.cmvn(feature_vector, variance_normalization=True)
         
         # Shape match
-        assert normalized_feature.shape == frames.shape
+        assert normalized_feature.shape == feature_vector.shape
         
         # Check the std and mean of the output vector
         assert np.allclose(np.mean(normalized_feature,axis=0), np.zeros((1,normalized_feature.shape[1])))
         assert np.allclose(np.std(normalized_feature,axis=0), np.ones((1,normalized_feature.shape[1])))
         
         
+class Test_feature(object):
 
+    def test_mfcc(self):
+       
+       num_cepstral = 13
+       mfcc = feature.mfcc(signal, sampling_frequency=fs,
+                             frame_length=0.020, num_cepstral=num_cepstral, frame_stride=0.01,
+                             num_filters=num_filters, fft_length=512, low_frequency=0,
+                             high_frequency=None)
+
+       # Shape matcher
+       assert mfcc.shape[1] == num_cepstral
+       
         
         
         

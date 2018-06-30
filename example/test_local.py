@@ -8,7 +8,7 @@ import scipy.io.wavfile as wav
 import numpy as np
 import os
 import sys
-lib_path = os.path.abspath(os.path.join('../..'))
+lib_path = os.path.abspath(os.path.join('..'))
 print(lib_path)
 sys.path.append(lib_path)
 from speechpy import processing
