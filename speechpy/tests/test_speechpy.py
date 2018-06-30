@@ -1,17 +1,30 @@
+import scipy.io.wavfile as wav
+import numpy as np
 import os
 import sys
-lib_path = os.path.abspath(os.path.join('../..'))
-print(lib_path)
-sys.path.append(lib_path)
-
-
+from speechpy import processing
+from speechpy import feature
 
 # content of test_class.py
-class TestClass(object):
-    def test_one(self):
-        x = "this"
-        assert 'h' in x
+# content of test_class.py
+class TestAttributes(object):
+    def test_processing(self):
+        
+        # Cheching the availibility of functions in the chosen attribute
+        assert hasattr(processing, 'preemphasis')
+        assert hasattr(processing, 'stack_frames')
+        assert hasattr(processing, 'fft_spectrum')
+        assert hasattr(processing, 'power_spectrum')
+        assert hasattr(processing, 'log_power_spectrum')
+        assert hasattr(processing, 'derivative_extraction')
+        assert hasattr(processing, 'cmvn')
+        assert hasattr(processing, 'cmvnw')
 
-    def test_two(self):
-        x = "hello"
-        assert hasattr(x, 'check')
+    def test_feature(self):
+        
+        # Cheching the availibility of functions in the chosen attribute
+        assert hasattr(feature, 'filterbanks')
+        assert hasattr(feature, 'mfcc')
+        assert hasattr(feature, 'mfe')
+        assert hasattr(feature, 'lmfe')
+        assert hasattr(feature, 'extract_derivative_feature')
