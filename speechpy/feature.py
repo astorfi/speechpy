@@ -23,18 +23,15 @@ Attributes:
 """
 
 from __future__ import division
+
 import numpy as np
-from . import processing
+
 from scipy.fftpack import dct
-from . import functions
+
+from . import functions, processing
 
 
-def filterbanks(
-        num_filter,
-        coefficients,
-        sampling_freq,
-        low_freq=None,
-        high_freq=None):
+def filterbanks(num_filter, coefficients, sampling_freq, low_freq=None, high_freq=None):
     """Compute the Mel-filterbanks. Each filter will be stored in one rows.
     The columns correspond to fft bins.
 
@@ -64,7 +61,8 @@ def filterbanks(
     mels = np.linspace(
         functions.frequency_to_mel(low_freq),
         functions.frequency_to_mel(high_freq),
-        num_filter + 2)
+        num_filter + 2,
+    )
 
     # we should convert Mels back to Hertz because the start and end-points
     # should be at the desired frequencies.
@@ -73,12 +71,7 @@ def filterbanks(
     # The frequency resolution required to put filters at the
     # exact points calculated above should be extracted.
     #  So we should round those frequencies to the closest FFT bin.
-    freq_index = (
-        np.floor(
-            (coefficients +
-             1) *
-            hertz /
-            sampling_freq)).astype(int)
+    freq_index = (np.floor((coefficients + 1) * hertz / sampling_freq)).astype(int)
 
     # Initial definition
     filterbank = np.zeros([num_filter, coefficients])
@@ -89,26 +82,25 @@ def filterbanks(
         middle = int(freq_index[i + 1])
         right = int(freq_index[i + 2])
         z = np.linspace(left, right, num=right - left + 1)
-        filterbank[i,
-                   left:right + 1] = functions.triangle(z,
-                                                        left=left,
-                                                        middle=middle,
-                                                        right=right)
+        filterbank[i, left: right + 1] = functions.triangle(
+            z, left=left, middle=middle, right=right
+        )
 
     return filterbank
 
 
 def mfcc(
-        signal,
-        sampling_frequency,
-        frame_length=0.020,
-        frame_stride=0.01,
-        num_cepstral=13,
-        num_filters=40,
-        fft_length=512,
-        low_frequency=0,
-        high_frequency=None,
-        dc_elimination=True):
+    signal,
+    sampling_frequency,
+    frame_length=0.020,
+    frame_stride=0.01,
+    num_cepstral=13,
+    num_filters=40,
+    fft_length=512,
+    low_frequency=0,
+    high_frequency=None,
+    dc_elimination=True,
+):
     """Compute MFCC features from an audio signal.
 
     Args:
@@ -136,15 +128,20 @@ def mfcc(
         array: A numpy array of size (num_frames x num_cepstral)
             containing mfcc features.
     """
-    feature, energy = mfe(signal, sampling_frequency=sampling_frequency,
-                          frame_length=frame_length, frame_stride=frame_stride,
-                          num_filters=num_filters, fft_length=fft_length,
-                          low_frequency=low_frequency,
-                          high_frequency=high_frequency)
+    feature, energy = mfe(
+        signal,
+        sampling_frequency=sampling_frequency,
+        frame_length=frame_length,
+        frame_stride=frame_stride,
+        num_filters=num_filters,
+        fft_length=fft_length,
+        low_frequency=low_frequency,
+        high_frequency=high_frequency,
+    )
     if len(feature) == 0:
         return np.empty((0, num_cepstral))
     feature = np.log(feature)
-    feature = dct(feature, type=2, axis=-1, norm='ortho')[:, :num_cepstral]
+    feature = dct(feature, type=2, axis=-1, norm="ortho")[:, :num_cepstral]
 
     # replace first cepstral coefficient with log of frame energy for DC
     # elimination.
@@ -153,8 +150,16 @@ def mfcc(
     return feature
 
 
-def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
-        num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
+def mfe(
+    signal,
+    sampling_frequency,
+    frame_length=0.020,
+    frame_stride=0.01,
+    num_filters=40,
+    fft_length=512,
+    low_frequency=0,
+    high_frequency=None,
+):
     """Compute Mel-filterbank energy features from an audio signal.
 
          signal (array): the audio signal from which to compute features.
@@ -188,10 +193,9 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
         sampling_frequency=sampling_frequency,
         frame_length=frame_length,
         frame_stride=frame_stride,
-        filter=lambda x: np.ones(
-            (x,
-             )),
-        zero_padding=False)
+        filter=lambda x: np.ones((x,)),
+        zero_padding=False,
+    )
 
     # getting the high frequency
     high_frequency = high_frequency or sampling_frequency / 2
@@ -207,11 +211,8 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
 
     # Extracting the filterbank
     filter_banks = filterbanks(
-        num_filters,
-        coefficients,
-        sampling_frequency,
-        low_frequency,
-        high_frequency)
+        num_filters, coefficients, sampling_frequency, low_frequency, high_frequency
+    )
 
     # Filterbank energies
     features = np.dot(power_spectrum, filter_banks.T)
@@ -220,8 +221,16 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
     return features, frame_energies
 
 
-def lmfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
-         num_filters=40, fft_length=512, low_frequency=0, high_frequency=None):
+def lmfe(
+    signal,
+    sampling_frequency,
+    frame_length=0.020,
+    frame_stride=0.01,
+    num_filters=40,
+    fft_length=512,
+    low_frequency=0,
+    high_frequency=None,
+):
     """Compute log Mel-filterbank energy features from an audio signal.
 
 
@@ -249,14 +258,16 @@ def lmfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
                        num_frames x 1
     """
 
-    feature, frame_energies = mfe(signal,
-                                  sampling_frequency=sampling_frequency,
-                                  frame_length=frame_length,
-                                  frame_stride=frame_stride,
-                                  num_filters=num_filters,
-                                  fft_length=fft_length,
-                                  low_frequency=low_frequency,
-                                  high_frequency=high_frequency)
+    feature, frame_energies = mfe(
+        signal,
+        sampling_frequency=sampling_frequency,
+        frame_length=frame_length,
+        frame_stride=frame_stride,
+        num_filters=num_filters,
+        fft_length=fft_length,
+        low_frequency=low_frequency,
+        high_frequency=high_frequency,
+    )
     feature = np.log(feature)
 
     return feature
@@ -274,14 +285,18 @@ def extract_derivative_feature(feature):
           array: The feature cube vector which contains the static, first
               and second derivative features of size: N x M x 3
     """
-    first_derivative_feature = processing.derivative_extraction(
-        feature, DeltaWindows=2)
+    first_derivative_feature = processing.derivative_extraction(feature, DeltaWindows=2)
     second_derivative_feature = processing.derivative_extraction(
-        first_derivative_feature, DeltaWindows=2)
+        first_derivative_feature, DeltaWindows=2
+    )
 
     # Creating the future cube for each file
     feature_cube = np.concatenate(
-        (feature[:, :, None], first_derivative_feature[:, :, None],
-         second_derivative_feature[:, :, None]),
-        axis=2)
+        (
+            feature[:, :, None],
+            first_derivative_feature[:, :, None],
+            second_derivative_feature[:, :, None],
+        ),
+        axis=2,
+    )
     return feature_cube
