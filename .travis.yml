@@ -12,8 +12,8 @@ install:
   - pip install codecov
 
 script:
-  - coverage run --omit=*.virtualenvs*,*virtualenv* test_example/test_package.py test
-  - coverage run --omit=*.virtualenvs*,*virtualenv* test_example/test_local.py test
+  - coverage run --omit=*.virtualenvs*,*virtualenv* speechpy/example/test_package.py test
+  - coverage run --omit=*.virtualenvs*,*virtualenv* speechpy/example/test_local.py test
 
 after_success:
   - coveralls
