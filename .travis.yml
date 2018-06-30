@@ -14,6 +14,8 @@ install:
 script:
   - coverage run --omit=*.virtualenvs*,*virtualenv* example/test_package.py test
   - coverage run --omit=*.virtualenvs*,*virtualenv* example/test_local.py test
+  - pytest tests/
+  
 
 after_success:
   - coveralls
