@@ -325,7 +325,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
         for i in range(rows):
             window = vec_pad_variance[i:i + win_size, :]
             window_variance = np.std(window, axis=0)
-            variance_normalized[i, :]
+            variance_normalized[i, :] \
             = mean_subtracted[i, :] / (window_variance + eps)
         output = variance_normalized
     else:
