@@ -1,5 +1,5 @@
 ---
-title: 'SpeechPy - Speech Processing and Recognition'
+title: 'SpeechPy - A Library for Speech Processing and Recognition'
 tags:
   - Python
 authors:

@@ -1,21 +1,19 @@
 """function module.
 
-This module demonstrates documentation for the calculation of necessary functions required for the packages.
+This module demonstrates documentation for the calculation of
+necessary functions required for the packages.
 
 
 Attributes:
 
     frequency_to_mel: Converting the frequency to Mel scale.
-                      This is necessary for filterback energy calculation.
-    
+        This is necessary for filterback energy calculation.
     mel_to_frequency: Converting the Mel to frequency scale.
-                      This is necessary for filterback energy calculation.
-
+        This is necessary for filterback energy calculation.
     triangle: Creating a triangle for filtebanks.
-              This is necessary for filterback energy calculation.
-
-    zero_handling: Hanlding zero values due to the possible issues regarding the log functions.
-
+        This is necessary for filterback energy calculation.
+    zero_handling: Hanlding zero values due to the possible
+        issues regarding the log functions.
 """
 
 from __future__ import division
@@ -56,7 +54,8 @@ def triangle(x, left, middle, right):
 
 def zero_handling(x):
     """
-    This function handle the issue with zero values if the are exposed to become an argument for any log function.
+    This function handle the issue with zero values if the are exposed
+    to become an argument for any log function.
     :param x: The vector.
     :return: The vector with zeros substituted with epsilon values.
     """

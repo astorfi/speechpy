@@ -27,9 +27,6 @@ Table of Contents
   :local:
   :depth: 3
 
-
-
-
 ---------------------
 Documentation
 ---------------------

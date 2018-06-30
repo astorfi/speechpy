@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Processing module for signal processing operations.
 
-This module demonstrates documentation for the signal processing function which are 
-required as internal computations in the package.
+This module demonstrates documentation for the signal processing
+function which are required as internal computations in the package.
 
 
 Attributes:
 
     preemphasis: Preemphasising on the signal. This is a preprocessing step.
-    
+
     stack_frames: Create stacking frames from the raw signal.
 
     fft_spectrum: Calculation of the Fast Fourier Transform.
@@ -17,11 +17,14 @@ Attributes:
 
     log_power_spectrum: Log Power Spectrum calculation.
 
-    derivative_extraction: Calculation of the derivative of the extracted featurs.
+    derivative_extraction: Calculation of the derivative
+        of the extracted featurs.
 
-    cmvn: Cepstral mean variance normalization. This is a post processing operation.
+    cmvn: Cepstral mean variance normalization.
+        This is a post processing operation.
 
-    cmvnw: Cepstral mean variance normalization over the sliding window. This is a post processing operation.
+    cmvnw: Cepstral mean variance normalization over the sliding window.
+        This is a post processing operation.
 
 """
 
@@ -36,7 +39,10 @@ import math
 
 # 1.4 becomes 1 and 1.6 becomes 2. special case: 1.5 becomes 2.
 def round_half_up(number):
-    return int(decimal.Decimal(number).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_HALF_UP))
+    return int(
+        decimal.Decimal(number).quantize(
+            decimal.Decimal('1'),
+            rounding=decimal.ROUND_HALF_UP))
 
 
 def preemphasis(signal, shift=1, cof=0.98):
@@ -54,8 +60,16 @@ def preemphasis(signal, shift=1, cof=0.98):
     rolled_signal = np.roll(signal, shift)
     return signal - cof * rolled_signal
 
-def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020, filter=lambda x: np.ones((x,)),
-                 zero_padding=True):
+
+def stack_frames(
+        sig,
+        sampling_frequency,
+        frame_length=0.020,
+        frame_stride=0.020,
+        filter=lambda x: np.ones(
+            (x,
+             )),
+        zero_padding=True):
     """Frame a signal into overlapping frames.
 
     Args:
@@ -63,45 +77,61 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
         sampling_frequency (int): The sampling frequency of the signal.
         frame_length (float): The length of the frame in second.
         frame_stride (float): The stride between frames.
-        filter (array): The time-domain filter for applying to each frame. By default it is one so nothing will be changed.
-        zero_padding (bool): If the samples is not a multiple of frame_length(number of frames sample), zero padding will
-                         be done for generating last frame.
+        filter (array): The time-domain filter for applying to each frame.
+            By default it is one so nothing will be changed.
+        zero_padding (bool): If the samples is not a multiple of
+            frame_length(number of frames sample), zero padding will
+            be done for generating last frame.
 
     Returns:
-            array: stacked_frames-Array of frames of size (number_of_frames x frame_len).
+            array: stacked_frames-Array of frames of size
+                (number_of_frames x frame_len).
 
     """
 
-    ## Check dimension
-    assert sig.ndim == 1, "Signal dimention should be of the format of (N,) but it is %s instead" % str(sig.shape)
+    # Check dimension
+    s = "Signal dimention should be of the format of (N,) but it is %s instead"
+    assert sig.ndim == 1, s % str(sig.shape)
 
     # Initial necessary values
     length_signal = sig.shape[0]
-    frame_sample_length = int(np.round(sampling_frequency * frame_length))  # Defined by the number of samples
+    frame_sample_length = int(
+        np.round(
+            sampling_frequency *
+            frame_length))  # Defined by the number of samples
     frame_stride = float(np.round(sampling_frequency * frame_stride))
 
     # Zero padding is done for allocating space for the last frame.
     if zero_padding:
         # Calculation of number of frames
-        numframes = 1 + int(math.ceil((length_signal - frame_sample_length) / frame_stride))
+        numframes = (int(math.ceil((length_signal
+                                      - frame_sample_length) / frame_stride)))
+        print(numframes,length_signal,frame_sample_length,frame_stride)
 
         # Zero padding
-        len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
+        len_sig = int(numframes * frame_stride + frame_sample_length)
         additive_zeros = np.zeros((len_sig - length_signal,))
         signal = np.concatenate((sig, additive_zeros))
 
     else:
         # No zero padding! The last frame which does not have enough
         # samples(remaining samples <= frame_sample_length), will be dropped!
-        numframes = 1 + int(math.floor((length_signal - frame_sample_length) / frame_stride))
+        numframes = int(math.floor((length_signal
+                          - frame_sample_length) / frame_stride))
 
         # new length
         len_sig = int((numframes - 1) * frame_stride + frame_sample_length)
         signal = sig[0:len_sig]
 
     # Getting the indices of all frames.
-    indices = np.tile(np.arange(0, frame_sample_length), (numframes, 1)) + np.tile(
-        np.arange(0, numframes * frame_stride, frame_stride), (frame_sample_length, 1)).T
+    indices = np.tile(np.arange(0,
+                                frame_sample_length),
+                      (numframes,
+                       1)) + np.tile(np.arange(0,
+                                               numframes * frame_stride,
+                                               frame_stride),
+                                     (frame_sample_length,
+                                      1)).T
     indices = np.array(indices, dtype=np.int32)
 
     # Extracting the frames based on the allocated indices.
@@ -114,16 +144,21 @@ def stack_frames(sig, sampling_frequency, frame_length=0.020, frame_stride=0.020
 
 
 def fft_spectrum(frames, fft_points=512):
-    """This function computes the one-dimensional n-point discrete Fourier Transform (DFT) of a real-valued
-    array by means of an efficient algorithm called the Fast Fourier Transform (FFT). Please refer to
-    https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html for further details.
+    """This function computes the one-dimensional n-point discrete Fourier
+    Transform (DFT) of a real-valued array by means of an efficient algorithm
+    called the Fast Fourier Transform (FFT). Please refer to
+    https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.rfft.html
+    for further details.
 
     Args:
         frames (array): The frame array in which each row is a frame.
-        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+        fft_points (int): The length of FFT. If fft_length is greater
+        than frame_len, the frames will be zero-padded.
 
     Returns:
-            array: The fft spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x FFT_LENGTH.
+            array: The fft spectrum.
+            If frames is an num_frames x sample_per_frame matrix, output
+            will be num_frames x FFT_LENGTH.
     """
     SPECTRUM_VECTOR = np.fft.rfft(frames, n=fft_points, axis=-1, norm=None)
     return np.absolute(SPECTRUM_VECTOR)
@@ -134,10 +169,13 @@ def power_spectrum(frames, fft_points=512):
 
     Args:
         frames (array): The frame array in which each row is a frame.
-        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
+        fft_points (int): The length of FFT. If fft_length is greater than
+        frame_len, the frames will be zero-padded.
 
     Returns:
-            array: The power spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
+            array: The power spectrum:
+            If frames is an num_frames x sample_per_frame matrix, output
+            will be num_frames x fft_length.
     """
     return 1.0 / fft_points * np.square(fft_spectrum(frames, fft_points))
 
@@ -147,11 +185,15 @@ def log_power_spectrum(frames, fft_points=512, normalize=True):
 
     Args:
         frames (array): The frame array in which each row is a frame.
-        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
-        normalize (bool): If normalize=True, the log power spectrum will be normalized.
+        fft_points (int): The length of FFT. If fft_length is greater than
+            frame_len, the frames will be zero-padded.
+        normalize (bool): If normalize=True, the log power spectrum
+            will be normalized.
 
     Returns:
-           array: The power spectrum - If frames is an num_frames x sample_per_frame matrix, output will be num_frames x fft_length.
+           array: The power spectrum - If frames is an
+           num_frames x sample_per_frame matrix, output will be
+           num_frames x fft_length.
     """
     power_spec = power_spectrum(frames, fft_points)
     power_spec[power_spec <= 1e-20] = 1e-20
@@ -166,11 +208,14 @@ def derivative_extraction(feat, DeltaWindows):
     """This function the derivative features.
 
     Args:
-        feat (array): The main feature vector(For returning the second order derivative it can be first-order derivative).
-        DeltaWindows (int): The value of  DeltaWindows is set using the configuration parameter DELTAWINDOW.
+        feat (array): The main feature vector(For returning the second
+             order derivative it can be first-order derivative).
+        DeltaWindows (int): The value of  DeltaWindows is set using
+            the configuration parameter DELTAWINDOW.
 
     Returns:
-           array: Derivative feature vector - A NUMFRAMESxNUMFEATURES numpy array which is the derivative features along the features.
+           array: Derivative feature vector - A NUMFRAMESxNUMFEATURES numpy
+           array which is the derivative features along the features.
     """
 
     # Getting the shape of the vector.
@@ -189,7 +234,8 @@ def derivative_extraction(feat, DeltaWindows):
         # The dynamic range
         Range = i + 1
 
-        dif = Range * FEAT[:, offset + Range:offset + Range + cols] - FEAT[:, offset - Range:offset - Range + cols]
+        dif = Range * FEAT[:, offset + Range:offset + Range + cols]
+        - FEAT[:, offset - Range:offset - Range + cols]
         Scale += 2 * np.power(Range, 2)
         DIF += dif
 
@@ -197,12 +243,15 @@ def derivative_extraction(feat, DeltaWindows):
 
 
 def cmvn(vec, variance_normalization=False):
-    """ This function is aimed to perform global cepstral mean and variance normalization
-    (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+    """ This function is aimed to perform global cepstral mean and
+        variance normalization (CMVN) on input feature vector "vec".
+        The code assumes that there is one observation per row.
 
     Args:
-        vec (array): input feature matrix (size:(num_observation,num_features))
-        variance_normalization (bool): If the variance normilization should be performed or not.
+        vec (array): input feature matrix
+            (size:(num_observation,num_features))
+        variance_normalization (bool): If the variance
+            normilization should be performed or not.
 
     Return:
           array: The mean(or mean+variance) normalized feature vector.
@@ -229,13 +278,18 @@ def cmvn(vec, variance_normalization=False):
 
 
 def cmvnw(vec, win_size=301, variance_normalization=False):
-    """ This function is aimed to perform local cepstral mean and variance normalization on a sliding window.
-    (CMVN) on input feature vector "vec". The code assumes that there is one observation per row.
+    """ This function is aimed to perform local cepstral mean and
+    variance normalization on a sliding window. The code assumes that
+    there is one observation per row.
 
     Args:
-        vec (array): input feature matrix (size:(num_observation,num_features))
-        win_size (int): The size of sliding window for local normalization. Default=301 which is around 3s if 100 Hz rate is considered(== 10ms frame stide)
-        variance_normalization (bool): If the variance normilization should be performed or not.
+        vec (array): input feature matrix
+            (size:(num_observation,num_features))
+        win_size (int): The size of sliding window for local normalization.
+            Default=301 which is around 3s if 100 Hz rate is
+            considered(== 10ms frame stide)
+        variance_normalization (bool): If the variance normilization should
+            be performed or not.
 
     Return:
           array: The mean(or mean+variance) normalized feature vector.
@@ -245,7 +299,7 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
     rows, cols = vec.shape
 
     # Windows size must be odd.
-    assert type(win_size) == int, "Size must be of type 'int'!"
+    assert isinstance(win_size, int), "Size must be of type 'int'!"
     assert win_size % 2 == 1, "Windows size must be odd!"
 
     # Padding and initial definitions
@@ -263,19 +317,20 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 
         # Initial definitions.
         variance_normalized = np.zeros(np.shape(vec), dtype=np.float32)
-        vec_pad_variance = np.lib.pad(mean_subtracted, ((pad_size, pad_size), (0, 0)), 'symmetric')
+        vec_pad_variance = np.lib.pad(
+            mean_subtracted, ((pad_size, pad_size), (0, 0)), 'symmetric')
 
         # Looping over all observations.
         for i in range(rows):
             window = vec_pad_variance[i:i + win_size, :]
             window_variance = np.std(window, axis=0)
-            variance_normalized[i, :] = mean_subtracted[i, :] / (window_variance + eps)
+            variance_normalized[i, :] \
+            = mean_subtracted[i, :] / (window_variance + eps)
         output = variance_normalized
     else:
         output = mean_subtracted
 
     return output
-
 
 
 # def resample_Fn(wave, fs, f_new=16000):
@@ -289,7 +344,8 @@ def cmvnw(vec, win_size=301, variance_normalization=False):
 #     dependency: from scikits.samplerate import resample
 #     """
 #
-#     # Resampling using interpolation(There are other methods than 'sinc_best')
+#     # Resampling using interpolation(There are other
+#     methods than 'sinc_best')
 #     signal_new = resample(wave, float(f_new) / fs, 'sinc_best')
 #
 #     # Necessary data converting for saving .wav file using scipy.
