@@ -17,19 +17,16 @@ Attributes:
 
     log_power_spectrum: Log Power Spectrum calculation.
 
-    derivative_extraction: Calculation of the derivative
-        of the extracted featurs.
+    derivative_extraction: Calculation of the derivative of the extracted featurs.
 
-    cmvn: Cepstral mean variance normalization.
-        This is a post processing operation.
+    cmvn: Cepstral mean variance normalization. This is a post processing operation.
 
-    cmvnw: Cepstral mean variance normalization over the sliding window.
-        This is a post processing operation.
+    cmvnw: Cepstral mean variance normalization over the sliding window. This is a post processing operation.
 
 """
 
 __license__ = "MIT"
-__author__ = " $Amirsina Torfi"
+__author__ = " Amirsina Torfi"
 __docformat__ = 'reStructuredText'
 
 import decimal
@@ -54,7 +51,7 @@ def preemphasis(signal, shift=1, cof=0.98):
         cof (float): The preemphasising coefficient. 0 equals to no filtering.
 
     Returns:
-           the pre-emphasized signal.
+           array: The pre-emphasized signal.
     """
 
     rolled_signal = np.roll(signal, shift)
@@ -84,8 +81,7 @@ def stack_frames(
             be done for generating last frame.
 
     Returns:
-            array: stacked_frames-Array of frames of size
-                (number_of_frames x frame_len).
+            array: Stacked_frames-Array of frames of size (number_of_frames x frame_len).
 
     """
 
@@ -152,8 +148,7 @@ def fft_spectrum(frames, fft_points=512):
 
     Args:
         frames (array): The frame array in which each row is a frame.
-        fft_points (int): The length of FFT. If fft_length is greater
-        than frame_len, the frames will be zero-padded.
+        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
 
     Returns:
             array: The fft spectrum.
@@ -169,11 +164,10 @@ def power_spectrum(frames, fft_points=512):
 
     Args:
         frames (array): The frame array in which each row is a frame.
-        fft_points (int): The length of FFT. If fft_length is greater than
-        frame_len, the frames will be zero-padded.
+        fft_points (int): The length of FFT. If fft_length is greater than frame_len, the frames will be zero-padded.
 
     Returns:
-            array: The power spectrum:
+            array: The power spectrum.
             If frames is an num_frames x sample_per_frame matrix, output
             will be num_frames x fft_length.
     """
