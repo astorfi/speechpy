@@ -259,9 +259,21 @@ observation per row.
         """
 
 
-~~~~~~~~~~~~
-Test Example
-~~~~~~~~~~~~
+Tests
+-----
+
+SpeechPy includes some unit tests. To run the tests, `cd` into the
+`speechpy/tests` directory and run:
+
+```
+python -m pytest
+```
+
+For installing the requirements you only need to install ``pytest`` using the following:
+
+------------
+Example
+------------
 
 The test example can be seen in ``test/test.py`` as below:
 
