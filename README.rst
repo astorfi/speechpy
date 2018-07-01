@@ -258,16 +258,16 @@ observation per row.
         :return: The mean(or mean+variance) normalized feature vector.
         """
 
-
+-----
 Tests
 -----
 
-SpeechPy includes some unit tests. To run the tests, `cd` into the
-`speechpy/tests` directory and run:
+SpeechPy includes some unit tests. To run the tests, ``cd`` into the
+``speechpy/tests`` directory and run:
 
-```
-python -m pytest
-```
+.. code-block:: shell
+
+     python -m pytest
 
 For installing the requirements you only need to install ``pytest`` using the following:
 
