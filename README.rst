@@ -269,7 +269,7 @@ SpeechPy includes some unit tests. To run the tests, ``cd`` into the
 
      python -m pytest
 
-For installing the requirements you only need to install ``pytest`` using the following:
+For installing the requirements you only need to install ``pytest``.
 
 ------------
 Example
