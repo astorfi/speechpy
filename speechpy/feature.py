@@ -133,8 +133,7 @@ def mfcc(
              be eliminated or not.
 
     Returns:
-        array: A numpy array of size (num_frames x num_cepstral)
-            containing mfcc features.
+        array: A numpy array of size (num_frames x num_cepstral) containing mfcc features.
     """
     feature, energy = mfe(signal, sampling_frequency=sampling_frequency,
                           frame_length=frame_length, frame_stride=frame_stride,
@@ -175,9 +174,7 @@ def mfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
              In Hz, default is samplerate/2
 
     Returns:
-              array: features - the energy of fiterbank:
-                      num_frames x num_filters frame_energies.
-              The energy of each frame: num_frames x 1
+              array: features - the energy of fiterbank of size num_frames x num_filters. The energy of each frame: num_frames x 1
     """
 
     # Convert to float
@@ -244,10 +241,7 @@ def lmfe(signal, sampling_frequency, frame_length=0.020, frame_stride=0.01,
              In Hz, default is samplerate/2
 
     Returns:
-              array: Features - The energy of fiterbank:
-                      num_frames x num_filters
-               frame_log_energies. The log energy of each frame:
-                       num_frames x 1
+              array: Features - The log energy of fiterbank of size num_frames x num_filters frame_log_energies. The log energy of each frame num_frames x 1
     """
 
     feature, frame_energies = mfe(signal,
@@ -272,8 +266,7 @@ def extract_derivative_feature(feature):
         feature (array): The feature vector which its size is: N x M
 
     Return:
-          array: The feature cube vector which contains the static, first
-              and second derivative features of size: N x M x 3
+          array: The feature cube vector which contains the static, first and second derivative features of size: N x M x 3
     """
     first_derivative_feature = processing.derivative_extraction(
         feature, DeltaWindows=2)
