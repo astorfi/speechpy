@@ -1,16 +1,17 @@
 """feature module.
 
-This module demonstrates documentation for the main speech features that the
-package is aimed to extract as well as the required elements.
+This module provides functions for calculating the main speech
+features that the package is aimed to extract as well as the required
+elements.
 
 
-Attributes:
+Functions:
 
     filterbanks: Compute the Mel-filterbanks
                  The filterbanks must be created for extracting
                  speech features such as MFCC.
 
-    mfcc: Extracting Mel Frequncy Cepstral Coefficient feature.
+    mfcc: Extracting Mel Frequency Cepstral Coefficient feature.
 
     mfe: Extracting Mel Energy feature.
 
