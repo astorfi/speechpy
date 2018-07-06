@@ -5,12 +5,10 @@ tags:
 authors:
   - name: Amirsina Torfi
     orcid: 0000-0003-2282-4361
-    affiliation: "1,2"
+    affiliation: "1"
 affiliations:
- - name: Virginia Tech
+ - name: Virginia Tech, Department of Computer Science
    index: 1
- - name: Center for Identification Technology Research, West Virginia University
-   index: 2
 date: 15 May 2018
 bibliography: paper.bib
 ---
@@ -37,4 +35,4 @@ official release of ``SpeechPy``, the package has successfully been utilized for
 
 # Acknowledgements
 
-This work is based upon a work supported by the Center for Identification Technology Research and the National Science Foundation under Grant #1650474.
+This work is based upon a work supported by the Center for Identification Technology Research (CITeR) and the National Science Foundation (NSF) under Grant #1650474. This work was completed in part with resources provided by the Center for Identification Technology Research (CITeR) at the West Virginia University. 
