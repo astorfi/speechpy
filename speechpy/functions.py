@@ -1,18 +1,18 @@
 """function module.
 
-This module demonstrates documentation for the calculation of
-necessary functions required for the packages.
+This module contains necessary functions for calculating the features
+in the `features` module.
 
 
 Attributes:
 
     frequency_to_mel: Converting the frequency to Mel scale.
-        This is necessary for filterback energy calculation.
+        This is necessary for filterbank energy calculation.
     mel_to_frequency: Converting the Mel to frequency scale.
-        This is necessary for filterback energy calculation.
-    triangle: Creating a triangle for filtebanks.
-        This is necessary for filterback energy calculation.
-    zero_handling: Hanlding zero values due to the possible
+        This is necessary for filterbank energy calculation.
+    triangle: Creating a triangle for filterbanks.
+        This is necessary for filterbank energy calculation.
+    zero_handling: Handling zero values due to the possible
         issues regarding the log functions.
 """
 
