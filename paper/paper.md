@@ -1,5 +1,5 @@
 ---
-title: 'SpeechPy - Speech Processing and Recognition'
+title: 'SpeechPy - A Library for Speech Processing and Recognition'
 tags:
   - Python
 authors:
@@ -35,4 +35,4 @@ official release of ``SpeechPy``, the package has successfully been utilized for
 
 # Acknowledgements
 
-This work is based upon a work supported by the Center for Identification Technology Research (CITeR) and the National Science Foundation (NSF) under Grant #1650474. This work was completed in part with resources provided by the Center for Identification Technology Research (CITeR) at the West Virginia University. 
+This work is based upon a work supported by the Center for Identification Technology Research (CITeR) and the National Science Foundation (NSF) under Grant #1650474. This work was completed in part with resources provided by the Center for Identification Technology Research (CITeR) at the West Virginia University. I would like to thank to Professor Nasser Nasrabadi at West Virginia University, for supporting me during developing this project and for his valuable advices.
