@@ -216,7 +216,7 @@ def derivative_extraction(feat, DeltaWindows):
     rows, cols = feat.shape
 
     # Difining the vector of differences.
-    DIF = np.zeros(feat.shape, dtype=float)
+    DIF = np.zeros(feat.shape, dtype=feat.dtype)
     Scale = 0
 
     # Pad only along features in the vector.
