@@ -25,7 +25,7 @@ classification purposes. Due to the high
 dimensionality, the raw signal can be less informative compared to
 extracted higher level features. Feature extraction comes to our rescue
 for turning the high dimensional signal to a lower dimensional and yet
-more informative version of that for sound recognition and
+a more informative version of that for sound recognition and
 classification [@furui1986speaker; @guyon2008feature; @hirsch2000aurora].
 
 ![Scheme of speech recognition](_imgs/Scheme_of_speech_recognition_system.png)
@@ -36,7 +36,7 @@ characteristics of the raw signal are of great importance and the other
 characteristics must be
 ignored [@yu2016automatic; @rabiner1993fundamentals]. On the other hand,
 in Speaker Recognition (SR) task, solely voice-associated information
-must be contained in extracted feature [@campbell1997speaker]. So the
+must be contained in the extracted feature [@campbell1997speaker]. So the
 feature extraction goal is to extract the relevant feature from the raw
 signal and map it to a lower dimensional feature space. The problem of
 feature extraction has been investigated in pattern classification aimed
@@ -48,7 +48,7 @@ signals and demonstrated promising results [@gurban2009information].
 The speech features can be categorized into two general types of
 acoustic and linguistic features. The former one is mainly related to
 non-verbal sounds and the later one is associated with ASR and SR
-systems for which verbal part has the major role. Perhaps one the most
+systems for which verbal part has the major role. Perhaps one of the most
 famous linguistic feature which is hard to beat is the Mel-Frequency
 Cepstral Coefficients (MFCC). It uses speech raw frames in the range
 from 20ms to 40ms for having stationary
@@ -65,7 +65,7 @@ With the availability of free software for speech recognition such as
 VOICEBOX[^1], most of these softwares are Matlab-based which limits
 their reproducibility due to commercial issues. Another great package is
 PyAudioAnalysis [@giannakopoulos2015pyaudioanalysis], which is a
-comprehensive package developed in Python. However, the issue with
+the comprehensive package developed in Python. However, the issue with
 PyAudioAnalysis is that its complexity and being too verbose for
 extracting simple features and it also lacks some important
 preprocessing and post-processing operations for its current version.
@@ -109,7 +109,7 @@ for handling data and numeric computations.
 
 As the user should not and does not even need to manipulate the internal
 package structure, object-oriented programming is mostly used for
-package development which provides easier interface for the user with a
+package development which provides an easier interface for the user with a
 sacrifice to the simplicity of the code. However, the internal code
 complexity of the package does not affect the user experience since the
 modules can easily be called with the associated arguments. SpeechPy is
@@ -129,7 +129,7 @@ well[^5] [@torfispeechpy].
 
 ## Continuous Testing and Extensibility
 
-The output of each function has been evaluated as well using different
+The output of each function has been evaluated as well as using different
 tests as opposed to the other existing standard packages. For continuous
 testing, the code is hosted on GitHub and integrated with Travis CI.
 Each modification to the code must pass the unit tests defined for the
@@ -153,22 +153,23 @@ installed.
 
 ## Programming language {#programming-language .unnumbered}
 
-The package has been tested Python 2.7, 3.4 and 3.5. However, using
+The package has been tested with Python 2.7, 3.4 and 3.5. However, using
 Python 3.5 is suggested.
 
 ## Additional system requirements & dependencies {#additional-system-requirements-dependencies .unnumbered}
 
 SpeechPy is a light package and small computational power would be
 enough for running it. Although the speed of the execution is totally
-dependent to the system architecture. The dependencies are as follows:
+dependent on the system architecture. The dependencies are as follows:
 
   * Numpy
 
   * SciPy
 
-# Aknowledgement
+# Acknowledgement
 
-This work has been completed in part with computational resources
-provided by the West Virginia University and is based upon a work
-supported by the Center for Identification Technology Research (CITeR)
-and the National Science Foundation (NSF) under Grant \#1650474.
+This work has been completed in part with computational resources provided by the West Virginia University and is based upon a work
+supported by the Center for Identification Technology Research (CITeR) and the National Science Foundation (NSF) under Grant \#1650474.
+I would like to thank professor Nasser Nasrabadi for supporting me through this project and for his valuable advice.
+
+# References
