@@ -62,7 +62,7 @@ rather than traditional methods for speech recognition
 applications [@variani2014deep; @hinton2012deep; @liu2015deep].
 
 With the availability of free software for speech recognition such as
-VOICEBOX[^1], most of these softwares are Matlab-based which limits
+VOICEBOX, most of these softwares are Matlab-based which limits
 their reproducibility due to commercial issues. Another great package is
 PyAudioAnalysis [@giannakopoulos2015pyaudioanalysis], which is a
 the comprehensive package developed in Python. However, the issue with
@@ -87,7 +87,7 @@ motivations behind SpeechPy package:
 SpeechPy has been developed to satisfy the aforementioned needs. It
 contains the most important preprocessing and post-processing operations
 and a selection of frequently used speech features. The package is free
-and released as an open source software[^2]. Continuous integration
+and released as an open source software. Continuous integration
 using for instant error check and validity of changes has been deployed
 for SpeechPy. Moreover, prior to the latest official release of
 SpeechPy, the package has successfully been utilized for research
@@ -99,7 +99,7 @@ purposes [@torfi20173d; @torfi2017text].
 SpeechPy has been developed using Python language for its interface and
 backed as well. An empirical study demonstrated that Python as a
 scripting language, is more effective and productive than conventional
-languages[^3] for some programming problems and memory consumption is
+languages for some programming problems and memory consumption is
 often “better than Java and not much worse than C or
 C++” [@prechelt2000empirical]. We chose Python due to its simplicity and
 popularity. Third-party libraries are avoided except *Numpy* and *Scipy*
@@ -119,11 +119,11 @@ a library with a collection of sub-modules.
 
 SpeechPy is constructed based on PEP 8 style guide for Python codes.
 Moreover, it is extensively documented using the formatted docstrings
-and Sphinx[^4] for further automatic modifications to the document in
+and Sphinx for further automatic modifications to the document in
 case of changing internal modules. The full documentation of the project
 will be generated in HTML and PDF format using Sphinx and is hosted
 online. The official releases of the project are hosted on the Zenodo as
-well[^5] [@torfispeechpy].
+well [@torfispeechpy].
 
 ![A general view of the package](_imgs/packageview.png)
 
