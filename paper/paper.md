@@ -168,8 +168,8 @@ dependent on the system architecture. The dependencies are as follows:
 
 # Acknowledgement
 
-This work has been completed in part with computational resources provided by the West Virginia University and is based upon a work
+This work has been completed with computational resources provided by the West Virginia University and Virginia Tech and is based upon a work
 supported by the Center for Identification Technology Research (CITeR) and the National Science Foundation (NSF) under Grant \#1650474.
-I would like to thank professor Nasser Nasrabadi for supporting me through this project and for his valuable advice.
+I would like to thank professor Nasser Nasrabadi for supporting me through this project and for his valuable supervision regarding my research in speech technology.
 
 # References
