@@ -15,7 +15,8 @@
 .. image:: https://badge.fury.io/py/speechpy.svg
     :target: https://badge.fury.io/py/speechpy
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.810391.svg
-    :target: https://doi.org/110.5281/zenodo.810391
+    :target: https://doi.org/10.5281/zenodo.810391
+
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
