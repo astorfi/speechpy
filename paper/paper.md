@@ -28,7 +28,7 @@ for turning the high dimensional signal to a lower dimensional and yet
 a more informative version of that for sound recognition and
 classification [@furui1986speaker; @guyon2008feature; @hirsch2000aurora].
 
-![Scheme of speech recognition](_imgs/Scheme_of_speech_recognition_system.png)
+![Scheme of speech recognition](test/_imgs/Scheme_of_speech_recognition_system.png)
 
 Feature extraction, in essence, should be done considering the specific
 application at hand. For example, in ASR applications, the linguistic
@@ -125,7 +125,7 @@ will be generated in HTML and PDF format using Sphinx and is hosted
 online. The official releases of the project are hosted on the Zenodo as
 well [@torfispeechpy].
 
-![A general view of the package](_imgs/packageview.png)
+![A general view of the package](test/_imgs/packageview.png)
 
 ## Continuous Testing and Extensibility
 
@@ -140,7 +140,7 @@ of the project. The code will be tested at each time of modification for
 Python versions *“2.7”*, *“3.4”* and *“3.5”*. In the future, these
 versions are subject to change.
 
-![Travic CI web interface after testing SpeechPy against a new change](_imgs/travicCI.png)
+![Travic CI web interface after testing SpeechPy against a new change](test/_imgs/travicCI.png)
 
 # Availability
 
