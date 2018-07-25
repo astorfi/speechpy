@@ -14,10 +14,11 @@
     :target: https://codecov.io/gh/astorfi/speechpy
 .. image:: https://badge.fury.io/py/speechpy.svg
     :target: https://badge.fury.io/py/speechpy
-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.810391.svg
-    :target: https://doi.org/10.5281/zenodo.810391
 .. image:: http://joss.theoj.org/papers/10.21105/joss.00749/status.svg
     :target: https://doi.org/10.21105/joss.00749
+    
+.. .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.810391.svg
+   ..  :target: https://doi.org/10.5281/zenodo.810391
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
 
