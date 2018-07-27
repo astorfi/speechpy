@@ -45,10 +45,10 @@ Please refer to the following links for further informations:
 
 `SpeechPy Official Project Documentation`_
 
-`Technical Report`_
+`Paper`_
 
 .. _SpeechPy Official Project Documentation: http://speechpy.readthedocs.io
-.. _Technical Report: https://arxiv.org/abs/1803.01094
+.. _Paper: https://doi.org/10.21105/joss.00749
 
 ------------------------------------------
 Which Python versions are supported
