@@ -155,7 +155,7 @@ def fft_spectrum(frames, fft_points=512):
             If frames is an num_frames x sample_per_frame matrix, output
             will be num_frames x FFT_LENGTH.
     """
-    SPECTRUM_VECTOR = np.fft.rfft(frames, n=fft_points, axis=-1, norm=None)
+    SPECTRUM_VECTOR = np.fft.rfft(frames*np.hamming(frames.shape[-1]), n=fft_points, axis=-1, norm=None)
     return np.absolute(SPECTRUM_VECTOR)
 
 
