@@ -1,5 +1,12 @@
 .. image:: _images/speechpy_logo.gif
     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
+.. image:: _images/mainpage/follow-twitter.gif
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
+   :target: https://twitter.com/amirsinatorfi
 
 ===============================================
 `SpeechPy Official Project Documentation`_
@@ -16,6 +23,8 @@
     :target: https://badge.fury.io/py/speechpy
 .. image:: http://joss.theoj.org/papers/10.21105/joss.00749/status.svg
     :target: https://doi.org/10.21105/joss.00749
+.. image:: https://img.shields.io/twitter/follow/amirsinatorfi.svg?label=Follow&style=social
+      :target: https://twitter.com/amirsinatorfi
     
 .. .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.810391.svg
    ..  :target: https://doi.org/10.5281/zenodo.810391
