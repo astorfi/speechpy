@@ -1,13 +1,5 @@
 .. image:: _images/speechpy_logo.gif
     :target: https://github.com/astorfi/speech_feature_extraction/blob/master/images/speechpy_logo.gif
-
-.. image:: _images/follow-twitter.gif
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
-   :alt: alternate text
-   :align: right
-   :target: https://twitter.com/amirsinatorfi
    
 ===============================================
 `SpeechPy Official Project Documentation`_
