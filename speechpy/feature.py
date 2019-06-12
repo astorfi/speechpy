@@ -121,7 +121,7 @@ def mfcc(
          frame_length (float): the length of each frame in seconds.
              Default is 0.020s
          frame_stride (float): the step between successive frames in seconds.
-             Default is 0.02s (means no overlap)
+             Default is 0.01s (means an overlap of 10 ms)
          num_filters (int): the number of filters in the filterbank,
              default 40.
          fft_length (int): number of FFT points. Default is 512.
