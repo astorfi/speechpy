@@ -5,6 +5,8 @@
 `SpeechPy Official Project Documentation`_
 ===============================================
 
+.. image:: https://pepy.tech/badge/speechpy
+   :target: https://pepy.tech/project/speechpy
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
     :target: https://github.com/astorfi/speechpy/pulls
 .. image:: https://coveralls.io/repos/github/astorfi/speechpy/badge.svg?branch=master
