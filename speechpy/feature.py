@@ -74,9 +74,11 @@ def filterbanks(
     # The frequency resolution required to put filters at the
     # exact points calculated above should be extracted.
     #  So we should round those frequencies to the closest FFT bin.
+
+    fftpoints = (coefficients - 1) * 2
     freq_index = (
         np.floor(
-            (coefficients +
+            (fftpoints +
              1) *
             hertz /
             sampling_freq)).astype(int)
