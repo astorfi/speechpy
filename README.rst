@@ -320,7 +320,7 @@ The test example can be seen in ``test/test.py`` as below:
     logenergy_feature_cube = speechpy.feature.extract_derivative_feature(logenergy)
     print('logenergy features=', logenergy.shape)
 
-For ectracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
+For extracting the feature at first, the signal samples will be stacked into frames. The features are computed for each frame in the stacked frames collection.
 
 ---------------------
 Dependencies
