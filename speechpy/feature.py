@@ -44,7 +44,7 @@ def filterbanks(
         coefficients (int): (fftpoints//2 + 1). Default is 257.
         sampling_freq (float): the samplerate of the signal we are working
             with. It affects mel spacing.
-        low_freq (float): lowest band edge of mel filters, default 0 Hz
+        low_freq (float): lowest band edge of mel filters, default 300 Hz
         high_freq (float): highest band edge of mel filters,
             default samplerate/2
 
@@ -52,8 +52,10 @@ def filterbanks(
            array: A numpy array of size num_filter x (fftpoints//2 + 1)
                which are filterbank
     """
-    high_freq = high_freq or sampling_freq / 2
-    low_freq = low_freq or 300
+    if high_freq is None:
+        high_freq = sampling_freq / 2
+    if low_freq is None:
+        low_freq = 300
     s = "High frequency cannot be greater than half of the sampling frequency!"
     assert high_freq <= sampling_freq / 2, s
     assert low_freq >= 0, "low frequency cannot be less than zero!"
@@ -74,9 +76,11 @@ def filterbanks(
     # The frequency resolution required to put filters at the
     # exact points calculated above should be extracted.
     #  So we should round those frequencies to the closest FFT bin.
+
+    fftpoints = (coefficients - 1) * 2
     freq_index = (
         np.floor(
-            (coefficients +
+            (fftpoints +
              1) *
             hertz /
             sampling_freq)).astype(int)
